@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Register_User">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?actionBarSize"
+        android:background="#143567"
+        android:longClickable="false"
+        android:theme="@style/ThemeOverlay.AppCompat.Light"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:logo="@drawable/logop"
+
+        app:title="Vehicle Bath"
+        app:titleMarginStart="40dp"
+        app:titleTextColor="#FFFFFF" />
+
+
+    <EditText
+        android:id="@+id/uoname"
+        android:layout_width="339dp"
+        android:layout_height="48dp"
+        android:ems="10"
+        android:fontFamily="@font/trykker"
+        android:inputType="textPersonName"
+        android:text="@string/UOname"
+        android:textColor="#0C0C0C"
+        app:layout_constraintBottom_toTopOf="@+id/uoemail"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.679" />
+
+    <EditText
+        android:id="@+id/uoemail"
+        android:layout_width="339dp"
+        android:layout_height="48dp"
+        android:layout_marginBottom="428dp"
+        android:ems="10"
+        android:fontFamily="@font/trykker"
+        android:inputType="textPersonName"
+        android:text="@string/UOemail"
+        android:textColor="#0C0C0C"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <EditText
+        android:id="@+id/uonumber"
+        android:layout_width="339dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="28dp"
+        android:ems="10"
+        android:fontFamily="@font/trykker"
+        android:inputType="number"
+        android:text="@string/UOnumber"
+        android:textColor="#0C0C0C"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/uoemail" />
+
+    <EditText
+        android:id="@+id/uopwd"
+        android:layout_width="339dp"
+        android:layout_height="45dp"
+        android:layout_marginTop="28dp"
+        android:ems="10"
+        android:fontFamily="@font/trykker"
+        android:text="@string/UOpwd"
+        android:textColor="#0C0C0C"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/uonumber" />
+
+    <EditText
+        android:id="@+id/uorpwd"
+        android:layout_width="339dp"
+        android:layout_height="45dp"
+        android:layout_marginTop="100dp"
+        android:ems="10"
+        android:fontFamily="@font/trykker"
+        android:text="@string/UOrepwd"
+        android:textColor="#0C0C0C"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/uonumber" />
+
+    <CheckBox
+        android:id="@+id/chkr"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:fontFamily="@font/trykker"
+        android:text="@string/UOchk"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/uorpwd" />
+
+    <Button
+        android:id="@+id/rbutton"
+        android:layout_width="251dp"
+        android:layout_height="47dp"
+        android:layout_marginTop="32dp"
+        android:backgroundTint="#225EBB"
+        android:fontFamily="@font/trykker"
+        android:text="@string/CAbutton"
+        android:textColor="#FFFFFF"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/chkr"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/rlink"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/UOlink"
+        android:textColor="#225EBB"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/rbutton"
+        app:layout_constraintVertical_bias="0.515" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
