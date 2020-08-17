@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".FinishedAppointments">
+
+    <TableLayout
+        android:id="@+id/tableLayout2"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="1dp"
+        android:layout_marginTop="1dp"
+        android:layout_marginEnd="1dp"
+        android:layout_marginBottom="1dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0"
+        tools:ignore="ExtraText">
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="20dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="100dp"
+                android:text="@string/finished"
+                android:textColor="#000000"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <Spinner
+                android:id="@+id/spinner"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="100dp"
+                android:padding="20dp"
+                android:prompt="@string/app_name" />
+        </TableRow>
+
+<!--        Show Total-->
+        <TableRow android:padding="10dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:text="@string/total_customers_3"
+                android:textColor="#000000"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+        </TableRow>
+        <!--Table Heading-->
+        <TableRow android:padding="5dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="@string/name"
+                android:textColor="#000000"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="@string/time"
+                android:textColor="#000000"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+        </TableRow>
+
+<!--        //Table Data-->
+        <TableRow android:padding="5dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="@string/viraj"
+                android:textColor="#000000"
+                android:textSize="14sp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="@string/_03_00pm"
+                android:textColor="#000000"
+                android:textSize="14sp" />
+
+        </TableRow>
+
+        <TableRow android:padding="5dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="@string/hillary"
+                android:textColor="#000000"
+                android:textSize="14sp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="@string/_03_20pm"
+                android:textColor="#000000"
+                android:textSize="14sp" />
+
+        </TableRow>
+
+        <TableRow android:padding="5dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="@string/agil"
+                android:textColor="#000000"
+                android:textSize="14sp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="@string/_4_00pm"
+                android:textColor="#000000"
+                android:textSize="14sp" />
+
+        </TableRow>
+
+    </TableLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

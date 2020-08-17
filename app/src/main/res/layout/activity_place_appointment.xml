@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".placeAppointment">
+
+    <TextView
+        android:id="@+id/textView13"
+        android:layout_width="0dp"
+        android:layout_height="608dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="48dp"
+        android:layout_marginEnd="12dp"
+        android:background="@drawable/card"
+        android:gravity="center_horizontal"
+        android:text="@string/wash_me"
+        android:textColor="#000000"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="92dp"
+        android:layout_marginEnd="87dp"
+        android:layout_marginBottom="11dp"
+        android:text="@string/kandy"
+        android:textColor="#000000"
+        app:layout_constraintBottom_toTopOf="@+id/textView12"
+        app:layout_constraintEnd_toStartOf="@+id/textView8"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/textView12"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="38dp"
+        android:text="@string/rating_4_5"
+        android:textColor="#000000"
+        app:layout_constraintBottom_toTopOf="@+id/textView10"
+        app:layout_constraintStart_toStartOf="@+id/textView2"
+        app:layout_constraintTop_toBottomOf="@+id/textView8" />
+
+    <TextView
+        android:id="@+id/textView8"
+        android:layout_width="87dp"
+        android:layout_height="23dp"
+        android:layout_marginTop="245dp"
+        android:layout_marginEnd="100dp"
+        android:layout_marginBottom="6dp"
+        android:background="@drawable/lineroundedrectgreen"
+        android:gravity="center"
+        android:text="@string/best_rated"
+        android:textColor="#FFFF"
+        app:layout_constraintBottom_toTopOf="@+id/textView12"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/textView2"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView10"
+        android:layout_width="321dp"
+        android:layout_height="158dp"
+        android:layout_marginBottom="224dp"
+        android:text="@string/quick_wash_body_wash_and_tyre_dressing_n_ndetailed_wash_body_wash_carpet_wash_glass_cleaning_dash_cleaning_tyre_dressing_wax_interior_vacuum_free"
+        android:textColor="#000000"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/floatingActionButton2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="44dp"
+        android:layout_marginBottom="108dp"
+        android:backgroundTint="#143567"
+        android:clickable="true"
+        android:focusable="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView10"
+        app:srcCompat="@drawable/ic_baseline_add_24" />
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="243dp"
+        android:layout_height="129dp"
+        android:layout_marginTop="52dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/textView13"
+        app:srcCompat="@drawable/carwash" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

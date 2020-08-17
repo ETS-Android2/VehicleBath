@@ -1,0 +1,45 @@
+<resources>
+    <string name="app_name">MADD</string>
+    <string name="total_rs_1200">Total : RS.1200</string>
+    <string name="hillary">Hillary</string>
+    <string name="_03_20pm">03.20PM</string>
+    <string name="finished">Finished</string>
+    <string name="name">Name</string>
+    <string name="time">Time</string>
+    <string name="income">Income</string>
+    <string name="viraj">Viraj</string>
+    <string name="_03_00pm">03.00PM</string>
+    <string name="_3001">300</string>
+    <string name="agil">Agil</string>
+    <string name="_4_00pm">4.00PM</string>
+    <string name="_300">300</string>
+    <string name="_600">600</string>
+    <string name="on_progress">On Progress</string>
+    <string name="quick_wash_body_wash_and_tyre_dressing_n_ndetailed_wash_body_wash_carpet_wash_glass_cleaning_dash_cleaning_tyre_dressing_wax_interior_vacuum_free"><![CDATA[Quick Wash - Body wash, and tyre dressing \n\nDetailed Wash -Body wash, carpet wash, glass cleaning, dash cleaning, tyre dressing & Wax, Interior vacuum (Free)]]></string>
+    <string name="best_deal">Best Deal</string>
+    <string name="total_customers_3">Total Customers : 3</string>
+    <string name="wash_me">Wash Me</string>
+    <string name="best_rated">Best Rated</string>
+    <string name="kandy">Kandy</string>
+    <string name="rating_4_5">Rating : 4.5</string>
+    <string name="vehicle_type">Vehicle Type</string>
+    <string name="date">Date</string>
+    <string name="search">Search</string>
+    <string name="service_type">Service Type</string>
+    <string name="vehicle_number">Vehicle Number</string>
+    <string name="newHead">New</string>
+    <string name="actions">Actions</string>
+    <string name="_03_55pm">03.55PM</string>
+    <string name="_04_15pm">04.15PM</string>
+    <string name="in">In</string>
+    <string name="_04_00pm">04.00PM</string>
+    <string name="summary">Summary</string>
+    <string name="appointment_placed">Appointment Placed</string>
+    <string name="your_appointment_has_successfully_placed">Your Appointment has successfully placed.</string>
+    <string name="time_03_00">Time = 03.00</string>
+    <string name="date_08_15_2020">Date = 08/15/2020</string>
+    <string name="place_wash_me">Place = Wash Me</string>
+    <string name="wait_for_the_approval_from_organization">Wait for the approval from Organization...</string>
+    <string name="google_maps_key">AIzaSyDYfaTlJK12GyII5xVfEqgnBuQ_4qwSlP4</string>
+
+</resources>

@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Success">
+
+    <TextView
+        android:id="@+id/textView9"
+        android:layout_width="411dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="56dp"
+        android:layout_marginBottom="84dp"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:text="@string/summary"
+        android:textColor="#000000"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/imageView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView13"
+        android:layout_width="383dp"
+        android:layout_height="434dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="72dp"
+        android:layout_marginEnd="16dp"
+        android:background="@drawable/card"
+        android:gravity="center_horizontal"
+        android:text="@string/appointment_placed"
+        android:textColor="#000000"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView9" />
+
+    <TextView
+        android:id="@+id/textView14"
+        android:layout_width="334dp"
+        android:layout_height="34dp"
+        android:layout_marginStart="36dp"
+        android:layout_marginEnd="36dp"
+        android:layout_marginBottom="14dp"
+        android:gravity="center_horizontal"
+        android:text="@string/your_appointment_has_successfully_placed"
+        android:textColor="#000000"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toTopOf="@+id/textView15"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView" />
+
+    <TextView
+        android:id="@+id/textView15"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="23dp"
+        android:layout_marginBottom="16dp"
+        android:text="@string/time_03_00"
+        android:textColor="#000000"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toTopOf="@+id/textView16"
+        app:layout_constraintStart_toStartOf="@+id/textView16"
+        app:layout_constraintTop_toBottomOf="@+id/textView14" />
+
+    <TextView
+        android:id="@+id/textView16"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:text="@string/date_08_15_2020"
+        android:textColor="#000000"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toTopOf="@+id/textView17"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView15" />
+
+    <TextView
+        android:id="@+id/textView17"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="6dp"
+        android:text="@string/place_wash_me"
+        android:textColor="#000000"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/textView16"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView18"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="508dp"
+        android:text="@string/wait_for_the_approval_from_organization"
+        android:textColor="#000000"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.494"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="26dp"
+        android:layout_height="26dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginBottom="20dp"
+        android:background="@drawable/roundgreen"
+        app:layout_constraintBottom_toTopOf="@+id/textView14"
+        app:layout_constraintStart_toStartOf="@+id/textView13"
+        app:layout_constraintTop_toBottomOf="@+id/textView9"
+        app:srcCompat="@drawable/ic_baseline_check_24" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/floatingActionButton4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="28dp"
+        android:layout_marginBottom="28dp"
+        android:backgroundTint="#225ebb"
+        android:clickable="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:srcCompat="@drawable/ic_baseline_home_24"
+        android:focusable="true" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
