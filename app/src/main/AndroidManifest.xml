@@ -11,15 +11,32 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
-        <activity android:name=".Orgnization">
 
+        <activity android:name=".Orgnization">
+        <activity android:name=".Orgnization"></activity>
+        <activity android:name=".customers"></activity>
+        <activity android:name=".Rating_organization"></activity>
+        <activity android:name=".customer_notifications"></activity>
+        <activity android:name=".report_customer_message" />
+        <activity android:name=".organization_report_customer" />
+
+
+        <activity android:name=".admin_main">
+            <intent-filter>
+            <action android:name="android.intent.action.MAIN" />
+
+            <category android:name="android.intent.category.LAUNCHER" />
+        </intent-filter>
         </activity>
+
         <activity android:name=".customers" />
         <activity android:name=".Rating_organization" />
         <activity android:name=".customer_notifications" />
         <activity android:name=".report_customer_message" />
         <activity android:name=".organization_report_customer" />
         <activity android:name=".admin_main" />
+
+
         <activity android:name=".customer_blacklist" />
         <activity android:name=".MainActivity" />
 
