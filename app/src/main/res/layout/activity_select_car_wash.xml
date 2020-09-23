@@ -8,8 +8,8 @@
 
     <TextView
         android:id="@+id/textView11"
-        android:layout_width="399dp"
-        android:layout_height="131dp"
+        android:layout_width="385dp"
+        android:layout_height="110dp"
         android:layout_marginTop="32dp"
         android:background="@drawable/card"
         android:text="@string/wash_me"

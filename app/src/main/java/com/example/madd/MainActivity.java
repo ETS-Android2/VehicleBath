@@ -26,7 +26,6 @@ public class MainActivity extends AppCompatActivity {
         dateView=(TextView)findViewById(R.id.textView);
         dateText=(EditText)findViewById(R.id.editTextDate);
         dateText.setOnClickListener(new View.OnClickListener() {
-            @RequiresApi(api = Build.VERSION_CODES.N)
             @Override
             public void onClick(View view) {
                 final Calendar cldr=Calendar.getInstance();
@@ -41,7 +40,7 @@ public class MainActivity extends AppCompatActivity {
                     }
                 },year,month,day);
                 picker.show();
-                };
+            };
         });
     }
 }
