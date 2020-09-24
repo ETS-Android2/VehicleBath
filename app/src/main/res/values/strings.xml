@@ -52,4 +52,54 @@
     <string name="idT1">1</string>
     <string name="idT2">2</string>
     <string name="idT3">3</string>
+
+
+<!--    Joachim-->
+
+
+        <string name="UOname">Name</string>
+        <string name="UOemail">E-mail</string>
+        <string name="UOnumber">Phone-Number</string>
+        <string name="CAbutton">Create Account</string>
+        <string name="UOlink">Login</string>
+        <string name="nslots">Number Of Slots</string>
+        <string name="orgnext">Next</string>
+        <string name="vup">Change Your Password!!</string>
+        <string name="vbutton">Verify Account</string>
+        <string name="cpwdbtn">Change Password</string>
+        <string name="upheading">Welcome</string>
+        <string name="uscpwd">Change Password</string>
+        <string name="usupdDetails">Update Details</string>
+        <string name="usdeactivate">Deactivate Account</string>
+        <string name="osubs">Subscription</string>
+        <string name="btnchgsubs">Change Subscription</string>
+        <string name="btnchglocation">Change Location</string>
+        <string name="Uradio">Customer</string>
+        <string name="Oradio">Organization</string>
+        <string name="loyaltyH">\n Total Loyalty Points \t\t\t\t\t\t45</string>
+        <string name="loyaltyL">\t\tPoints earned on last wash\n\t\t\t\t\t\t\t\t\t\t
+            \t\t\t\t\t\t\t\t\t10 Points</string>
+        <string name="loyaltytableH">Points</string>
+        <string name="loyaltytableH2">Rewards</string>
+        <string name="tabler1">50</string>
+        <string name="tabler1H">2 free wash liquids</string>
+        <string name="tabler2">100</string>
+        <string name="tabler2H">20% off for a wash</string>
+        <string name="tabler3">150</string>
+        <string name="tabler3H">50% off for a wash</string>
+        <string name="tabler4">200</string>
+        <string name="tabler4H">Free vehicle wash</string>
+        <string name="OrgHomeH">Welcome To Vehicle Bath!!</string>
+        <string name="OrgHomeVA">View Appointments</string>
+        <string name="OrgHomeYA">Your Activities</string>
+        <string name="OrgHomeVR">View Ratings</string>
+        <string name="OrgHomeAA">Add Advertisements</string>
+        <string name="UHomeA">Appointments</string>
+        <string name="UHomeL">Loyalty Points</string>
+        <string name="UHomeB">Book Now</string>
+        <string name="updateD">Update Details</string>
+        <string name="loginH">Login</string>
+        <string name="UOchk">I accept terms and policies</string>
+
+
 </resources>
