@@ -68,7 +68,7 @@
         android:id="@+id/button"
         android:layout_width="133dp"
         android:layout_height="54dp"
-        android:layout_marginBottom="28dp"
+        android:layout_marginBottom="108dp"
         android:backgroundTint="#225ebb"
         android:shadowColor="#255EBB"
         android:text="Search"
