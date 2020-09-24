@@ -5,24 +5,25 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 
-public class ChangeUserPwd extends AppCompatActivity {
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+
+public class OrgHomePage extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_change_user_pwd);
+        setContentView(R.layout.activity_org_home_page);
 
         Intent i = getIntent();
 
-        Button btn_Change_PwdU;
-        btn_Change_PwdU = findViewById(R.id.btn_change_pwdU);
+        FloatingActionButton btn_View_OrgP;
+        btn_View_OrgP = findViewById(R.id.btn_view_orgP);
 
-        btn_Change_PwdU.setOnClickListener(new View.OnClickListener() {
+        btn_View_OrgP.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(ChangeUserPwd.this,UserProfile.class);
+                Intent intent = new Intent(OrgHomePage.this,OrgProfile.class);
                 startActivity(intent);
             }
         });
