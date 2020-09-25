@@ -52,7 +52,6 @@
     <string name="idT1">1</string>
     <string name="idT2">2</string>
     <string name="idT3">3</string>
-<<<<<<< HEAD
 
 
     <string name="selectSub">Select Your Subscription</string>
@@ -116,7 +115,6 @@
     <string name="updateSelectSub">Select Your Subscription Plan for Update</string>
     <string name="btnNext">Next</string>
     <string name="selectSubPlan">Select Subscription Plan</string>
-=======
     <string name="price">Rs.</string>
->>>>>>> origin/master
+
 </resources>
