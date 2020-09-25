@@ -7,26 +7,24 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-public class ChangeUserPwd extends AppCompatActivity {
+public class LoginNew extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_change_user_pwd);
+        setContentView(R.layout.activity_login_new);
 
         Intent i = getIntent();
 
-        Button btn_Change_PwdU;
-        btn_Change_PwdU = findViewById(R.id.btn_change_pwdU);
+        Button btn_login;
+        btn_login = findViewById(R.id.btnlogin);
 
-        btn_Change_PwdU.setOnClickListener(new View.OnClickListener() {
+        btn_login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(ChangeUserPwd.this,UserProfile.class);
+                Intent intent = new Intent(LoginNew.this,UserHomePge.class);
                 startActivity(intent);
             }
         });
-
-
     }
 }
