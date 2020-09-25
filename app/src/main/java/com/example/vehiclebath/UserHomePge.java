@@ -39,5 +39,18 @@ public class UserHomePge extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        //Appointments
+
+        Button btn_viewAppointments = findViewById(R.id.btn_view_vAppointments);
+
+        btn_viewAppointments.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(UserHomePge.this,SelectCarWash.class);
+            }
+        });
+
+
     }
 }

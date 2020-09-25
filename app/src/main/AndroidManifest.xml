@@ -9,7 +9,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-
+        <activity android:name=".adminAddCarwashType"></activity>
         <activity android:name=".Orgnization" />
         <activity android:name=".customers" />
         <activity android:name=".Rating_organization" />
@@ -19,17 +19,17 @@
         <activity android:name=".admin_main" />
         <activity android:name=".customer_blacklist" />
         <activity android:name=".MainActivity" />
-        <activity android:name=".PlaceAppointmentForm">
+        <activity android:name=".PlaceAppointmentForm"></activity>
+        <activity android:name=".SelectCarWash">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
-        <activity android:name=".SelectCarWash"><intent-filter>
-            <action android:name="android.intent.action.MAIN" />
-
-            <category android:name="android.intent.category.LAUNCHER" />
-        </intent-filter></activity>
         <activity android:name=".ChangeUserPwd" />
-        <activity android:name=".viewCarWash"></activity>
-        <activity android:name=".AppointmentSummary"></activity>
-
+        <activity android:name=".viewCarWash" />
+        <activity android:name=".AppointmentSummary" />
     </application>
 
 </manifest>
