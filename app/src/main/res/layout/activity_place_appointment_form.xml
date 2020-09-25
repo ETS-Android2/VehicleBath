@@ -16,8 +16,8 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Spinner
-        android:id="@+id/spinner2"
-        android:layout_width="223dp"
+        android:id="@+id/spin_type"
+        android:layout_width="150dp"
         android:layout_height="39dp"
         android:layout_marginTop="28dp"
         android:layout_marginEnd="16dp"
@@ -27,14 +27,14 @@
     <EditText
         android:id="@+id/editTextDate"
         android:layout_width="223dp"
-        android:layout_height="61dp"
-        android:layout_marginTop="28dp"
+        android:layout_height="39dp"
+        android:layout_marginTop="44dp"
         android:layout_marginEnd="16dp"
         android:ems="10"
         android:textAllCaps="false"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/spinner2" />
+        app:layout_constraintTop_toBottomOf="@+id/spin_type" />
 
     <TextView
         android:id="@+id/textView"
@@ -45,7 +45,7 @@
         android:text="Vehicle Type"
         android:textColor="#000000"
         android:textSize="18sp"
-        app:layout_constraintEnd_toStartOf="@+id/spinner2"
+        app:layout_constraintEnd_toStartOf="@+id/spin_type"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView4" />
@@ -65,18 +65,19 @@
         app:layout_constraintTop_toBottomOf="@+id/textView" />
 
     <Button
-        android:id="@+id/button"
-        android:layout_width="133dp"
-        android:layout_height="54dp"
-        android:layout_marginBottom="108dp"
+        android:id="@+id/btnSearchCarwash"
+        android:layout_width="166dp"
+        android:layout_height="55dp"
+        android:layout_marginTop="52dp"
         android:backgroundTint="#225ebb"
         android:shadowColor="#255EBB"
-        android:text="Search"
+        android:text="Place Appointment"
         android:textColor="#FAFAFA"
         android:textColorHighlight="#FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextVehichle" />
 
     <TextView
         android:id="@+id/textView4"
@@ -137,7 +138,6 @@
         android:layout_marginTop="44dp"
         android:layout_marginEnd="16dp"
         android:ems="10"
-        android:inputType="time"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTextDate" />
 
