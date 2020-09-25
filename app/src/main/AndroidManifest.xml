@@ -16,20 +16,37 @@
         <activity android:name=".customer_notifications" />
         <activity android:name=".report_customer_message" />
         <activity android:name=".organization_report_customer" />
-        <activity android:name=".admin_main" />
-        <activity android:name=".customer_blacklist" />
-        <activity android:name=".MainActivity" />
-        <activity android:name=".PlaceAppointmentForm"></activity>
-        <activity android:name=".SelectCarWash">
+        <activity android:name=".admin_main">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".customer_blacklist" />
+        <activity android:name=".MainActivity" />
+        <activity android:name=".adminSelectUpdateSubscription"/>
+        <activity android:name=".selectSubscription"/>
+        <activity android:name=".adminAdvertiseDetails"/>
+        <activity android:name=".orgYourAdvertisement"/>
+        <activity android:name=".orgDeleteAdvertisement"/>
+        <activity android:name=".orgUpdateAdvertiseme>
+        </activity>
+        <activity android:name=".adminUpdateSubscrip"/>
+        <activity android:name=".addSubscrip"/>
+        <activity android:name=".adminSubscripDetail"/>
+        <activity android:name=".updateSubscrip"/>
+
+
+        <activity android:name=".customer_blacklist" />
+        <activity android:name=".MainActivity" />
+        <activity android:name=".PlaceAppointmentForm"></activity>
+        <activity android:name=".SelectCarWash">
+        </activity>
         <activity android:name=".ChangeUserPwd" />
         <activity android:name=".viewCarWash" />
         <activity android:name=".AppointmentSummary" />
+
     </application>
 
 </manifest>
