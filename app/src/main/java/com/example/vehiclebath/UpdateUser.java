@@ -7,26 +7,25 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-public class ChangeUserPwd extends AppCompatActivity {
+public class UpdateUser extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_change_user_pwd);
+        setContentView(R.layout.activity_update_user);
 
         Intent i = getIntent();
 
-        Button btn_Change_PwdU;
-        btn_Change_PwdU = findViewById(R.id.btn_change_pwdU);
+        Button btn_Update_User;
+        btn_Update_User = findViewById(R.id.btn_update_user);
 
-        btn_Change_PwdU.setOnClickListener(new View.OnClickListener() {
+        btn_Update_User.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(ChangeUserPwd.this,UserProfile.class);
+                Intent intent = new Intent(UpdateUser.this,UserProfile.class);
                 startActivity(intent);
             }
         });
-
 
     }
 }
