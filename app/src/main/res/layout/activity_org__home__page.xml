@@ -46,7 +46,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textView13">
 
         <Button
-            android:id="@+id/button5"
+            android:id="@+id/btn_view_vAppointments"
             android:layout_width="340dp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
@@ -58,7 +58,7 @@
             android:textSize="18sp" />
 
         <Button
-            android:id="@+id/button6"
+            android:id="@+id/btn_view_yActivities"
             android:layout_width="340dp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
@@ -70,7 +70,7 @@
             android:textSize="18sp" />
 
         <Button
-            android:id="@+id/button7"
+            android:id="@+id/btn_view_ratings"
             android:layout_width="340dp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
@@ -82,7 +82,7 @@
             android:textSize="18sp" />
 
         <Button
-            android:id="@+id/button8"
+            android:id="@+id/btn_add_addvertis"
             android:layout_width="342dp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
@@ -95,7 +95,7 @@
     </androidx.cardview.widget.CardView>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/floatingActionButton2"
+        android:id="@+id/btn_view_notification"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="31dp"
@@ -107,7 +107,7 @@
         app:srcCompat="@drawable/noti1" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/floatingActionButton3"
+        android:id="@+id/btn_view_orgP"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"

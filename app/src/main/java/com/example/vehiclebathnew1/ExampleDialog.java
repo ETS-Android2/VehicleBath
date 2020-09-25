@@ -3,6 +3,7 @@ package com.example.vehiclebathnew1;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 
 
@@ -13,6 +14,7 @@ public class ExampleDialog extends AppCompatDialogFragment {
 
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
+
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
         builder.setTitle("Attention")
                 .setMessage("Are you sure you want to delete your account?")
@@ -25,6 +27,7 @@ public class ExampleDialog extends AppCompatDialogFragment {
                 .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
+
 
                     }
                 });

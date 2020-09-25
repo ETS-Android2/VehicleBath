@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.vehiclebathnew1">
-
     <!--
          The ACCESS_COARSE/FINE_LOCATION permissions are not required to use
          Google Maps Android API v2, but you must specify either coarse or fine
          location permissions for the "MyLocation" functionality.
     -->
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+
     <uses-feature
         android:glEsVersion="0x00020000"
         android:required="true" />
+
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <application
@@ -22,7 +22,19 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity
+            android:name=".HomeActivity1User"
+            android:label="@string/title_activity_home_activity1_user"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity android:name=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".Example_Register" />
+        <activity android:name=".org_location_update" />
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
              (See the file "res/values/google_maps_api.xml").
@@ -38,22 +50,11 @@
             android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />
 
-
-
-
         <activity
             android:name=".MapsActivit"
-            android:label="@string/title_activity_maps"></activity>
-        <activity android:name=".Org_Location_Insert">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
-        <activity android:name=".Select_Type">
-
-        </activity>
+            android:label="@string/title_activity_maps" />
+        <activity android:name=".Org_Location_Insert" />
+        <activity android:name=".Select_Type" />
         <activity android:name=".Org_Home_Page" />
         <activity android:name=".Confirm_Org_Registration" />
         <activity android:name=".View_User_Loyalty" />
@@ -61,7 +62,7 @@
         <activity android:name=".Change_User_Pwd" />
         <activity android:name=".Org_Profile" />
         <activity android:name=".User_Profile" />
-        <activity android:name=".Login_New" />
+        <activity android:name=".Login_New"></activity>
         <activity android:name=".Update_User" />
         <activity android:name=".Update_Org" />
         <activity android:name=".Verify_User_Pwd" />

@@ -8,17 +8,18 @@
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
-        android:layout_width="match_parent"
-        android:layout_height="?actionBarSize"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="47dp"
         android:background="#143567"
+
         android:longClickable="false"
         android:theme="@style/ThemeOverlay.AppCompat.Light"
+        app:layout_constraintBottom_toTopOf="@+id/uoname"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:logo="@drawable/logop"
-
         app:title="Vehicle Bath"
         app:titleMarginStart="40dp"
         app:titleTextColor="#FFFFFF" />
@@ -26,113 +27,130 @@
 
     <EditText
         android:id="@+id/uoname"
-        android:layout_width="339dp"
-        android:layout_height="48dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="36dp"
+        android:layout_marginEnd="36dp"
+        android:layout_marginBottom="18dp"
+
+        android:background="@drawable/shapeq"
         android:ems="10"
         android:fontFamily="@font/trykker"
+        android:hint=" Enter The Name"
         android:inputType="textPersonName"
-        android:text="@string/UOname"
         android:textColor="#0C0C0C"
         app:layout_constraintBottom_toTopOf="@+id/uoemail"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.679" />
-
-    <EditText
-        android:id="@+id/uoemail"
-        android:layout_width="339dp"
-        android:layout_height="48dp"
-        android:layout_marginBottom="428dp"
-        android:ems="10"
-        android:fontFamily="@font/trykker"
-        android:inputType="textPersonName"
-        android:text="@string/UOemail"
-        android:textColor="#0C0C0C"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/toolbar" />
 
     <EditText
         android:id="@+id/uonumber"
-        android:layout_width="339dp"
-        android:layout_height="48dp"
-        android:layout_marginTop="28dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="36dp"
+        android:layout_marginEnd="36dp"
+        android:layout_marginBottom="21dp"
+        android:background="@drawable/shapeq"
         android:ems="10"
         android:fontFamily="@font/trykker"
+        android:hint=" Enter The Phone Number"
         android:inputType="number"
-        android:text="@string/UOnumber"
         android:textColor="#0C0C0C"
+        app:layout_constraintBottom_toTopOf="@+id/uopwd"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/uoemail" />
 
     <EditText
         android:id="@+id/uopwd"
-        android:layout_width="339dp"
-        android:layout_height="45dp"
-        android:layout_marginTop="28dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="36dp"
+        android:layout_marginEnd="36dp"
+        android:layout_marginBottom="14dp"
+        android:background="@drawable/shapeq"
         android:ems="10"
         android:fontFamily="@font/trykker"
-        android:text="@string/UOpwd"
+        android:hint=" Enter Password"
         android:textColor="#0C0C0C"
+        app:layout_constraintBottom_toTopOf="@+id/uorpwd"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/uonumber" />
 
     <EditText
         android:id="@+id/uorpwd"
-        android:layout_width="339dp"
-        android:layout_height="45dp"
-        android:layout_marginTop="100dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="36dp"
+        android:layout_marginEnd="36dp"
+        android:layout_marginBottom="29dp"
+        android:background="@drawable/shapeq"
         android:ems="10"
         android:fontFamily="@font/trykker"
-        android:text="@string/UOrepwd"
+        android:hint=" Re-Enter The Password"
         android:textColor="#0C0C0C"
+        app:layout_constraintBottom_toTopOf="@+id/chkr"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/uonumber" />
+        app:layout_constraintTop_toBottomOf="@+id/uopwd" />
 
     <CheckBox
         android:id="@+id/chkr"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
+        android:layout_marginEnd="19dp"
+        android:layout_marginBottom="16dp"
         android:fontFamily="@font/trykker"
         android:text="@string/UOchk"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/btn_create_UA"
+        app:layout_constraintEnd_toEndOf="@+id/btn_create_UA"
         app:layout_constraintTop_toBottomOf="@+id/uorpwd" />
 
     <Button
-        android:id="@+id/rbutton"
+        android:id="@+id/btn_create_UA"
         android:layout_width="251dp"
-        android:layout_height="47dp"
-        android:layout_marginTop="32dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/shapex"
         android:backgroundTint="#225EBB"
         android:fontFamily="@font/trykker"
         android:text="@string/CAbutton"
         android:textColor="#FFFFFF"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/rlink"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/chkr"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintTop_toBottomOf="@+id/chkr" />
 
     <TextView
         android:id="@+id/rlink"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="39dp"
         android:text="@string/UOlink"
         android:textColor="#225EBB"
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/rbutton"
-        app:layout_constraintVertical_bias="0.515" />
+        app:layout_constraintTop_toBottomOf="@+id/btn_create_UA" />
+
+    <EditText
+        android:id="@+id/uoemail"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="34dp"
+        android:layout_marginEnd="34dp"
+        android:layout_marginBottom="17dp"
+        android:background="@drawable/shapeq"
+        android:ems="10"
+        android:hint="  Enter The Email"
+        android:inputType="textEmailAddress"
+        app:layout_constraintBottom_toTopOf="@+id/uonumber"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/uoname" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

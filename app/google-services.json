@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "446908280442",
+    "firebase_url": "https://vehicle-bath-new1.firebaseio.com",
+    "project_id": "vehicle-bath-new1",
+    "storage_bucket": "vehicle-bath-new1.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:446908280442:android:bd8fbd6abb416e1e26d5c3",
+        "android_client_info": {
+          "package_name": "com.example.vehiclebathnew1"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "446908280442-84rpv2crjjra1qd84vnoir6lm1jsdpeq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDZAhQaAkhhvDezzFAj2O5pzMBVhv4IHto"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "446908280442-84rpv2crjjra1qd84vnoir6lm1jsdpeq.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

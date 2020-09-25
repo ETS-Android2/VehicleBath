@@ -8,28 +8,29 @@
     tools:layout_editor_absoluteY="25dp">
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/floatingActionButton4"
+        android:id="@+id/btn_view_noti_User"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:clickable="true"
+        android:layout_marginEnd="28dp"
+        android:layout_marginBottom="52dp"
+        android:clickable="false"
         app:backgroundTint="#143567"
+        app:layout_constraintBottom_toTopOf="@+id/btn_view_loyalty"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.886"
-        app:layout_constraintStart_toEndOf="@+id/floatingActionButton"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar"
         app:srcCompat="@drawable/noti1" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/floatingActionButton"
+        android:id="@+id/btn_view_userProfile"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="28dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginBottom="53dp"
         android:clickable="true"
+        android:focusable="true"
         app:backgroundTint="#143567"
+        app:layout_constraintBottom_toTopOf="@+id/btn_view_AppointmentUser"
+        app:layout_constraintEnd_toStartOf="@+id/btn_booknow"
+        app:layout_constraintHorizontal_bias="0.555"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar"
         app:srcCompat="@drawable/cus1" />
 
     <androidx.appcompat.widget.Toolbar
@@ -40,63 +41,67 @@
         android:longClickable="false"
         android:theme="@style/ThemeOverlay.AppCompat.Light"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:logo="@drawable/logop"
-
         app:title="Vehicle Bath"
         app:titleMarginStart="40dp"
         app:titleTextColor="#FFFFFF" />
 
     <Button
-        android:id="@+id/vbutton2"
+        android:id="@+id/btn_booknow"
         android:layout_width="173dp"
         android:layout_height="45dp"
         android:layout_marginTop="12dp"
+        android:layout_marginEnd="91dp"
         android:backgroundTint="#225EBB"
         android:fontFamily="@font/trykker"
         android:text="@string/UHomeB"
         android:textColor="#FFFFFF"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/btn_view_noti_User"
         app:layout_constraintTop_toBottomOf="@+id/toolbar" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/btn_view_AppointmentUser"
         android:layout_width="138dp"
         android:layout_height="68dp"
-        android:layout_marginStart="28dp"
         android:layout_marginTop="60dp"
+        android:layout_marginEnd="60dp"
         android:background="#225EBB"
         android:fontFamily="@font/trykker"
         android:text="@string/UHomeA"
         android:textColor="#FFFFFF"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/vbutton2" />
+        app:layout_constraintEnd_toStartOf="@+id/btn_view_loyalty"
+        app:layout_constraintTop_toBottomOf="@+id/btn_booknow" />
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/btn_view_loyalty"
         android:layout_width="150dp"
         android:layout_height="68dp"
         android:layout_marginTop="60dp"
+        android:layout_marginEnd="28dp"
+        android:layout_marginBottom="45dp"
         android:background="#225EBB"
         android:fontFamily="@font/trykker"
         android:text="@string/UHomeL"
         android:textColor="#FFFFFF"
+        app:layout_constraintBottom_toTopOf="@+id/cardView2"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.491"
-        app:layout_constraintStart_toEndOf="@+id/button"
-        app:layout_constraintTop_toBottomOf="@+id/vbutton2" />
+        app:layout_constraintTop_toBottomOf="@+id/btn_booknow"
+        app:layout_constraintVertical_bias="0.0" />
 
     <androidx.cardview.widget.CardView
+        android:id="@+id/cardView2"
         android:layout_width="391dp"
         android:layout_height="300dp"
-        android:layout_marginBottom="16dp"
+        android:layout_marginTop="45dp"
         android:background="#D5D2D2"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:cardCornerRadius="@dimen/cardview_compat_inset_shadow"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_view_AppointmentUser">
 
         <TextView
             android:id="@+id/textView4"
@@ -112,7 +117,7 @@
         <TextView
             android:id="@+id/textView6"
             android:layout_width="370dp"
-            android:layout_height="90dp"
+            android:layout_height="86dp"
             android:layout_marginLeft="10dp"
             android:layout_marginTop="203dp"
             android:background="#FF757171"
@@ -131,4 +136,18 @@
             android:textAlignment="center"
             android:textSize="24sp" />
     </androidx.cardview.widget.CardView>
+
+    <Button
+        android:id="@+id/logout1"
+        android:layout_width="79dp"
+        android:layout_height="42dp"
+        android:layout_marginStart="292dp"
+        android:layout_marginBottom="553dp"
+        android:text="Logout"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/toolbar"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0" />
 </androidx.constraintlayout.widget.ConstraintLayout>
