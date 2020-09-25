@@ -52,8 +52,6 @@
     <string name="idT1">1</string>
     <string name="idT2">2</string>
     <string name="idT3">3</string>
-
-
     <string name="selectSub">Select Your Subscription</string>
     <string name="plat">\t\tPlatinum \n\t\t\t\t\tValidity: Lifetime \n\t\t\t\t\tPrice: 50$</string>
     <string name="gold">\t\tGold \n\t\t\t\t\tValidity: 24 months \n\t\t\t\t\tPrice: 20$</string>
@@ -116,5 +114,4 @@
     <string name="btnNext">Next</string>
     <string name="selectSubPlan">Select Subscription Plan</string>
     <string name="price">Rs.</string>
-
 </resources>
