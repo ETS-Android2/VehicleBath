@@ -52,4 +52,5 @@
     <string name="idT1">1</string>
     <string name="idT2">2</string>
     <string name="idT3">3</string>
+    <string name="price">Rs.</string>
 </resources>
