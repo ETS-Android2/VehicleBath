@@ -14,6 +14,36 @@
         tools:context=".addSubscrip">
 
         <TextView
+            android:id="@+id/textView26"
+            android:layout_width="168dp"
+            android:layout_height="60dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="25dp"
+            android:layout_marginEnd="16dp"
+            android:fontFamily="@font/trykker"
+            android:text="@string/lblDPerc"
+            android:textAlignment="center"
+            android:textColor="#143567"
+            android:textSize="24sp"
+            app:layout_constraintEnd_toStartOf="@+id/etSubdPerc"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView9" />
+
+        <EditText
+            android:id="@+id/etSubdPerc"
+            android:layout_width="191dp"
+            android:layout_height="51dp"
+            android:layout_marginTop="48dp"
+            android:layout_marginEnd="20dp"
+            android:ems="10"
+            android:fontFamily="@font/trykker"
+            android:hint="@string/inputHint7"
+            android:inputType="numberDecimal"
+            android:textSize="14sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/etSubValidity" />
+
+        <TextView
             android:id="@+id/textView4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -90,10 +120,25 @@
             android:id="@+id/spinnerSubAvail"
             android:layout_width="177dp"
             android:layout_height="40dp"
-            android:layout_marginTop="52dp"
-            android:layout_marginEnd="32dp"
+            android:layout_marginTop="58dp"
+            android:layout_marginEnd="36dp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/etSubValidity" />
+            app:layout_constraintTop_toBottomOf="@+id/etSubdPerc" />
+
+        <TextView
+            android:id="@+id/textView8"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="32dp"
+            android:layout_marginEnd="48dp"
+            android:fontFamily="@font/trykker"
+            android:text="@string/lblAvail"
+            android:textColor="#143567"
+            android:textSize="24sp"
+            app:layout_constraintEnd_toStartOf="@+id/spinnerSubAvail"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView27" />
 
         <TextView
             android:id="@+id/textView7"
@@ -127,10 +172,10 @@
 
         <EditText
             android:id="@+id/etSubValidity"
-            android:layout_width="157dp"
-            android:layout_height="37dp"
-            android:layout_marginTop="44dp"
-            android:layout_marginEnd="52dp"
+            android:layout_width="177dp"
+            android:layout_height="46dp"
+            android:layout_marginTop="40dp"
+            android:layout_marginEnd="36dp"
             android:ems="10"
             android:fontFamily="@font/trykker"
             android:hint="@string/inputHint7"
@@ -139,35 +184,43 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/etSubPrice" />
 
-        <TextView
-            android:id="@+id/textView8"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="36dp"
-            android:layout_marginEnd="52dp"
-            android:fontFamily="@font/trykker"
-            android:text="@string/lblAvail"
-            android:textColor="#143567"
-            android:textSize="24sp"
-            app:layout_constraintEnd_toStartOf="@+id/spinnerSubAvail"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView9" />
-
         <Button
             android:id="@+id/btnAdminAddSub2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="76dp"
+            android:layout_marginTop="48dp"
             android:background="#225EBB"
             android:fontFamily="@font/trykker"
             android:text="@string/btnAdd"
             android:textColor="#FFFFFF"
             android:textSize="20sp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView8" />
+            app:layout_constraintTop_toBottomOf="@+id/spinnerSubAvail" />
+
+        <TextView
+            android:id="@+id/textView27"
+            android:layout_width="165dp"
+            android:layout_height="23dp"
+            android:layout_marginTop="4dp"
+            android:fontFamily="@font/trykker"
+            android:text="@string/lblDPerc2"
+            android:textColor="#143567"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.077"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView26" />
+
+        <View
+            android:id="@+id/divider2"
+            android:layout_width="409dp"
+            android:layout_height="1dp"
+            android:layout_marginTop="37dp"
+            android:background="?android:attr/listDivider"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btnAdminAddSub2" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

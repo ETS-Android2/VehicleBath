@@ -17,7 +17,7 @@
             android:id="@+id/textView20"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/adValidPeriodPrice"
+            android:text="aaaaaaa"
             android:textColor="#143567"
             android:textSize="18sp"
             app:layout_constraintEnd_toEndOf="parent"
@@ -32,7 +32,7 @@
             android:layout_marginStart="16dp"
             android:layout_marginTop="116dp"
             android:fontFamily="@font/trykker"
-            android:text="@string/adValidPeriod"
+            android:text="aaaaa"
             android:textColor="#143567"
             android:textSize="24sp"
             app:layout_constraintEnd_toStartOf="@+id/editTextNumber2"
@@ -181,12 +181,11 @@
             android:id="@+id/divider3"
             android:layout_width="0dp"
             android:layout_height="1dp"
-            android:layout_marginTop="50dp"
+            android:layout_marginTop="35dp"
             android:background="#FFFFFF"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/btnUpdateAdvertise2" />
+            app:layout_constraintTop_toBottomOf="@+id/button5" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

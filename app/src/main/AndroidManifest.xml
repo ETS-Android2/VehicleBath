@@ -36,12 +36,13 @@
         <activity android:name=".adminSubscripDetail"/>
         <activity android:name=".updateSubscrip"/>
 
+
         <activity android:name=".PlaceAppointmentForm"></activity>
         <activity android:name=".SelectCarWash">
         </activity>
         <activity android:name=".ChangeUserPwd" />
-        <activity android:name=".viewCarWash" />
-        <activity android:name=".AppointmentSummary" />
+        <activity android:name=".viewCarWash"/>
+        <activity android:name=".AppointmentSummary"/>
 
     </application>
 

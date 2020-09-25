@@ -1,7 +1,9 @@
 package com.example.vehiclebath;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -12,11 +14,22 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+import java.util.HashMap;
+
 public class addSubscrip extends AppCompatActivity {
 
-    EditText subName,subPrice,subValidity;
-    Spinner spAvaillabity;
-    Button btnAddSub;
+    private EditText subName,subPrice,subdPerc,subValidity;
+    private Spinner spinner;
+    private Button btnAddSub;
+    private ProgressDialog loadingBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,31 +40,101 @@ public class addSubscrip extends AppCompatActivity {
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        Spinner spinner = (Spinner) findViewById(R.id.spinnerSubAvail);
+        spinner = (Spinner) findViewById(R.id.spinnerSubAvail);
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,R.array.Availability, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(adapter);
 
-
         subName = findViewById(R.id.etSubName);
         subPrice = findViewById(R.id.etSubPrice);
         subValidity = findViewById(R.id.etSubValidity);
+        subdPerc = findViewById(R.id.etSubdPerc);
         btnAddSub = findViewById(R.id.btnAdminAddSub2);
+        loadingBar = new ProgressDialog(this);
 
         btnAddSub.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(TextUtils.isEmpty(subName.getText().toString())){
-                    Toast.makeText(addSubscrip.this,"Enter Subscription Name!!!",Toast.LENGTH_LONG);
+                addSubscription();
+            }
+        });
+    }
+
+    private void addSubscription() {
+        String subscriptionName = subName.getText().toString().trim();
+        String subscriptionPrice = subPrice.getText().toString().trim();
+        String subscriptionValidity = subValidity.getText().toString().trim();
+        String subscriptionDPercentage = subdPerc.getText().toString().trim();
+        String subscriptionAvailability = spinner.getSelectedItem().toString().trim();
+
+        if(TextUtils.isEmpty(subscriptionName)){
+            Toast.makeText(this,"Please Enter Subscription Name",Toast.LENGTH_SHORT).show();
+        }
+        else if(TextUtils.isEmpty(subscriptionPrice)){
+            Toast.makeText(this,"Please Enter Subscription Price",Toast.LENGTH_SHORT).show();
+        }
+        else if(TextUtils.isEmpty(subscriptionValidity)){
+            Toast.makeText(this,"Please Enter Subscription Validity",Toast.LENGTH_SHORT).show();
+        }
+        else if(TextUtils.isEmpty(subscriptionAvailability)){
+            Toast.makeText(this,"Please Select Subscription Availability",Toast.LENGTH_SHORT).show();
+        }
+        else if(TextUtils.isEmpty(subscriptionDPercentage)){
+            Toast.makeText(this,"Please Select Subscription Discount Percentage",Toast.LENGTH_SHORT).show();
+        }
+        else {
+            loadingBar.setTitle("Adding Subscription");
+            loadingBar.setMessage("Please wait");
+            loadingBar.setCanceledOnTouchOutside(false);
+
+            addSubscriptionToDB(subscriptionName,subscriptionPrice,subscriptionValidity,subscriptionDPercentage,subscriptionAvailability);
+        }
+    }
+
+    private void addSubscriptionToDB(final String subscriptionName, final String subscriptionPrice, final String subscriptionValidity,final String subscriptionDPercentage, final String subscriptionAvailability) {
+        final DatabaseReference RootRef;
+        RootRef = FirebaseDatabase.getInstance().getReference();
+
+        RootRef.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                if(!(snapshot.child("Subscription").child(subscriptionName).exists())){
+                    HashMap<String,Object> subDataMap = new HashMap<>();
+                    subDataMap.put("Name",subscriptionName);
+                    subDataMap.put("Price",subscriptionPrice);
+                    subDataMap.put("Validity",subscriptionValidity);
+                    subDataMap.put("DiscountPercentage",subscriptionDPercentage);
+                    subDataMap.put("Availability",subscriptionAvailability);
+
+                    RootRef.child("Subscription").child(subscriptionName).updateChildren(subDataMap)
+                            .addOnCompleteListener(new OnCompleteListener<Void>() {
+                                @Override
+                                public void onComplete(@NonNull Task<Void> task) {
+                                    if(task.isSuccessful()){
+                                        Toast.makeText(addSubscrip.this,"New Subscription Plan is Added",Toast.LENGTH_SHORT).show();
+                                        loadingBar.dismiss();
+
+                                        Intent intent = new Intent(addSubscrip.this,adminSubscripDetail.class);
+                                        startActivity(intent);
+                                    }
+                                    else{
+                                        loadingBar.dismiss();
+                                        Toast.makeText(addSubscrip.this,"Failed to Add New Subscription Plan",Toast.LENGTH_SHORT).show();
+                                    }
+                                }
+                            });
                 }
-                else if(TextUtils.isEmpty(subPrice.getText().toString())){
-                    Toast.makeText(addSubscrip.this,"Enter Subscription Price!!!",Toast.LENGTH_LONG);
+                else {
+                    Toast.makeText(addSubscrip.this,"Added Subscrpition Plan exist",Toast.LENGTH_LONG).show();
+                    loadingBar.dismiss();
                 }
-                else if(TextUtils.isEmpty(subValidity.getText().toString())) {
-                    Toast.makeText(addSubscrip.this, "Enter Subscription Validity Period!!!", Toast.LENGTH_LONG);
-                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
 
             }
         });
     }
+
 }
