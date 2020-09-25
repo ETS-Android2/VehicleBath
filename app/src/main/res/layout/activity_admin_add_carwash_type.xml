@@ -7,7 +7,7 @@
     tools:context=".adminAddCarwashType">
 
     <EditText
-        android:id="@+id/editTextTextPersonName7"
+        android:id="@+id/edt_TypePrice"
         android:layout_width="223dp"
         android:layout_height="39dp"
         android:layout_marginTop="36dp"
@@ -16,7 +16,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.892"
         app:layout_constraintStart_toEndOf="@+id/textView29"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName5" />
+        app:layout_constraintTop_toBottomOf="@+id/edt_TypeDesc" />
 
     <TextView
         android:id="@+id/textView29"
@@ -45,7 +45,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/editTextTextPersonName5"
+        android:id="@+id/edt_TypeDesc"
         android:layout_width="223dp"
         android:layout_height="39dp"
         android:layout_marginTop="36dp"
@@ -55,7 +55,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toEndOf="@+id/textView28"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName6" />
+        app:layout_constraintTop_toBottomOf="@+id/edt_typeName" />
 
     <TextView
         android:id="@+id/textView27"
@@ -70,7 +70,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textView26" />
 
     <EditText
-        android:id="@+id/editTextTextPersonName6"
+        android:id="@+id/edt_typeName"
         android:layout_width="223dp"
         android:layout_height="39dp"
         android:layout_marginTop="64dp"
@@ -95,7 +95,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textView27" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/btn_addTypeDB"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:backgroundTint="#225ebb"
@@ -103,5 +103,5 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName7" />
+        app:layout_constraintTop_toBottomOf="@+id/edt_TypePrice" />
 </androidx.constraintlayout.widget.ConstraintLayout>

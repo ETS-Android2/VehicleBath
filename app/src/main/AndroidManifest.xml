@@ -21,7 +21,7 @@
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+            </intent-filter>7
         </activity>
         <activity android:name=".customer_blacklist" />
         <activity android:name=".MainActivity" />
@@ -30,16 +30,12 @@
         <activity android:name=".adminAdvertiseDetails"/>
         <activity android:name=".orgYourAdvertisement"/>
         <activity android:name=".orgDeleteAdvertisement"/>
-        <activity android:name=".orgUpdateAdvertiseme>
-        </activity>
+        <activity android:name=".orgUpdateAdvertisement"></activity>
         <activity android:name=".adminUpdateSubscrip"/>
         <activity android:name=".addSubscrip"/>
         <activity android:name=".adminSubscripDetail"/>
         <activity android:name=".updateSubscrip"/>
 
-
-        <activity android:name=".customer_blacklist" />
-        <activity android:name=".MainActivity" />
         <activity android:name=".PlaceAppointmentForm"></activity>
         <activity android:name=".SelectCarWash">
         </activity>
