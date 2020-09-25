@@ -32,6 +32,7 @@ public class addSubscrip extends AppCompatActivity {
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(adapter);
 
+
         subName = findViewById(R.id.etSubName);
         subPrice = findViewById(R.id.etSubPrice);
         subValidity = findViewById(R.id.etSubValidity);
