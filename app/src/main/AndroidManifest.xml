@@ -9,6 +9,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+
+        <activity android:name=".OrgnizationReport_or_Activity"></activity>
+        <activity android:name=".CustomerReportActivity" />
         <activity android:name=".adminAddCarwashType"></activity>
         <activity android:name=".Orgnization" />
         <activity android:name=".customers" />
@@ -19,7 +22,6 @@
         <activity android:name=".admin_main">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>7
         </activity>
@@ -35,8 +37,6 @@
         <activity android:name=".addSubscrip"/>
         <activity android:name=".adminSubscripDetail"/>
         <activity android:name=".updateSubscrip"/>
-
-
         <activity android:name=".PlaceAppointmentForm"></activity>
         <activity android:name=".SelectCarWash">
         </activity>
