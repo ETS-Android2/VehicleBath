@@ -11,7 +11,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ViewUserLoyalty"></activity>
+        <activity android:name=".SettingsActivity1"></activity>
+        <activity android:name=".MainActivityJoe" />
+        <activity android:name=".ViewUserLoyalty" />
         <activity android:name=".VerifyUserPwd" />
         <activity android:name=".VerifyOrgPwd" />
         <activity android:name=".UserProfile" />
