@@ -10,6 +10,25 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
+        <activity android:name=".SettingsActivity1"></activity>
+        <activity android:name=".MainActivityJoe" />
+        <activity android:name=".ViewUserLoyalty" />
+        <activity android:name=".VerifyUserPwd" />
+        <activity android:name=".VerifyOrgPwd" />
+        <activity android:name=".UserProfile" />
+        <activity android:name=".UserHomePge" />
+        <activity android:name=".UpdateUser" />
+        <activity android:name=".UpdateOrg" />
+        <activity android:name=".SelectType" />
+        <activity android:name=".RegisterUser" />
+        <activity android:name=".OrgProfile" />
+        <activity android:name=".OrgLocationUpdate" />
+        <activity android:name=".OrgLocationInsert" />
+        <activity android:name=".OrgHomePage" />
+        <activity android:name=".LoginNew" />
+        <activity android:name=".ConfirmOrgRegistration" />
+        <activity android:name=".ChangeOrgPwd" />
+        <activity android:name=".RegisterOrg" />
         <activity android:name=".OrgnizationReport_or_Activity"></activity>
         <activity android:name=".CustomerReportActivity" />
         <activity android:name=".adminAddCarwashType"></activity>
