@@ -6,6 +6,8 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -16,77 +18,56 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
 import static android.content.ContentValues.TAG;
 
-public class SelectCarWashAdapter extends RecyclerView.Adapter<SelectCarWashAdapter.ViewHolder>{
+public class SelectCarWashAdapter {
 
-    private ArrayList<String> mImageNames = new ArrayList<>();
-    private ArrayList<String> mImage = new ArrayList<>();
-    private Context mContext;
+    public static class ProductListAdapter extends ArrayAdapter<Product> {
 
-    public SelectCarWashAdapter(ArrayList<String> mImageNames, ArrayList<String> mImage, Context mContext) {
-        this.mImageNames = mImageNames;
-        this.mImage = mImage;
-        this.mContext = mContext;
-    }
+        private Context context;
+        private List<Product> products;
 
 
-    @NonNull
-    @Override
-    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        public ProductListAdapter(Context context, List<Product> products) {
+            super(context, R.layout.list_layout, products);
 
-        //View from layout list xml
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_layout,parent,false);
-
-        //create ViewHolder
-        ViewHolder viewHolder = new ViewHolder(view);
-
-        //return ViewHolder
-        return viewHolder;
-    }
-
-    @SuppressLint("LongLogTag")
-    @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder,final int position) {
-
-        //set Image
-        Glide.with(mContext).asBitmap().load(mImage.get(position)).into(holder.image);
-
-        //set Image Name
-        holder.imageName.setText(mImageNames.get(position));
-
-        //Handle onclick for one item
-        holder.parentLayout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Log.d(TAG, "onClick: clicked on"+mImageNames.get(position));
-
-                Toast.makeText(mContext,mImageNames.get(position),Toast.LENGTH_SHORT).show();
-            }
-        });
-
-    }
-
-    @Override
-    public int getItemCount() {
-        return mImageNames.size();
-    }
-
-    public class ViewHolder extends RecyclerView.ViewHolder{
-
-        CircleImageView image;
-        TextView imageName;
-        RelativeLayout parentLayout;
-
-        public ViewHolder(@NonNull View itemView) {
-            super(itemView);
-
-            image=itemView.findViewById(R.id.image);
-            imageName=itemView.findViewById(R.id.image_name);
-            parentLayout=itemView.findViewById(R.id.parent_layout);
+            this.context = context;
+            this.products = products;
         }
+
+        @NonNull
+        @Override
+        public View getView(int position, View view, ViewGroup parent) {
+            ViewHolder viewHolder;
+            if (view == null) {
+                viewHolder = new ViewHolder();
+                view = LayoutInflater.from(context).inflate(R.layout.list_layout, parent, false);
+                viewHolder.textViewName = view.findViewById(R.id.textViewName);
+                viewHolder.textViewPrice = view.findViewById(R.id.textViewPrice);
+                viewHolder.textViewDescription = view.findViewById(R.id.textViewDescription);
+                viewHolder.imageViewPhoto = view.findViewById(R.id.imageViewPhoto);
+                view.setTag(viewHolder);
+            } else {
+                viewHolder = (ViewHolder) view.getTag();
+            }
+            Product product = products.get(position);
+            viewHolder.textViewName.setText(product.getName());
+            viewHolder.textViewDescription.setText(product.getDescription());
+            viewHolder.textViewPrice.setText(context.getText(R.string.price) + String.valueOf(product.getPrice()));
+            viewHolder.imageViewPhoto.setImageResource(product.getPhoto());
+            return view;
+        }
+
+        private static class ViewHolder {
+            public static TextView textViewName;
+            public static TextView textViewDescription;
+            public static TextView textViewPrice;
+            public static ImageView imageViewPhoto;
+        }
+
     }
 }
