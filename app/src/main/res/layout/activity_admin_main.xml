@@ -26,9 +26,9 @@
         android:id="@+id/btnOrganization"
         android:layout_width="353dp"
         android:layout_height="66dp"
-        android:layout_marginStart="16dp"
+        android:layout_marginStart="6dp"
         android:layout_marginEnd="16dp"
-        android:background="@drawable/btn_rectangle"
+        android:background="@drawable/btn_rounded"
         android:drawableRight="@drawable/ic_baseline_local_car_wash_24"
         android:text="@string/adHmbtn1"
         android:textAlignment="center"
@@ -38,17 +38,18 @@
         android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.638"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.174" />
+        app:layout_constraintVertical_bias="0.172" />
 
     <Button
         android:id="@+id/btnCustomer"
         android:layout_width="353dp"
         android:layout_height="66dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="6dp"
         android:layout_marginBottom="16dp"
-        android:background="@drawable/btn_rectangle"
+        android:background="@drawable/btn_rounded"
         android:drawableRight="@drawable/ic_baseline_people_24"
         android:text="@string/adHmbtn2"
         android:textAlignment="center"
@@ -67,9 +68,9 @@
         android:id="@+id/btnUserBlack"
         android:layout_width="353dp"
         android:layout_height="66dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginBottom="16dp"
-        android:background="@drawable/btn_rectangle"
+        android:layout_marginTop="6dp"
+        android:layout_marginBottom="6dp"
+        android:background="@drawable/btn_rounded"
         android:drawableRight="@drawable/ic_baseline_not_interested_24"
         android:text="@string/adHmbtn3"
         android:textAlignment="center"
@@ -88,9 +89,9 @@
         android:id="@+id/btnAdd"
         android:layout_width="353dp"
         android:layout_height="66dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginBottom="16dp"
-        android:background="@drawable/btn_rectangle"
+        android:layout_marginTop="6dp"
+        android:layout_marginBottom="6dp"
+        android:background="@drawable/btn_rounded"
         android:drawableRight="@drawable/ic_baseline_post_add_24"
         android:text="@string/adHmbtn4"
 
@@ -102,16 +103,15 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnUserBlack"
-        app:layout_constraintVertical_bias="0.039" />
-
+        app:layout_constraintVertical_bias="0.018" />
 
     <Button
         android:id="@+id/btnSub"
         android:layout_width="353dp"
         android:layout_height="66dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginBottom="16dp"
-        android:background="@drawable/btn_rectangle"
+        android:layout_marginTop="6dp"
+        android:layout_marginBottom="6dp"
+        android:background="@drawable/btn_rounded"
         android:drawableRight="@drawable/ic_baseline_subscriptions_24"
 
         android:text="@string/adHmbtn5"
@@ -123,7 +123,28 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnAdd"
-        app:layout_constraintVertical_bias="0.084" />
+        app:layout_constraintVertical_bias="0.016" />
+
+
+    <Button
+        android:id="@+id/btnReoprtCustomer"
+        android:layout_width="353dp"
+        android:layout_height="66dp"
+        android:layout_marginTop="6dp"
+        android:layout_marginBottom="6dp"
+        android:background="@drawable/btn_rounded"
+        android:drawableRight="@drawable/ic_baseline_post_add_24"
+
+        android:text="@string/btn_customer_reports"
+        android:textAlignment="center"
+        android:textAllCaps="false"
+        android:textColor="#FFFFFF"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnSub"
+        app:layout_constraintVertical_bias="0.016" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
