@@ -6,27 +6,29 @@
     android:layout_height="match_parent"
     tools:context=".PlaceAppointmentForm">
 
-    <Spinner
-        android:id="@+id/spinner3"
-        android:layout_width="223dp"
+    <EditText
+        android:id="@+id/typeSpinner"
+        android:layout_width="180dp"
         android:layout_height="39dp"
         android:layout_marginTop="44dp"
         android:layout_marginEnd="16dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:gravity="center"/>
 
     <Spinner
         android:id="@+id/spin_type"
-        android:layout_width="150dp"
+        android:layout_width="180dp"
         android:layout_height="39dp"
         android:layout_marginTop="28dp"
         android:layout_marginEnd="16dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/spinner3" />
+        app:layout_constraintTop_toBottomOf="@+id/typeSpinner"
+        android:gravity="center"/>
 
     <EditText
         android:id="@+id/editTextDate"
-        android:layout_width="223dp"
+        android:layout_width="180dp"
         android:layout_height="39dp"
         android:layout_marginTop="44dp"
         android:layout_marginEnd="16dp"
@@ -34,7 +36,8 @@
         android:textAllCaps="false"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/spin_type" />
+        app:layout_constraintTop_toBottomOf="@+id/spin_type"
+        android:gravity="center"/>
 
     <TextView
         android:id="@+id/textView"
@@ -88,7 +91,7 @@
         android:text="Service Type"
         android:textColor="#000000"
         android:textSize="18sp"
-        app:layout_constraintEnd_toStartOf="@+id/spinner3"
+        app:layout_constraintEnd_toStartOf="@+id/typeSpinner"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -122,23 +125,25 @@
 
     <EditText
         android:id="@+id/editTextVehichle"
-        android:layout_width="223dp"
+        android:layout_width="180dp"
         android:layout_height="39dp"
         android:layout_marginTop="52dp"
         android:layout_marginEnd="16dp"
         android:ems="10"
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTime" />
+        app:layout_constraintTop_toBottomOf="@+id/editTextTime"
+        android:gravity="center"/>
 
     <EditText
         android:id="@+id/editTextTime"
-        android:layout_width="223dp"
+        android:layout_width="180dp"
         android:layout_height="39dp"
         android:layout_marginTop="44dp"
         android:layout_marginEnd="16dp"
         android:ems="10"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextDate" />
+        app:layout_constraintTop_toBottomOf="@+id/editTextDate"
+        android:gravity="center"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
