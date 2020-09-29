@@ -42,7 +42,7 @@ public class admin_main extends AppCompatActivity {
         userBlackbutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent =  new Intent(admin_main.this,customer_blacklist.class);
+                Intent intent =  new Intent(admin_main.this,CustomerReportedActivity.class);
                 startActivity(intent);
             }
         });
@@ -50,7 +50,7 @@ public class admin_main extends AppCompatActivity {
         repButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(admin_main.this,CustomerReportActivity.class);
+                Intent intent = new Intent(admin_main.this,CustomerReportedActivity.class);
                 startActivity(intent);
             }
         });

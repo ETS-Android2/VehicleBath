@@ -67,7 +67,7 @@ public class CustomerReportActivity extends AppCompatActivity {
 
         //-----------------------------------------------------//
 
-        UserRef = FirebaseDatabase.getInstance().getReference().child("Users");
+        UserRef = FirebaseDatabase.getInstance().getReference().child("UsersReport");
 
         recyclerView = findViewById(R.id.recyle_report);
         recyclerView.setHasFixedSize(true);

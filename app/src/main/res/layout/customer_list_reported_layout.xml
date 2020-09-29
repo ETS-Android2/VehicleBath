@@ -73,27 +73,26 @@
             />
 
 
-
-
-
-        <Button
-            android:id="@+id/btnReportSubmit"
+        <TextView
+            android:id="@+id/userReported"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Report"
-            android:layout_marginTop="6dp"
-            android:layout_alignParentEnd="true"
             android:layout_below="@+id/user_password_report"
-            android:textSize="20sp"
+            android:layout_marginTop="6dp"
+            android:layout_marginLeft="35dp"
+            android:text="Reported User"
+            android:textSize="25dp"
             android:textStyle="bold"
-            android:layout_marginLeft="80dp"
             android:layout_marginEnd="10dp"
             android:layout_marginStart="10dp"
             android:textAlignment="center"
-            android:textColor="@android:color/white"
-            android:background="@drawable/btn_report"
+            android:textColor="@android:color/holo_red_dark"
 
             />
+
+
+
+
 
 
 
