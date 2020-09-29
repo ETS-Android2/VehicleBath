@@ -32,9 +32,12 @@ dependencies {
     implementation 'androidx.navigation:navigation-ui:2.3.0'
     implementation 'com.google.firebase:firebase-database:19.4.0'
     implementation 'com.google.firebase:firebase-storage:19.2.0'
+    implementation 'io.paperdb:paperdb:2.6'
+    implementation 'com.squareup.picasso:picasso:2.71828'
+    implementation 'com.firebaseui:firebase-ui-database:3.2.2'
+    implementation 'com.google.firebase:firebase-core:17.5.0'
     testImplementation 'junit:junit:4.13'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
-
 
 }

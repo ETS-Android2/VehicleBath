@@ -1,18 +1,37 @@
 package com.example.vehiclebath;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.Button;
+import android.view.ViewGroup;
+import android.widget.ProgressBar;
 
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.example.vehiclebath.Model.Advertisement;
+import com.example.vehiclebath.ViewHolder.AdvertisementViewHolder;
+import com.firebase.ui.database.FirebaseRecyclerAdapter;
+import com.firebase.ui.database.FirebaseRecyclerOptions;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+import com.squareup.picasso.Picasso;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class orgYourAdvertisement extends AppCompatActivity {
 
-    FloatingActionButton addAdvertise;
-    Button btnUpdate1,btnUpdate2,btnUpdate3,btnDelete1,btnDelete2,btnDelete3;
+    private Intent intent = getIntent();
+    private RecyclerView adRecyclerView;
+    private DatabaseReference databaseReference;
+    RecyclerView.LayoutManager layoutManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,21 +40,37 @@ public class orgYourAdvertisement extends AppCompatActivity {
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        addAdvertise = findViewById(R.id.fltBtnAddAdvertise1);
-        btnUpdate1=findViewById(R.id.btnUpdateAdvertise1_1);
-        btnUpdate2=findViewById(R.id.btnUpdateAdvertise1_2);
-        btnUpdate3=findViewById(R.id.btnUpdateAdvertise1_3);
-        btnDelete1=findViewById(R.id.btnDeleteAdvertise1_1);
-        btnDelete2=findViewById(R.id.btnDeleteAdvertise1_2);
-        btnDelete3=findViewById(R.id.btnDeleteAdvertise1_3);
-
-        addAdvertise.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(orgYourAdvertisement.this,orgAddAdvertisement.class);
-                startActivity(intent);
-            }
-        });
+        databaseReference = FirebaseDatabase.getInstance().getReference().child("Advertisement");
+        adRecyclerView = findViewById(R.id.adRecycler);
+        adRecyclerView.setHasFixedSize(true);
+        layoutManager = new LinearLayoutManager(this);
+        adRecyclerView.setLayoutManager(layoutManager);
     }
 
+    @Override
+    protected void onStart() {
+        super.onStart();
+
+        FirebaseRecyclerOptions<Advertisement> options = new FirebaseRecyclerOptions.Builder<Advertisement>()
+                .setQuery(databaseReference,Advertisement.class).build();
+
+        FirebaseRecyclerAdapter<Advertisement, AdvertisementViewHolder> adapter = new FirebaseRecyclerAdapter   <Advertisement, AdvertisementViewHolder>(options) {
+            @Override
+            protected void onBindViewHolder(@NonNull AdvertisementViewHolder advertisementViewHolder, int i, @NonNull Advertisement advertisement) {
+                advertisementViewHolder.adName.setText(advertisement.getName());
+                advertisementViewHolder.adDesc.setText(advertisement.getDescription());
+                Picasso.get().load(advertisement.getImageUrl()).into(advertisementViewHolder.imageViewAd);
+            }
+
+            @NonNull
+            @Override
+            public AdvertisementViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+                View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.layout_advertisement,parent,false);
+                AdvertisementViewHolder holder = new AdvertisementViewHolder(view);
+                return holder;
+            }
+        };
+        adRecyclerView.setAdapter(adapter);
+        adapter.startListening();
+    }
 }

@@ -80,6 +80,7 @@
     <string name="lblValidPeri">Validity Period</string>
     <string name="lblmonth">(Months)</string>
     <string name="lblDPerc">Discount Percentage(%)</string>
+    <string name="lblDiscPerc">Discount Percentage</string>
     <string name="lblDPerc2">(for appointments)</string>
     <string name="lblAvail">Availability</string>
     <string-array name="Availability">
@@ -115,6 +116,10 @@
     <string name="updateSelectSub">Select Your Subscription Plan for Update</string>
     <string name="btnNext">Next</string>
     <string name="selectSubPlan">Select Subscription Plan</string>
-    <string name="price">Rs.</string>
+
+    <string name="addSubUser">Add a Subscription for User</string>
+    <string name="userPhone">Phone Number:</string>
+    <string name="etUserPhone">Enter Phone Number</string>
+    <string name="subPlan">Subscription Plan:</string>
 
 </resources>
