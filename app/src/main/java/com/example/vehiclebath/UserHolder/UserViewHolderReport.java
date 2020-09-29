@@ -6,13 +6,14 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.vehiclebath.Interface.ItemClickListner;
+
+import com.example.vehiclebath.Interface.ItemClickListner1;
 import com.example.vehiclebath.R;
 
 public class UserViewHolderReport extends RecyclerView.ViewHolder implements View.OnClickListener
 {
     public TextView UserName,UserPhone,UserEmail,UserPassword;
-    public ItemClickListner listner;
+    public ItemClickListner1 listner;
 
     public UserViewHolderReport(@NonNull View itemView) {
         super(itemView);
@@ -24,7 +25,7 @@ public class UserViewHolderReport extends RecyclerView.ViewHolder implements Vie
 
     }
 
-    public void setItemClickListner(ItemClickListner listner)
+    public void setItemClickListner(ItemClickListner1 listner)
     {
         this.listner = listner;
     }

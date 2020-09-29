@@ -54,7 +54,6 @@
     <string name="idT3">3</string>
 
 
-
     <!--    Joachim-->
 
 
@@ -164,5 +163,6 @@
     <string name="btnNext">Next</string>
     <string name="selectSubPlan">Select Subscription Plan</string>
     <string name="price">Rs.</string>
+    <string name="dialog_message">Report</string>
 
 </resources>
