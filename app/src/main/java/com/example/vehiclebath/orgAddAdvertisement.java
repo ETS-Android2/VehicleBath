@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.ProgressDialog;
 import android.content.ContentResolver;
 import android.content.Intent;
 import android.net.Uri;
@@ -18,6 +19,7 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.Continuation;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -43,8 +45,9 @@ public class orgAddAdvertisement extends AppCompatActivity {
     private static final int PICK_IMAGE_REQUEST = 99;
     private Uri imageUri;
     private DatabaseReference databaseReference;
-    private StorageTask storageTask;
-    private ProgressBar progressBar;
+    private UploadTask storageTask;
+    private String downloadImageUrl,advertisementName,advertisementDescription,advertisementImageName;
+    private ProgressDialog progressDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,7 +56,7 @@ public class orgAddAdvertisement extends AppCompatActivity {
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        storageReference = FirebaseStorage.getInstance().getReference("AdvertisementImage");
+        storageReference = FirebaseStorage.getInstance().getReference().child("AdvertisementImage");
         databaseReference = FirebaseDatabase.getInstance().getReference();
 
         adName = findViewById(R.id.etAdName);
@@ -62,6 +65,7 @@ public class orgAddAdvertisement extends AppCompatActivity {
         imageView = findViewById(R.id.viewImg);
         Button browseImg = findViewById(R.id.browseImg);
         Button addImage = findViewById(R.id.btnAddAdvertise2);
+        progressDialog = new ProgressDialog(this);
 
         browseImg.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -107,9 +111,9 @@ public class orgAddAdvertisement extends AppCompatActivity {
     }
 
     private void addAdvertisement() {
-        final String advertisementName = adName.getText().toString().trim();
-        final String advertisementDescription = adDesc.getText().toString().trim();
-        final String advertisementImageName = imgName.getText().toString().trim();
+        advertisementName = adName.getText().toString().trim();
+        advertisementDescription = adDesc.getText().toString().trim();
+        advertisementImageName = imgName.getText().toString().trim();
 
         if(TextUtils.isEmpty(advertisementName)){
             Toast.makeText(this,"Please Enter Advertisement Name",Toast.LENGTH_SHORT).show();
@@ -124,62 +128,91 @@ public class orgAddAdvertisement extends AppCompatActivity {
             Toast.makeText(this,"Please Select Image",Toast.LENGTH_SHORT).show();
         }
         else {
+            progressDialog.setTitle("Inserting Advertisements");
+            progressDialog.setMessage("Adding Records to Database");
+            progressDialog.setCanceledOnTouchOutside(false);
+            progressDialog.show();
 
             databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot snapshot) {
                     if(!(snapshot.child("Advertisement").child(advertisementName).exists())){
-                        StorageReference fileReference = storageReference.child(advertisementName).child(System.currentTimeMillis() + "." + getFileExtension(imageUri));
-                        storageTask = fileReference.putFile(imageUri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                        final StorageReference fileReference = storageReference.child(advertisementName).child(System.currentTimeMillis() + "." + getFileExtension(imageUri));
+                        storageTask = fileReference.putFile(imageUri);
+
+                        storageTask.addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                             @Override
                             public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                                Handler handler = new Handler();
-                                handler.postDelayed(new Runnable() {
-                                    @Override
-                                    public void run() {
-                                        progressBar.setProgress(0);
-                                    }
-                                }, 500);
-                                HashMap<String,Object> subDataMap = new HashMap<>();
-                                subDataMap.put("Name",advertisementName);
-                                subDataMap.put("Description",advertisementDescription);
-                                subDataMap.put("ImageName",advertisementImageName);
-                                subDataMap.put("ImageUrl",taskSnapshot.getMetadata().getReference().getDownloadUrl().toString());
 
-                                databaseReference.child("Advertisement").child(advertisementName).updateChildren(subDataMap).addOnCompleteListener(new OnCompleteListener<Void>() {
+                                Task<Uri> uriTask = storageTask.continueWithTask(new Continuation<UploadTask.TaskSnapshot, Task<Uri>>() {
                                     @Override
-                                    public void onComplete(@NonNull Task<Void> task) {
+                                    public Task<Uri> then(@NonNull Task <UploadTask.TaskSnapshot> task) throws Exception {
+                                        if(!task.isSuccessful()){
+                                            throw task.getException();
+                                        }
+                                        downloadImageUrl = fileReference.getDownloadUrl().toString();
+                                        return fileReference.getDownloadUrl();
+                                    }
+                                }).addOnCompleteListener(new OnCompleteListener<Uri>() {
+                                    @Override
+                                    public void onComplete(@NonNull Task<Uri> task) {
                                         if(task.isSuccessful()){
-                                            Toast.makeText(orgAddAdvertisement.this,"New Advertisement is Added",Toast.LENGTH_SHORT).show();
-
-                                            Intent intent = new Intent(orgAddAdvertisement.this,adminAdvertiseDetails.class);
-                                            startActivity(intent);
-                                        }
-                                        else{
-                                            Toast.makeText(orgAddAdvertisement.this,"Failed to Add New Advertisement",Toast.LENGTH_LONG).show();
+                                            downloadImageUrl = task.getResult().toString();
+                                            insertAdvertisementInToDb();
                                         }
                                     }
-                                })
-                                        .addOnFailureListener(new OnFailureListener() {
-                                            @Override
-                                            public void onFailure(@NonNull Exception e) {
-                                                Toast.makeText(orgAddAdvertisement.this, e.getMessage(), Toast.LENGTH_LONG).show();
-                                            }
-                                        });
+                                });
                             }
-                        });
+                        })
+                                .addOnFailureListener(new OnFailureListener() {
+                                    @Override
+                                    public void onFailure(@NonNull Exception e) {
+                                        Toast.makeText(orgAddAdvertisement.this, e.getMessage(), Toast.LENGTH_LONG).show();
+                                    }
+                                });
+                        progressDialog.dismiss();
                     }
                     else {
                         Toast.makeText(orgAddAdvertisement.this,"Added Advertisement exist",Toast.LENGTH_LONG).show();
                     }
+                    progressDialog.dismiss();
                 }
-
                 @Override
                 public void onCancelled(@NonNull DatabaseError error) {
 
                 }
             });
+
         }
     }
 
+    private void insertAdvertisementInToDb() {
+        HashMap<String,Object> subDataMap = new HashMap<>();
+        subDataMap.put("Name",advertisementName);
+        subDataMap.put("Description",advertisementDescription);
+        subDataMap.put("ImageName",advertisementImageName);
+        subDataMap.put("ImageUrl",downloadImageUrl);
+
+        databaseReference.child("Advertisement").child(advertisementName).updateChildren(subDataMap).addOnCompleteListener(new OnCompleteListener<Void>() {
+            @Override
+            public void onComplete(@NonNull Task<Void> task) {
+                if (task.isSuccessful()) {
+                    Toast.makeText(orgAddAdvertisement.this, "New Advertisement is Added", Toast.LENGTH_SHORT).show();
+
+                    Intent intent = new Intent(orgAddAdvertisement.this, orgYourAdvertisement.class);
+                    startActivity(intent);
+                } else {
+                    Toast.makeText(orgAddAdvertisement.this, "Failed to Add New Advertisement", Toast.LENGTH_LONG).show();
+                }
+                progressDialog.dismiss();
+            }
+        });
+    }
+
 }
+
+
+
+
+
+

@@ -28,179 +28,28 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.023" />
 
-        <TableLayout
-            android:id="@+id/tableLayout"
-            android:layout_width="381dp"
-            android:layout_height="440dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.466"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.346">
-
-            <TableRow>
-
-                <TextView
-                    android:layout_width="190.5dp"
-                    android:layout_height="100dp"
-                    android:background="@android:drawable/editbox_dropdown_dark_frame"
-                    android:fontFamily="@font/trykker"
-                    android:gravity="center"
-                    android:text="@string/subCol1Head"
-                    android:textColor="#FFFFFF"
-                    android:textSize="24sp"
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:layout_width="190.5dp"
-                    android:layout_height="100dp"
-                    android:background="@android:drawable/editbox_dropdown_dark_frame"
-                    android:fontFamily="@font/trykker"
-                    android:gravity="center"
-                    android:text="@string/subCol2Head"
-                    android:textColor="#FFFFFF"
-                    android:textSize="24sp"
-                    android:textStyle="bold" />
-
-            </TableRow>
-
-            <TableRow>
-
-                <TextView
-                    android:layout_width="190.5dp"
-                    android:layout_height="85dp"
-                    android:background="@android:drawable/editbox_dropdown_light_frame"
-                    android:fontFamily="@font/trykker"
-                    android:gravity="center"
-                    android:text="@string/subRow2col1"
-                    android:textColor="#333"
-                    android:textSize="21sp" />
-
-                <TextView
-                    android:layout_width="190.5dp"
-                    android:layout_height="85dp"
-                    android:background="@android:drawable/editbox_dropdown_light_frame"
-                    android:fontFamily="@font/trykker"
-                    android:gravity="center"
-                    android:text="@string/subRow2col2"
-                    android:textColor="#333"
-                    android:textSize="21sp" />
-
-            </TableRow>
-
-            <TableRow>
-
-                <TextView
-                    android:layout_width="190.5dp"
-                    android:layout_height="85dp"
-                    android:background="@android:drawable/editbox_dropdown_light_frame"
-                    android:fontFamily="@font/trykker"
-                    android:gravity="center"
-                    android:text="@string/subRow3col1"
-                    android:textColor="#333"
-                    android:textSize="21sp" />
-
-                <TextView
-                    android:layout_width="190.5dp"
-                    android:layout_height="85dp"
-                    android:background="@android:drawable/editbox_dropdown_light_frame"
-                    android:fontFamily="@font/trykker"
-                    android:gravity="center"
-                    android:text="@string/subRow3col2"
-                    android:textColor="#333"
-                    android:textSize="21sp" />
-
-            </TableRow>
-
-            <TableRow>
-
-                <TextView
-                    android:layout_width="190.5dp"
-                    android:layout_height="85dp"
-                    android:background="@android:drawable/editbox_dropdown_light_frame"
-                    android:fontFamily="@font/trykker"
-                    android:gravity="center"
-                    android:text="@string/subRow4col1"
-                    android:textColor="#333"
-                    android:textSize="21sp" />
-
-                <TextView
-                    android:layout_width="190.5dp"
-                    android:layout_height="85dp"
-                    android:background="@android:drawable/editbox_dropdown_light_frame"
-                    android:fontFamily="@font/trykker"
-                    android:gravity="center"
-                    android:text="@string/subRow4col2"
-                    android:textColor="#333"
-                    android:textSize="21sp" />
-
-            </TableRow>
-
-            <TableRow>
-
-                <TextView
-                    android:layout_width="190.5dp"
-                    android:layout_height="85dp"
-                    android:background="@android:drawable/editbox_dropdown_light_frame"
-                    android:fontFamily="@font/trykker"
-                    android:gravity="center"
-                    android:text="@string/subRow5col1"
-                    android:textColor="#333"
-                    android:textSize="21sp" />
-
-                <TextView
-                    android:layout_width="190.5dp"
-                    android:layout_height="85dp"
-                    android:background="@android:drawable/editbox_dropdown_light_frame"
-                    android:fontFamily="@font/trykker"
-                    android:gravity="center"
-                    android:text="@string/subRow5col2"
-                    android:textColor="#333"
-                    android:textSize="21sp" />
-
-            </TableRow>
-
-
-        </TableLayout>
-
         <Button
             android:id="@+id/btnAdminAddSub1"
-            android:layout_width="120dp"
-            android:layout_height="60dp"
-            android:layout_marginStart="44dp"
-            android:layout_marginTop="56dp"
-            android:layout_marginEnd="83dp"
-            android:background="#225EBB"
+            android:layout_width="124dp"
+            android:layout_height="37dp"
+            android:layout_marginTop="19dp"
+            android:background="@drawable/common_google_signin_btn_text_light_focused"
+            android:backgroundTint="#225EBB"
             android:fontFamily="@font/trykker"
             android:text="@string/btnAdd"
             android:textColor="#FFFFFF"
             android:textSize="20sp"
-            app:layout_constraintEnd_toStartOf="@+id/btnAdminUpdateSub1"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tableLayout" />
-
-        <Button
-            android:id="@+id/btnAdminUpdateSub1"
-            android:layout_width="120dp"
-            android:layout_height="60dp"
-            android:layout_marginTop="56dp"
-            android:layout_marginEnd="44dp"
-            android:background="#225EBB"
-            android:fontFamily="@font/trykker"
-            android:text="@string/btnUpdate"
-            android:textColor="#FFFFFF"
-            android:textSize="20sp"
-            android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tableLayout" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView3" />
 
-        <View
-            android:id="@+id/divider5"
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:layout_marginTop="50dp"
-            android:background="#FFFFFF"
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/subRecycler"
+            android:layout_width="390dp"
+            android:layout_height="587dp"
+            android:layout_marginTop="18dp"
+            android:layout_marginBottom="16dp"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/btnAdminAddSub1" />
