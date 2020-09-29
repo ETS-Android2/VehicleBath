@@ -9,7 +9,7 @@ import android.widget.Button;
 
 public class admin_main extends AppCompatActivity {
 
-    Button orgbutton,cusbutton,userBlackbutton,addButton,subButton;
+    Button orgbutton,cusbutton,userBlackbutton,addButton,subButton,repButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,6 +21,7 @@ public class admin_main extends AppCompatActivity {
         userBlackbutton = findViewById(R.id.btnUserBlack);
         addButton = findViewById(R.id.btnAdd);
         subButton = findViewById(R.id.btnSub);
+        repButton = findViewById(R.id.btnReoprtCustomer);
 
         orgbutton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -41,11 +42,18 @@ public class admin_main extends AppCompatActivity {
         userBlackbutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent =  new Intent(admin_main.this,customer_blacklist.class);
+                Intent intent =  new Intent(admin_main.this,CustomerReportedActivity.class);
                 startActivity(intent);
             }
         });
 
+        repButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(admin_main.this,CustomerReportedActivity.class);
+                startActivity(intent);
+            }
+        });
 
 
     }
