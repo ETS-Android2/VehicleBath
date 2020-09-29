@@ -38,27 +38,33 @@ import java.util.Calendar;
 import java.util.HashMap;
 
 public class PlaceAppointmentForm extends AppCompatActivity {
-
     //Date Picker
     private DatePickerDialog picker;
     private EditText dateText;
-    private TextView dateView;
-
     //Time Picker
     private TimePickerDialog Tpicker;
     private EditText TimeText;
-    //Spinner
+    //spinner
     private Spinner spinner;
     private Button btn_addTypeDB;
     private ProgressDialog loadingBar;
 
+    private EditText carWashtypeName;
+    private String carWashTypeVal;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_place_appointment_form);
 
-        //Spinner
+        loadingBar = new ProgressDialog(this);
+
+        carWashTypeVal = getIntent().getStringExtra("Type");
+
+        carWashtypeName = findViewById(R.id.typeSpinner);
+        carWashtypeName.setText(carWashTypeVal);
+
+        //Spinner Type
         spinner = findViewById(R.id.spin_type);
         ArrayList<String> arrayList = new ArrayList<>();
         arrayList.add("CAR");
@@ -78,7 +84,7 @@ public class PlaceAppointmentForm extends AppCompatActivity {
             }
         });
 
-        //dateView=(TextView)findViewById(R.id.textView7);
+
         dateText=findViewById(R.id.editTextDate);
         dateText.setInputType(InputType.TYPE_NULL);
         dateText.setOnClickListener(new View.OnClickListener() {
@@ -121,7 +127,20 @@ public class PlaceAppointmentForm extends AppCompatActivity {
             }
         });
 
-        //DB Insertion
+        Button btnSearch = findViewById(R.id.btnSearchCarwash);
+
+        btnSearch.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startSelectCarWash();
+            }
+
+            private void startSelectCarWash(){
+                Intent intent = new Intent(PlaceAppointmentForm.this, adminAddCarwashType.class);
+                startActivity(intent);
+            }
+        });
+
         btn_addTypeDB = findViewById(R.id.btnSearchCarwash);
 
         btn_addTypeDB.setOnClickListener(new View.OnClickListener() {
@@ -162,7 +181,7 @@ public class PlaceAppointmentForm extends AppCompatActivity {
             private void validateAppointment(final String date, final String time, final String vehicleType) {
                 final DatabaseReference ref;
                 ref = FirebaseDatabase.getInstance().getReference();
-                final String key = "A"+time+"_"+date;
+                final String key = "A"+time+"_"+date.replace("/","");
 
                 ref.addListenerForSingleValueEvent(new ValueEventListener() {
                     @SuppressLint("ShowToast")
@@ -179,8 +198,7 @@ public class PlaceAppointmentForm extends AppCompatActivity {
                                 public void onComplete(@NonNull Task<Void> task) {
                                     if(task.isSuccessful()){
                                         Toast.makeText(PlaceAppointmentForm.this, "Appointment Placed Successfully", Toast.LENGTH_LONG).show();
-                                        Intent intent = new Intent(PlaceAppointmentForm.this, AppointmentSummary.class);
-                                        startActivity(intent);
+
                                     }
                                     else{
                                         Toast.makeText(PlaceAppointmentForm.this, "Error", Toast.LENGTH_LONG).show();
@@ -206,6 +224,7 @@ public class PlaceAppointmentForm extends AppCompatActivity {
                 });
             }
         });
+
 
     }
 }
