@@ -29,7 +29,7 @@ public class addSubscrip extends AppCompatActivity {
     private EditText subName,subPrice,subdPerc,subValidity;
     private Spinner spinner;
     private Button btnAddSub;
-    private ProgressDialog loadingBar;
+    private ProgressDialog progressDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,7 +50,7 @@ public class addSubscrip extends AppCompatActivity {
         subValidity = findViewById(R.id.etSubValidity);
         subdPerc = findViewById(R.id.etSubdPerc);
         btnAddSub = findViewById(R.id.btnAdminAddSub2);
-        loadingBar = new ProgressDialog(this);
+        progressDialog = new ProgressDialog(this);
 
         btnAddSub.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -83,9 +83,10 @@ public class addSubscrip extends AppCompatActivity {
             Toast.makeText(this,"Please Select Subscription Discount Percentage",Toast.LENGTH_SHORT).show();
         }
         else {
-            loadingBar.setTitle("Adding Subscription");
-            loadingBar.setMessage("Please wait");
-            loadingBar.setCanceledOnTouchOutside(false);
+            progressDialog.setTitle("Inserting Subscription");
+            progressDialog.setMessage("Adding Records to Database");
+            progressDialog.setCanceledOnTouchOutside(false);
+            progressDialog.show();
 
             addSubscriptionToDB(subscriptionName,subscriptionPrice,subscriptionValidity,subscriptionDPercentage,subscriptionAvailability);
         }
@@ -112,22 +113,21 @@ public class addSubscrip extends AppCompatActivity {
                                 public void onComplete(@NonNull Task<Void> task) {
                                     if(task.isSuccessful()){
                                         Toast.makeText(addSubscrip.this,"New Subscription Plan is Added",Toast.LENGTH_SHORT).show();
-                                        loadingBar.dismiss();
 
                                         Intent intent = new Intent(addSubscrip.this,adminSubscripDetail.class);
                                         startActivity(intent);
                                     }
                                     else{
-                                        loadingBar.dismiss();
                                         Toast.makeText(addSubscrip.this,"Failed to Add New Subscription Plan",Toast.LENGTH_SHORT).show();
                                     }
+                                    progressDialog.dismiss();
                                 }
                             });
                 }
                 else {
                     Toast.makeText(addSubscrip.this,"Added Subscrpition Plan exist",Toast.LENGTH_LONG).show();
-                    loadingBar.dismiss();
                 }
+                progressDialog.dismiss();
             }
 
             @Override

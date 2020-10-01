@@ -69,7 +69,7 @@ public class adminAddCarwashType extends AppCompatActivity {
                     loadingBar.setCanceledOnTouchOutside(false);
                     loadingBar.show();
 
-                    ValidateTypeName(TypeName, TypeDesc, TypePrice );
+                    ValidateTypeName(TypeName, TypeDesc, TypePrice);
                 }
             }
 
@@ -103,7 +103,7 @@ public class adminAddCarwashType extends AppCompatActivity {
 
                         }
                         else{
-                            Toast.makeText(adminAddCarwashType.this, typeName+ "Already Exists", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(adminAddCarwashType.this, typeName+ " Type Already Exists", Toast.LENGTH_SHORT).show();
                             loadingBar.dismiss();
 
                         }
