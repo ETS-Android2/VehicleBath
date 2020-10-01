@@ -57,86 +57,85 @@ public class OrganizationReport_or_Activate_Activity extends AppCompatActivity {
         getUserDetailsToDisplay(userPhone);
 
 
-        //-------------------------------Alert dialogue--------------------------------------//
-        builder = new AlertDialog.Builder(this);
         organization_OR_activate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-                //CreateReport();
-
-                //Setting message manually and performing action on button click
-                builder.setMessage("Would you like to activate user ?")
-                        .setCancelable(false)
-                        .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog, int id) {
-                                finish();
-                                CreateReport();
-                                Toast.makeText(getApplicationContext(), "you choose yes action for alertbox",
-                                        Toast.LENGTH_SHORT).show();
-
-
-
-                                //--------------------------Notification---------------------------//
-
-
-                                String messsage1 = "Vehicle Bath have submitted a report";
-                                String messsage2 = "You have submitted a report on customer";
-                                NotificationCompat.Builder builder = new NotificationCompat.Builder(
-                                        OrganizationReport_or_Activate_Activity.this
-                                )
-                                        .setSmallIcon(R.drawable.logo1)
-                                        .setContentTitle("Vehicle Bath")
-                                        .setContentText(messsage1)
-                                        .setContentText(messsage2)
-                                        .setAutoCancel(true);
-
-                                Intent intent = new Intent(OrganizationReport_or_Activate_Activity.this,OrganizationReport_or_Activate_Activity.class);
-                                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                                intent.putExtra("message",messsage1);
-                                intent.putExtra("message",messsage2);
-
-                                PendingIntent pendingIntent = PendingIntent.getActivity(OrganizationReport_or_Activate_Activity.this,
-                                        0,intent,PendingIntent.FLAG_UPDATE_CURRENT);
-
-                                builder.setContentIntent(pendingIntent);
-                                NotificationManager notificationManager = (NotificationManager)getSystemService(
-                                        Context.NOTIFICATION_SERVICE
-                                );
-                                notificationManager.notify(0,builder.build());
-
-
-                                //--------------------------Notification---------------------------//
-
-
-
-
-
-                            }
-                        })
-                        .setNegativeButton("No", new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog, int id) {
-                                //  Action for 'NO' Button
-                                dialog.cancel();
-                                Toast.makeText(getApplicationContext(), "you choose no action for alertbox",
-                                        Toast.LENGTH_SHORT).show();
-                            }
-                        });
-
-                //Creating dialog box
-                AlertDialog alert = builder.create();
-                //Setting the title manually
-                alert.setTitle("Alert!!!");
-                alert.show();
-
-
+                openAlertDilague();
             }
         });
+
+
+
+    }
+
+    private void openAlertDilague() {
+        //-------------------------------Alert dialogue--------------------------------------//
+        AlertDialog alertDialog = new AlertDialog.Builder(this)
+                //set icon
+                .setIcon(android.R.drawable.ic_dialog_alert)
+                //set title
+                .setTitle("Are you sure to Exit")
+                //set message
+                .setMessage("Exiting will call finish() method")
+                //set positive button
+                .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        //set what would happen when positive button is clicked
+                        CreateReport();
+                        DisplayNotification();
+
+                        finish();
+
+                    }
+                })
+                //set negative button
+                .setNegativeButton("No", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        //set what should happen when negative button is clicked
+                        Intent intent = new Intent(OrganizationReport_or_Activate_Activity.this,CustomerReportedActivity.class);
+                        startActivity(intent);
+
+                        Toast.makeText(getApplicationContext(),"You selected No",Toast.LENGTH_LONG).show();
+                    }
+                })
+                .show();
 
         //-------------------------------Alert dialogue--------------------------------------//
 
 
+    }
 
+    private void DisplayNotification() {
+
+        //-------------------------------Notification--------------------------------------//
+        String messsage1 = "Vehicle Bath have submitted a report";
+        String messsage2 = "You have submitted a report on customer";
+        NotificationCompat.Builder builder = new NotificationCompat.Builder(
+                OrganizationReport_or_Activate_Activity.this
+        )
+                .setSmallIcon(R.drawable.logo1)
+                .setContentTitle("Vehicle Bath")
+                .setContentText(messsage1)
+                .setContentText(messsage2)
+                .setAutoCancel(true);
+
+        Intent intent = new Intent(OrganizationReport_or_Activate_Activity.this,OrgnizationReport_or_Activity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        intent.putExtra("message",messsage1);
+        intent.putExtra("message",messsage2);
+
+        PendingIntent pendingIntent = PendingIntent.getActivity(OrganizationReport_or_Activate_Activity.this,
+                0,intent,PendingIntent.FLAG_UPDATE_CURRENT);
+
+        builder.setContentIntent(pendingIntent);
+        NotificationManager notificationManager = (NotificationManager)getSystemService(
+                Context.NOTIFICATION_SERVICE
+        );
+        notificationManager.notify(0,builder.build());
+
+        //-------------------------------Notification--------------------------------------//
     }
 
     private void CreateReport() {
@@ -182,7 +181,7 @@ public class OrganizationReport_or_Activate_Activity extends AppCompatActivity {
                                     if(task.isSuccessful()){
                                         Toast.makeText(OrganizationReport_or_Activate_Activity.this, "Report has been submitted successfully", Toast.LENGTH_SHORT).show();
 
-
+                                        //Delete user from UsersReport
                                         RootRef.child("UsersReport").child(userPhone).removeValue();
 
                                          Intent intent = new Intent(OrganizationReport_or_Activate_Activity.this,admin_main.class);
@@ -196,7 +195,7 @@ public class OrganizationReport_or_Activate_Activity extends AppCompatActivity {
                                         Intent intent = new Intent(OrganizationReport_or_Activate_Activity.this,admin_main.class);
                                         startActivity(intent);
                                     }
-                                    loadingBar.dismiss();
+                                   // loadingBar.dismiss();
                                 }
                             });
 
