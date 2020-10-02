@@ -4,12 +4,15 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.AlertDialog;
 import android.app.ProgressDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -38,6 +41,7 @@ public class SettingsActivity1 extends AppCompatActivity {
     private CircleImageView profileImageView;
     private EditText NameEdit,PhoneEdit,EmailEdit;
     private TextView profileChangeTextBtn, closeTextBtn, saveTextButton;
+    private Button resetPasswordP, deleteAccountA;
 
 
     private Uri imageUri;
@@ -60,8 +64,10 @@ public class SettingsActivity1 extends AppCompatActivity {
         profileChangeTextBtn = (TextView) findViewById(R.id.profile_img_change1);
         closeTextBtn = (TextView) findViewById(R.id.close_settings1);
         saveTextButton = (TextView) findViewById(R.id.update_settings1);
+        //resetPasswordP = (Button) findViewById(R.id.reset_pwdU);
+        deleteAccountA = (Button) findViewById(R.id.deleteU);
 
-        userInfoDisplay(profileImageView,NameEdit,PhoneEdit,EmailEdit);
+        userInfoDisplay1(NameEdit,PhoneEdit,EmailEdit);
 
         closeTextBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -95,6 +101,102 @@ public class SettingsActivity1 extends AppCompatActivity {
             }
         });
 
+        deleteAccountA.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                CharSequence options[] = new CharSequence[]
+                        {
+                                "Yes",
+                                "No"
+                        };
+                AlertDialog.Builder builder = new AlertDialog.Builder(SettingsActivity1.this);
+                builder.setTitle("Do you want to permanently delete this account ? ");
+
+                builder.setItems(options, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        if (i == 0)
+                        {
+                            DatabaseReference UsersRef = FirebaseDatabase.getInstance().getReference().child("Users").child(Prevalent.currentOnlineUser.getPhone());
+                            UsersRef.addValueEventListener(new ValueEventListener() {
+                                @Override
+                                public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                    if (snapshot.exists())
+                                    {
+                                        if (snapshot.child("Phone").exists()) {
+                                            String name = snapshot.child("Name").getValue().toString();
+                                            String email = snapshot.child("Email").getValue().toString();
+                                            String phone = snapshot.child("Phone").getValue().toString();
+
+                                            DeleteUser(phone);
+
+                                        }
+                                    }
+
+                                }
+
+                                @Override
+                                public void onCancelled(@NonNull DatabaseError error) {
+
+                                }
+                            });
+
+
+                        }
+                        else
+                        {
+                            finish();
+                        }
+                    }
+                });
+                builder.show();
+
+            }
+        });
+
+    }
+
+    private void DeleteUser(String phone) {
+        DatabaseReference UsersRef = FirebaseDatabase.getInstance().getReference().child("Users").child(Prevalent.currentOnlineUser.getPhone());
+        UsersRef.child(phone).removeValue();
+
+        startActivity(new Intent(SettingsActivity1.this,LoginNew.class));
+        Toast.makeText(SettingsActivity1.this,"Account Deleted successfully!!", Toast.LENGTH_LONG).show();
+        finish();
+
+    }
+
+
+    private void userInfoDisplay1(EditText nameEdit, EditText phoneEdit, EditText emailEdit) {
+
+        DatabaseReference UsersRef = FirebaseDatabase.getInstance().getReference().child("Users").child(Prevalent.currentOnlineUser.getPhone());
+        UsersRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                if (snapshot.exists())
+                {
+                    if (snapshot.child("Phone").exists())
+                    {
+//                        String image = snapshot.child("image").getValue().toString();
+                        String name = snapshot.child("Name").getValue().toString();
+                        String email = snapshot.child("Email").getValue().toString();
+                        String phone = snapshot.child("Phone").getValue().toString();
+
+//                        Picasso.get().load(image).into(profileImageView);
+                        NameEdit.setText(name);
+                        EmailEdit.setText(email);
+                        PhoneEdit.setText(phone);
+                    }
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
+
     }
 
     private void updateOnlyUserInfo() {
@@ -109,7 +211,7 @@ public class SettingsActivity1 extends AppCompatActivity {
 
 
 
-        startActivity(new Intent(SettingsActivity1.this,MainActivityJoe.class));
+        startActivity(new Intent(SettingsActivity1.this,MainActivity.class));
         Toast.makeText(SettingsActivity1.this,"Profile Info Updated Successfully", Toast.LENGTH_LONG).show();
         finish();
 
@@ -212,42 +314,46 @@ public class SettingsActivity1 extends AppCompatActivity {
                     });
         }
         else {
-            Toast.makeText(this,"image is not selected.",Toast.LENGTH_SHORT).show();
+            Toast.makeText(this,"Image is not selected.",Toast.LENGTH_SHORT).show();
         }
 
 
     }
 
-    private void userInfoDisplay(final CircleImageView profileImageView, EditText nameEdit, EditText phoneEdit, EditText emailEdit) {
-
-        DatabaseReference UsersRef = FirebaseDatabase.getInstance().getReference().child("Users").child(Prevalent.currentOnlineUser.getPhone());
-        UsersRef.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                if (snapshot.exists())
-                {
-                    if (snapshot.child("image").exists())
-                    {
-                        String image = snapshot.child("image").getValue().toString();
-                        String name = snapshot.child("Name").getValue().toString();
-                        String email = snapshot.child("Email").getValue().toString();
-                        String phone = snapshot.child("Password").getValue().toString();
-
-                        Picasso.get().load(image).into(profileImageView);
-                        NameEdit.setText(name);
-                        EmailEdit.setText(email);
-                        PhoneEdit.setText(phone);
-                    }
-                }
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
-        });
 
 
-    }
+//    private void userInfoDisplay(final CircleImageView profileImageView, EditText nameEdit, EditText phoneEdit, EditText emailEdit) {
+//
+//        DatabaseReference UsersRef = FirebaseDatabase.getInstance().getReference().child("Users").child(Prevalent.currentOnlineUser.getPhone());
+//        UsersRef.addValueEventListener(new ValueEventListener() {
+//            @Override
+//            public void onDataChange(@NonNull DataSnapshot snapshot) {
+//                if (snapshot.exists())
+//                {
+//                    if (snapshot.child("image").exists())
+//                    {
+//                        String image = snapshot.child("image").getValue().toString();
+//                        String name = snapshot.child("Name").getValue().toString();
+//                        String email = snapshot.child("Email").getValue().toString();
+//                        String phone = snapshot.child("Password").getValue().toString();
+//
+//                        Picasso.get().load(image).into(profileImageView);
+//                        NameEdit.setText(name);
+//                        EmailEdit.setText(email);
+//                        PhoneEdit.setText(phone);
+//                    }
+//                }
+//            }
+//
+//            @Override
+//            public void onCancelled(@NonNull DatabaseError error) {
+//
+//            }
+//        });
+//
+//
+//    }
+
+
 }
 
