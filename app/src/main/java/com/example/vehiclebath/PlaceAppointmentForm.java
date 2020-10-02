@@ -4,12 +4,15 @@ import androidx.annotation.RequiresApi;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.app.DatePickerDialog;
+import android.app.ProgressDialog;
 import android.app.TimePickerDialog;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.text.InputType;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -21,28 +24,48 @@ import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.android.material.snackbar.Snackbar;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.HashMap;
 
 public class PlaceAppointmentForm extends AppCompatActivity {
-
     //Date Picker
-    DatePickerDialog picker;
-    EditText dateText;
-    TextView dateView;
-
+    private DatePickerDialog picker;
+    private EditText dateText;
     //Time Picker
-    TimePickerDialog Tpicker;
-    EditText TimeText;
+    private TimePickerDialog Tpicker;
+    private EditText TimeText;
+    //spinner
+    private Spinner spinner;
+    private Button btn_addTypeDB;
+    private ProgressDialog loadingBar;
 
+    private EditText carWashtypeName;
+    private String carWashTypeVal;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_place_appointment_form);
 
-        //Spinner
-        Spinner spinner = findViewById(R.id.spin_type);
+        loadingBar = new ProgressDialog(this);
+
+        carWashTypeVal = getIntent().getStringExtra("Type");
+
+        carWashtypeName = findViewById(R.id.typeSpinner);
+        carWashtypeName.setText(carWashTypeVal);
+
+        //Spinner Type
+        spinner = findViewById(R.id.spin_type);
         ArrayList<String> arrayList = new ArrayList<>();
         arrayList.add("CAR");
         arrayList.add("VAN");
@@ -61,7 +84,7 @@ public class PlaceAppointmentForm extends AppCompatActivity {
             }
         });
 
-        //dateView=(TextView)findViewById(R.id.textView7);
+
         dateText=findViewById(R.id.editTextDate);
         dateText.setInputType(InputType.TYPE_NULL);
         dateText.setOnClickListener(new View.OnClickListener() {
@@ -84,7 +107,7 @@ public class PlaceAppointmentForm extends AppCompatActivity {
         });
 
 
-
+        //Time Picker
         TimeText = findViewById(R.id.editTextTime);
         TimeText.setInputType(InputType.TYPE_NULL);
         TimeText.setOnClickListener(new View.OnClickListener() {
@@ -113,9 +136,95 @@ public class PlaceAppointmentForm extends AppCompatActivity {
             }
 
             private void startSelectCarWash(){
-                Intent intent = new Intent(PlaceAppointmentForm.this, AppointmentSummary.class);
+                Intent intent = new Intent(PlaceAppointmentForm.this, adminAddCarwashType.class);
                 startActivity(intent);
             }
         });
+
+        btn_addTypeDB = findViewById(R.id.btnSearchCarwash);
+
+        btn_addTypeDB.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                createAppointment();
+            }
+
+            private void createAppointment() {
+                String vehicleType = spinner.getSelectedItem().toString();
+                String date = dateText.getText().toString();
+                String time = TimeText.getText().toString();
+
+                if(TextUtils.isEmpty(vehicleType)){
+                    Snackbar.make(getWindow().getDecorView().getRootView(), "Please select Vehicle Type", Snackbar.LENGTH_LONG).setAction("Action",null).show();
+                }
+
+                else if(TextUtils.isEmpty(date)){
+                    Snackbar.make(getWindow().getDecorView().getRootView(), "Please select Vehicle Type", Snackbar.LENGTH_LONG).setAction("Action",null).show();
+                }
+
+                else if(TextUtils.isEmpty(time)){
+                    Snackbar.make(getWindow().getDecorView().getRootView(), "Please select Vehicle Type", Snackbar.LENGTH_LONG).setAction("Action",null).show();
+                }
+
+                else{
+                    loadingBar.setTitle("Create Appointment");
+                    loadingBar.setMessage("Creating Appointment");
+                    loadingBar.setCanceledOnTouchOutside(false);
+                    loadingBar.show();
+
+                    validateAppointment(date, time, vehicleType);
+
+                }
+
+            }
+
+            private void validateAppointment(final String date, final String time, final String vehicleType) {
+                final DatabaseReference ref;
+                ref = FirebaseDatabase.getInstance().getReference();
+                final String key = "A"+time+"_"+date.replace("/","");
+
+                ref.addListenerForSingleValueEvent(new ValueEventListener() {
+                    @SuppressLint("ShowToast")
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                        if(!(dataSnapshot.child("Appointments").child(key).exists())){
+                            HashMap<String, Object> appdata = new HashMap<>();
+                            appdata.put("Date",date);
+                            appdata.put("Time",time);
+                            appdata.put("VehicleType",vehicleType);
+
+                            ref.child("Appointments").child(key).updateChildren(appdata).addOnCompleteListener(new OnCompleteListener<Void>() {
+                                @Override
+                                public void onComplete(@NonNull Task<Void> task) {
+                                    if(task.isSuccessful()){
+                                        Toast.makeText(PlaceAppointmentForm.this, "Appointment Placed Successfully", Toast.LENGTH_LONG).show();
+
+                                    }
+                                    else{
+                                        Toast.makeText(PlaceAppointmentForm.this, "Error", Toast.LENGTH_LONG).show();
+                                    }
+                                    loadingBar.dismiss();
+                                }
+                            });
+
+
+
+                        }
+                        else{
+                            Toast.makeText(PlaceAppointmentForm.this, "We already have an Appointment on that time", Toast.LENGTH_LONG).show();
+                            Toast.makeText(PlaceAppointmentForm.this, "Please select another time", Toast.LENGTH_LONG).show();
+                            loadingBar.dismiss();
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                    }
+                });
+            }
+        });
+
+
     }
 }
