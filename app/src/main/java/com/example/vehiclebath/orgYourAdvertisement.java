@@ -60,6 +60,8 @@ public class orgYourAdvertisement extends AppCompatActivity {
                 advertisementViewHolder.adName.setText(advertisement.getName());
                 advertisementViewHolder.adDesc.setText(advertisement.getDescription());
                 Picasso.get().load(advertisement.getImageUrl()).into(advertisementViewHolder.imageViewAd);
+
+
             }
 
             @NonNull

@@ -19,6 +19,7 @@ import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,8 +27,11 @@ import java.util.List;
 public class SelectCarWash extends AppCompatActivity {
 
     private DatabaseReference reference;
+
+    //new Method
     private RecyclerView product_recycler;
-    RecyclerView.LayoutManager layoutManager;
+    private ImageAdapter imageAdapter;
+    private List<CarWashType> carWashTypes;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,8 +41,9 @@ public class SelectCarWash extends AppCompatActivity {
         reference = FirebaseDatabase.getInstance().getReference().child("CarWashType");
         product_recycler = findViewById(R.id.product_recycler);
         product_recycler.setHasFixedSize(true);
-        layoutManager = new LinearLayoutManager(this);
-        product_recycler.setLayoutManager(layoutManager);
+        product_recycler.setLayoutManager(new LinearLayoutManager(this));
+
+
     }
 
     @Override
@@ -51,21 +56,12 @@ public class SelectCarWash extends AppCompatActivity {
         FirebaseRecyclerAdapter<CarWashType, ProductViewHolder> adapter=
                 new FirebaseRecyclerAdapter<CarWashType, ProductViewHolder>(options) {
                     @Override
-                    protected void onBindViewHolder(@NonNull ProductViewHolder holder, int position, @NonNull final CarWashType model) {
+                    protected void onBindViewHolder(@NonNull ProductViewHolder holder, int position, @NonNull CarWashType model) {
 
                         holder.typeName.setText(model.getTypeName());
                         holder.typeDescription.setText(model.getTypeDescription());
                         holder.typePrice.setText(model.getTypePrice());
-//                Picasso.get().load(model.getImage).into(holder.productImage);
-
-                        holder.productView.setOnClickListener(new View.OnClickListener() {
-                            @Override
-                            public void onClick(View view) {
-                                Intent intent = new Intent(SelectCarWash.this,viewCarWash.class);
-                                intent.putExtra("TypeName",model.getTypeName());
-                                startActivity(intent);
-                            }
-                        });
+                        Picasso.get().load(model.getImgUrl()).into(holder.productImage);
 
                     }
 
@@ -81,5 +77,4 @@ public class SelectCarWash extends AppCompatActivity {
         product_recycler.setAdapter(adapter);
         adapter.startListening();
     }
-
 }
