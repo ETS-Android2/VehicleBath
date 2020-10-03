@@ -31,9 +31,9 @@ public class AppointmentSummary extends AppCompatActivity {
         showWashType = findViewById(R.id.showWashType);
 
 
-        Showtime.setText("Time : " +time);
-        showDate.setText("Date : "+date);
-        showWashType.setText("Type : "+washType);
+        Showtime.setText("Time : " + time);
+        showDate.setText("Date : "+ date);
+        showWashType.setText("Type : " + washType);
 
         FloatingActionButton btnHome = (FloatingActionButton) findViewById(R.id.btnHome);
 
