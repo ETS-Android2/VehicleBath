@@ -12,6 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.example.vehiclebath.CarWashTypeHolder.ProductViewHolder;
@@ -32,6 +33,8 @@ public class SelectCarWash extends AppCompatActivity {
     private RecyclerView product_recycler;
     private ImageAdapter imageAdapter;
     private List<CarWashType> carWashTypes;
+    private String passTypeName ;
+    private ProgressBar progressBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,6 +45,7 @@ public class SelectCarWash extends AppCompatActivity {
         product_recycler = findViewById(R.id.product_recycler);
         product_recycler.setHasFixedSize(true);
         product_recycler.setLayoutManager(new LinearLayoutManager(this));
+        progressBar = findViewById(R.id.progress_Bar);
 
 
     }
@@ -56,12 +60,25 @@ public class SelectCarWash extends AppCompatActivity {
         FirebaseRecyclerAdapter<CarWashType, ProductViewHolder> adapter=
                 new FirebaseRecyclerAdapter<CarWashType, ProductViewHolder>(options) {
                     @Override
-                    protected void onBindViewHolder(@NonNull ProductViewHolder holder, int position, @NonNull CarWashType model) {
+                    protected void onBindViewHolder(@NonNull ProductViewHolder holder, int position, @NonNull final CarWashType model) {
 
                         holder.typeName.setText(model.getTypeName());
                         holder.typeDescription.setText(model.getTypeDescription());
                         holder.typePrice.setText(model.getTypePrice());
                         Picasso.get().load(model.getImgUrl()).into(holder.productImage);
+
+//                        passTypeName = model.getTypeName();
+
+                        holder.itemView.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                Intent intent = new Intent(SelectCarWash.this, viewCarWash.class);
+                                intent.putExtra("TypeName", model.getTypeName());
+                                startActivity(intent);
+                            }
+                        });
+
+                        progressBar.setVisibility(View.INVISIBLE);
 
                     }
 

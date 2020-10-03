@@ -127,32 +127,20 @@ public class PlaceAppointmentForm extends AppCompatActivity {
             }
         });
 
-        Button btnSearch = findViewById(R.id.btnSearchCarwash);
-
-        btnSearch.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startSelectCarWash();
-            }
-
-            private void startSelectCarWash(){
-                Intent intent = new Intent(PlaceAppointmentForm.this, adminAddCarwashType.class);
-                startActivity(intent);
-            }
-        });
-
         btn_addTypeDB = findViewById(R.id.btnSearchCarwash);
 
         btn_addTypeDB.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 createAppointment();
+
             }
 
             private void createAppointment() {
                 String vehicleType = spinner.getSelectedItem().toString();
                 String date = dateText.getText().toString();
                 String time = TimeText.getText().toString();
+
 
                 if(TextUtils.isEmpty(vehicleType)){
                     Snackbar.make(getWindow().getDecorView().getRootView(), "Please select Vehicle Type", Snackbar.LENGTH_LONG).setAction("Action",null).show();
@@ -191,7 +179,7 @@ public class PlaceAppointmentForm extends AppCompatActivity {
                             HashMap<String, Object> appdata = new HashMap<>();
                             appdata.put("Date",date);
                             appdata.put("Time",time);
-                            appdata.put("VehicleType",vehicleType);
+                            appdata.put("CarWashType", carWashTypeVal);
 
                             ref.child("Appointments").child(key).updateChildren(appdata).addOnCompleteListener(new OnCompleteListener<Void>() {
                                 @Override
@@ -204,6 +192,14 @@ public class PlaceAppointmentForm extends AppCompatActivity {
                                         Toast.makeText(PlaceAppointmentForm.this, "Error", Toast.LENGTH_LONG).show();
                                     }
                                     loadingBar.dismiss();
+
+                                    Intent intent =  new Intent(PlaceAppointmentForm.this, AppointmentSummary.class);
+                                    intent.putExtra("washType",carWashTypeVal);
+                                    intent.putExtra("date",date);
+                                    intent.putExtra("time",time);
+                                    intent.putExtra("vehicleType",vehicleType);
+
+                                    startActivity(intent);
                                 }
                             });
 
@@ -223,6 +219,9 @@ public class PlaceAppointmentForm extends AppCompatActivity {
                     }
                 });
             }
+
+
+
         });
 
 

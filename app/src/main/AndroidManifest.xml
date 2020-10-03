@@ -28,10 +28,7 @@
         <activity android:name=".OrgProfile" />
         <activity android:name=".OrgLocationUpdate" />
         <activity android:name=".OrgLocationInsert" />
-        <activity android:name=".OrgHomePage" ><intent-filter>
-            <action android:name="android.intent.action.MAIN" />
-            <category android:name="android.intent.category.LAUNCHER" />
-        </intent-filter></activity>
+        <activity android:name=".OrgHomePage" ></activity>
         <activity android:name=".LoginNew" />
         <activity android:name=".ConfirmOrgRegistration" />
         <activity android:name=".ChangeOrgPwd" />
@@ -49,10 +46,13 @@
         <activity android:name=".customer_blacklist" />
         <activity android:name=".MainActivity" />
         <activity android:name=".PlaceAppointmentForm"/>
-        <activity android:name=".SelectCarWash"/>
+        <activity android:name=".SelectCarWash"><intent-filter>
+            <action android:name="android.intent.action.MAIN" />
+            <category android:name="android.intent.category.LAUNCHER" />
+        </intent-filter></activity>
 
         <activity android:name=".ChangeUserPwd" />
-        <activity android:name=".viewCarWash" />
+        <activity android:name=".viewCarWash"></activity>
         <activity android:name=".AppointmentSummary" />
         <activity android:name=".orgYourAdvertisement"/>
         <activity android:name=".orgDeleteAdvertisement"/>
