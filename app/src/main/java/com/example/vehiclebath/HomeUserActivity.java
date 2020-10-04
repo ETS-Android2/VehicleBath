@@ -9,24 +9,37 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.vehiclebath.Prevalent1.Prevalent;
+import com.example.vehiclebath.View_Holder1.Advertisement_View_Holder1;
+import com.example.vehiclebath.model1.Advertisements1;
+import com.firebase.ui.database.FirebaseRecyclerAdapter;
+import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.android.material.navigation.NavigationView;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.squareup.picasso.Picasso;
 
 import io.paperdb.Paper;
 
 public class HomeUserActivity extends AppCompatActivity {
 
+    private Intent intent = getIntent();
     private NavigationView navigationView;
     private DrawerLayout drawerLayout;
     private ActionBarDrawerToggle actionBarDrawerToggle;
+    private RecyclerView userViewRecycler;
+    private DatabaseReference databaseReference;
     private RecyclerView postList;
     private Toolbar mToolbar;
     private TextView navProfileName;
+    RecyclerView.LayoutManager layoutManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,6 +59,8 @@ public class HomeUserActivity extends AppCompatActivity {
         mToolbar = (Toolbar) findViewById(R.id.main_page_toolbar);
         setSupportActionBar(mToolbar);
         getSupportActionBar().setTitle("Home");
+
+        databaseReference = FirebaseDatabase.getInstance().getReference().child("Advertisement");
 
         drawerLayout = (DrawerLayout) findViewById(R.id.drawable_layout);
         actionBarDrawerToggle = new ActionBarDrawerToggle(HomeUserActivity.this, drawerLayout, R.string.drawer_open, R.string.drawer_close);
@@ -74,6 +89,32 @@ public class HomeUserActivity extends AppCompatActivity {
     }
 
     @Override
+    protected void onStart() {
+        super.onStart();
+
+        FirebaseRecyclerOptions<Advertisements1> options = new FirebaseRecyclerOptions.Builder<Advertisements1>()
+                .setQuery(databaseReference,Advertisements1.class).build();
+
+        FirebaseRecyclerAdapter<Advertisements1, Advertisement_View_Holder1> adapter = new FirebaseRecyclerAdapter   <Advertisements1, Advertisement_View_Holder1>(options) {
+            @Override
+            protected void onBindViewHolder(@NonNull Advertisement_View_Holder1 advertisementViewHolder, int i, @NonNull Advertisements1 advertisement) {
+                advertisementViewHolder.useradDesc.setText(advertisement.getAddDescription());
+                Picasso.get().load(advertisement.getImageURL()).into(advertisementViewHolder.userimageViewAd);
+            }
+
+            @NonNull
+            @Override
+            public Advertisement_View_Holder1 onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+                View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.user_advertisement,parent,false);
+                Advertisement_View_Holder1 holder = new Advertisement_View_Holder1(view);
+                return holder;
+            }
+        };
+        userViewRecycler.setAdapter(adapter);
+        adapter.startListening();
+    }
+
+    @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         if (actionBarDrawerToggle.onOptionsItemSelected(item))
         {
@@ -93,10 +134,12 @@ public class HomeUserActivity extends AppCompatActivity {
                 break;
 
             case R.id.nav_view:
+
                 Toast.makeText(this,"View Your Bookings", Toast.LENGTH_SHORT).show();
                 break;
 
             case R.id.nav_home:
+                homeActivity();
                 Toast.makeText(this,"Home", Toast.LENGTH_SHORT).show();
                 break;
 
@@ -135,7 +178,18 @@ public class HomeUserActivity extends AppCompatActivity {
         Intent settingsIntent = new Intent(HomeUserActivity.this, ViewUserLoyalty.class);
         startActivity(settingsIntent);
     }
-
-
+    private void homeActivity()
+    {
+        Paper.book().destroy();
+        Intent settingsIntent = new Intent(HomeUserActivity.this, HomeUserActivity.class);
+        startActivity(settingsIntent);
     }
+//    private void viewActivity()
+//    {
+//        Paper.book().destroy();
+//        Intent settingsIntent = new Intent(HomeUserActivity.this, HomeUserActivity.class);
+//        startActivity(settingsIntent);
+//    }
+
+}
 
