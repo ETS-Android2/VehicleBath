@@ -31,7 +31,7 @@ public class LoginNew extends AppCompatActivity {
     private EditText inputnumber,inputpassword;
     private  Button loginButton;
     private ProgressDialog loadingBar;
-    private TextView AdminLink, NotAdminLink;
+    private TextView AdminLink, NotAdminLink, ForgetPasswordLink;
 
     private String parentDBName = "Users";
     private CheckBox chkBoxRememberMe;
@@ -46,6 +46,7 @@ public class LoginNew extends AppCompatActivity {
         inputpassword = (EditText) findViewById(R.id.enter_log_pwd);
         AdminLink = (TextView) findViewById(R.id.am_admin);
         NotAdminLink = (TextView) findViewById(R.id.not_admin);
+        ForgetPasswordLink = (TextView) findViewById(R.id.for_pwd);
         loadingBar = new ProgressDialog(this);
 
         chkBoxRememberMe = (CheckBox) findViewById(R.id.remember_me_chk);
@@ -73,6 +74,13 @@ public class LoginNew extends AppCompatActivity {
                 AdminLink.setVisibility(View.VISIBLE);
                 NotAdminLink.setVisibility(View.INVISIBLE);
                 parentDBName = "Users";
+            }
+        });
+
+        ForgetPasswordLink.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(LoginNew.this, VerifyUserPwd.class));
             }
         });
     }
@@ -132,7 +140,7 @@ public class LoginNew extends AppCompatActivity {
                                 Toast.makeText(LoginNew.this,"Your are logged in!!", Toast.LENGTH_SHORT).show();
                                 loadingBar.dismiss();
 
-                                Intent intent = new Intent(LoginNew.this,UserHomePge.class);
+                                Intent intent = new Intent(LoginNew.this,HomeUserActivity.class);
                                 Prevalent.currentOnlineUser = usersData;
                                 startActivity(intent);
 

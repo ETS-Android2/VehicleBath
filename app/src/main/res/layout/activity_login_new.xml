@@ -8,16 +8,13 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/container"
-        android:layout_width="411dp"
-        android:layout_height="603dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:background="@drawable/aaa"
         android:paddingLeft="16dp"
         android:paddingTop="16dp"
         android:paddingRight="16dp"
         android:paddingBottom="16dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
         tools:context=".ui.login.LoginActivity">
 
 
@@ -57,10 +54,10 @@
 
         <TextView
             android:id="@+id/textView8"
-            android:layout_width="111dp"
-            android:layout_height="51dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_marginStart="142dp"
-            android:layout_marginTop="52dp"
+            android:layout_marginTop="56dp"
             android:layout_marginEnd="142dp"
             android:fontFamily="@font/trykker"
             android:text="@string/loginH"
@@ -68,6 +65,7 @@
             android:textColorLink="#FFFFFF"
             android:textSize="36sp"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.031"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -81,11 +79,11 @@
             android:background="@drawable/shapeq"
             android:backgroundTint="#FFFFFF"
             android:ems="10"
-            android:hint="  Enter The Password"
+            android:hint=" Password"
             android:inputType="textPassword"
             android:textColor="#225EBB"
             android:textColorHighlight="#FFFFFF"
-            android:textColorHint="#225EBB"
+            android:textColorHint="#FFC0C7D3"
             android:textColorLink="#FFFFFF"
             android:textSize="24sp"
             android:textStyle="bold"
@@ -95,17 +93,31 @@
 
         <TextView
             android:id="@+id/for_pwd"
-            android:layout_width="142dp"
-            android:layout_height="33dp"
-            android:layout_marginTop="27dp"
-            android:layout_marginEnd="17dp"
-            android:layout_marginBottom="38dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="40dp"
+            android:layout_marginEnd="36dp"
             android:text="Forgot Password?"
             android:textColor="#FFFFFF"
-            android:textSize="16sp"
+            android:textSize="15sp"
             android:textStyle="bold"
-            app:layout_constraintBottom_toTopOf="@+id/btnlogin"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/enter_log_pwd" />
+
+        <CheckBox
+            android:id="@+id/remember_me_chk"
+            style="@style/Material.Drawable.CheckBox"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="28dp"
+            android:layout_marginTop="28dp"
+            android:gravity="center_vertical"
+            android:text="Remember me"
+            android:textColor="#FFFFFF"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            app:cbd_strokeColor="@color/colorPrimaryDark"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/enter_log_pwd" />
 
         <EditText
@@ -118,11 +130,11 @@
             android:background="@drawable/shapeq"
             android:backgroundTint="#FFFFFF"
             android:ems="10"
-            android:hint="  Enter The Phone Number"
+            android:hint=" Username"
             android:inputType="number"
             android:textColor="#225EBB"
             android:textColorHighlight="#FFFFFF"
-            android:textColorHint="#225EBB"
+            android:textColorHint="#C0C7D3"
             android:textColorLink="#FFFFFF"
             android:textSize="24sp"
             android:textStyle="bold"
@@ -130,47 +142,32 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView8" />
 
-        <CheckBox
-            android:id="@+id/remember_me_chk"
-            style="@style/Material.Drawable.CheckBox"
-            android:layout_width="142dp"
-            android:layout_height="45dp"
-            android:layout_marginStart="40dp"
-            android:layout_marginBottom="38dp"
-            android:gravity="center_vertical"
-            android:text="Remember me"
-            android:textColor="#FFFFFF"
-            android:textSize="16sp"
-            android:textStyle="bold"
-            app:cbd_strokeColor="@color/colorPrimaryDark"
-            app:layout_constraintBottom_toTopOf="@+id/btnlogin"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/enter_log_pwd" />
-
         <TextView
             android:id="@+id/am_admin"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="37dp"
-            android:layout_marginBottom="98dp"
+            android:layout_marginStart="60dp"
+            android:layout_marginTop="29dp"
+            android:layout_marginEnd="44dp"
             android:text="I'm an Admin"
             android:textColor="#FFFFFF"
             android:textSize="18sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/not_admin"
+            app:layout_constraintTop_toBottomOf="@+id/btnlogin" />
 
         <TextView
             android:id="@+id/not_admin"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="48dp"
-            android:layout_marginBottom="98dp"
+            android:layout_marginStart="52dp"
+            android:layout_marginBottom="148dp"
             android:text="I'm not an Admin"
             android:textColor="#FFFFFF"
             android:textSize="18sp"
+            android:visibility="invisible"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            android:visibility="invisible" />
+            app:layout_constraintStart_toStartOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
