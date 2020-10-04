@@ -1,5 +1,6 @@
-package com.example.vehiclebath;
+package com.example.vehiclebath.IT19021430;
 
+import com.example.vehiclebath.AdminRating;
 import com.example.vehiclebath.Model.DecimalUtils;
 
 import org.junit.After;
