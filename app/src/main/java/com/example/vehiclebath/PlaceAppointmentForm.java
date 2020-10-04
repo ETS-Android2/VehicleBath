@@ -207,9 +207,49 @@ public class PlaceAppointmentForm extends AppCompatActivity {
 
                         }
                         else{
-                            Toast.makeText(PlaceAppointmentForm.this, "We already have an Appointment on that time", Toast.LENGTH_LONG).show();
-                            Toast.makeText(PlaceAppointmentForm.this, "Please select another time", Toast.LENGTH_LONG).show();
-                            loadingBar.dismiss();
+
+                            ref.addListenerForSingleValueEvent(new ValueEventListener() {
+                                @Override
+                                public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                    if(!(snapshot.child("ClashAppointments").child(key).exists())){
+                                        HashMap<String, Object> appdata = new HashMap<>();
+                                        appdata.put("Date",date);
+                                        appdata.put("Time",time);
+                                        appdata.put("CarWashType", carWashTypeVal);
+
+                                        ref.child("ClashAppointments").child(key).updateChildren(appdata).addOnCompleteListener(new OnCompleteListener<Void>() {
+                                            @Override
+                                            public void onComplete(@NonNull Task<Void> task) {
+                                                if(task.isSuccessful()){
+                                                    Toast.makeText(PlaceAppointmentForm.this, "We already have an Appointment on that time", Toast.LENGTH_LONG).show();
+                                                    Toast.makeText(PlaceAppointmentForm.this, "Please select another time", Toast.LENGTH_LONG).show();
+                                                }
+                                                else{
+                                                    Toast.makeText(PlaceAppointmentForm.this, "Error", Toast.LENGTH_LONG).show();
+                                                }
+                                                loadingBar.dismiss();
+
+                                                Intent intent =  new Intent(PlaceAppointmentForm.this, AppointmentSummary.class);
+                                                intent.putExtra("washType",carWashTypeVal);
+                                                intent.putExtra("date",date);
+                                                intent.putExtra("time",time);
+                                                intent.putExtra("vehicleType",vehicleType);
+
+                                                startActivity(intent);
+                                            }
+                                        });
+
+
+
+                                    }
+                                }
+
+                                @Override
+                                public void onCancelled(@NonNull DatabaseError error) {
+
+                                }
+                            });
+
                         }
                     }
 

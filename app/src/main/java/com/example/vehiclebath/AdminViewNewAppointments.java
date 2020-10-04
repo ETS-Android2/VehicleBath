@@ -27,7 +27,7 @@ public class AdminViewNewAppointments extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_admin_view_new_appointments);
 
-        reference = FirebaseDatabase.getInstance().getReference().child("Appointments");
+        reference = FirebaseDatabase.getInstance().getReference().child("ClashAppointments");
         table_recycler = findViewById(R.id.tablerowrecycler);
         table_recycler.setHasFixedSize(true);
         table_recycler.setLayoutManager(new LinearLayoutManager(this));
@@ -72,7 +72,6 @@ public class AdminViewNewAppointments extends AppCompatActivity {
                         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.admin_table_layout,parent,false);
                         AdminAppointmentTableViewHolder holder = new AdminAppointmentTableViewHolder(view);
                         return holder;
-
                     }
                 };
         table_recycler.setAdapter(adapter);

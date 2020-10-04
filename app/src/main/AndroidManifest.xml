@@ -12,7 +12,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".AdminViewNewAppointments"></activity>
+        <activity android:name=".adminViewAllAppointments"></activity>
+        <activity android:name=".AdminViewNewAppointments" />
         <activity android:name=".OrganizationReport_or_Activate_Activity" />
         <activity android:name=".CustomerReportedActivity" />
         <activity android:name=".SettingsActivity1" />
@@ -42,7 +43,7 @@
         <activity android:name=".Rating_organization" />
         <activity android:name=".customer_notifications" />
         <activity android:name=".report_customer_message" />
-        <activity android:name=".admin_main"></activity>
+        <activity android:name=".admin_main" />
         <activity android:name=".customer_blacklist" />
         <activity android:name=".MainActivity" />
         <activity android:name=".PlaceAppointmentForm" />
