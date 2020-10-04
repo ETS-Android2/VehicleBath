@@ -2,6 +2,7 @@ package com.example.vehiclebath;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
@@ -11,6 +12,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -27,7 +29,10 @@ public class RegisterUser extends AppCompatActivity {
 
     private Button createAccount1;
     private EditText inputname,  inputemail, inputnumber , inputpassword;
+    private TextView link1;
     private ProgressDialog loadingBar;
+    private Toolbar mToolbar;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,17 +41,33 @@ public class RegisterUser extends AppCompatActivity {
 
 
 
+        mToolbar = (Toolbar) findViewById(R.id.register_user_toolbar);
+        setSupportActionBar(mToolbar);
+
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+        getSupportActionBar().setTitle("Register A New User");
+
         createAccount1 = (Button) findViewById(R.id.btn_create_UA);
         inputname = (EditText) findViewById(R.id.uoname);
         inputemail = (EditText) findViewById(R.id.uoemail);
         inputnumber = (EditText) findViewById(R.id.uonumber);
         inputpassword = (EditText) findViewById(R.id.uopwd);
         loadingBar = new ProgressDialog(this);
+        link1 = (TextView) findViewById(R.id.rlink);
 
         createAccount1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 CreateAccount();
+            }
+        });
+
+        link1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(RegisterUser.this,LoginNew.class);
+                startActivity(intent);
             }
         });
 
