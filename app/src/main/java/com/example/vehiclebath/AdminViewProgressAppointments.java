@@ -107,12 +107,12 @@ public class AdminViewProgressAppointments extends AppCompatActivity {
                     appdata.put("Time",time);
                     appdata.put("CarWashType", washType);
 
-                    ref.child("Appointments").child(key).updateChildren(appdata).addOnCompleteListener(new OnCompleteListener<Void>() {
+                    ref.child("FinishedAppointments").child(key).updateChildren(appdata).addOnCompleteListener(new OnCompleteListener<Void>() {
                         @Override
                         public void onComplete(@NonNull Task<Void> task) {
                             if(task.isSuccessful()){
                                 Toast.makeText(AdminViewProgressAppointments.this, "Appointment Placed Successfully", Toast.LENGTH_LONG).show();
-
+                                ref.child("ProgressAppointments").child(key).removeValue();
                             }
                             else{
                                 Toast.makeText(AdminViewProgressAppointments.this, "Error", Toast.LENGTH_LONG).show();
