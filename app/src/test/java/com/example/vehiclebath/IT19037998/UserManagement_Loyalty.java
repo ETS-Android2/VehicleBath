@@ -1,4 +1,57 @@
 package com.example.vehiclebath.IT19037998;
 
+import com.example.vehiclebath.ViewUserLoyalty;
+
+import org.junit.After;
+import org.junit.AfterClass;
+import org.junit.Before;
+import org.junit.BeforeClass;
+import org.junit.Test;
+
+import static org.junit.Assert.assertEquals;
+
 public class UserManagement_Loyalty {
+
+    /******************************IT19037998***********************/
+
+    private static ViewUserLoyalty viewUserLoyalty;
+    public static float result;
+
+
+
+//    @BeforeClass
+//    public static void createUserLoyalty() {
+//        viewUserLoyalty = new ViewUserLoyalty();
+//    }
+//
+//    @Before
+//    public void setup(){
+//        result =  viewUserLoyalty.calLoyaltyPoints(1500);
+//    }
+//
+//    @Test
+//    public void calLoyalty() {
+//        assertEquals(15, result, 0.001);
+//    }
+//
+//    @After
+//    public void clearResultValue() {
+//        result = 0;
+//    }
+//    @AfterClass
+//    public static void clearObject() {
+//        viewUserLoyalty = null;
+//    }
+
+    @Before
+    public void setup(){
+        viewUserLoyalty = new ViewUserLoyalty();
+    }
+    @Test
+    public void LoyaltyPointsCal() {
+        float results = viewUserLoyalty.calLoyaltyPoints(1500);
+        assertEquals(15, results, 0.001);
+
+    }
+
 }
