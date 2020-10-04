@@ -11,6 +11,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.vehiclebath.CarWashTypeHolder.AdminAppointmentTableViewHolder;
@@ -31,15 +32,41 @@ public class AdminViewNewAppointments extends AppCompatActivity {
     private RecyclerView table_recycler;
     private DatabaseReference reference;
 
+    private DatabaseReference count;
+    private int sum = 0;
+    private TextView countHeader;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_admin_view_new_appointments);
         setContentView(R.layout.activity_admin_view_new_appointments);
 
         reference = FirebaseDatabase.getInstance().getReference().child("ClashAppointments");
         table_recycler = findViewById(R.id.tablerowrecycler);
         table_recycler.setHasFixedSize(true);
         table_recycler.setLayoutManager(new LinearLayoutManager(this));
+
+        countHeader = findViewById(R.id.countHeader);
+
+        reference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+
+                if(snapshot.exists()){
+                    sum = (int) snapshot.getChildrenCount();
+                    countHeader.setText("Count : " + Integer.toString(sum));
+                }
+                else{
+                    countHeader.setText("Count : 0");
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
 
     }
 
@@ -54,7 +81,7 @@ public class AdminViewNewAppointments extends AppCompatActivity {
                 new FirebaseRecyclerAdapter<Appointments, AdminAppointmentTableViewHolder>(options) {
                     @Override
                     protected void onBindViewHolder(@NonNull AdminAppointmentTableViewHolder holder, int position, @NonNull Appointments model) {
-                        holder.CName.setText(model.getC_Name());
+                        holder.C_Name.setText(model.getC_Name());
                         holder.type.setText(model.getCarWashType());
                         final String date =  model.getDate()+ "  " + model.getTime();
                         holder.dateTime.setText(date);

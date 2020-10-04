@@ -14,15 +14,17 @@
         android:theme="@style/AppTheme">
         <activity android:name=".CusShowAllAppointments"></activity>
         <activity android:name=".AdminUpdateAppointment" />
-        <activity android:name=".AdminViewProgressAppointments" />
-        <activity android:name=".adminViewAllAppointments">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+        <activity android:name=".AdminViewProgressAppointments">
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
-        <activity android:name=".AdminViewNewAppointments" />
+        <activity android:name=".adminViewAllAppointments">
+        </activity>
+        <activity android:name=".AdminViewNewAppointments"><intent-filter>
+            <action android:name="android.intent.action.MAIN" />
+
+            <category android:name="android.intent.category.LAUNCHER" />
+        </intent-filter>
+        </activity>
         <activity android:name=".OrganizationReport_or_Activate_Activity" />
         <activity android:name=".CustomerReportedActivity" />
         <activity android:name=".SettingsActivity1" />
@@ -46,7 +48,9 @@
         <activity android:name=".RegisterOrg" />
         <activity android:name=".OrgnizationReport_or_Activity" />
         <activity android:name=".CustomerReportActivity" />
-        <activity android:name=".adminAddCarwashType" />
+        <activity android:name=".adminAddCarwashType">
+
+        </activity>
         <activity android:name=".Orgnization" />
         <activity android:name=".customers" />
         <activity android:name=".Rating_organization" />
@@ -56,7 +60,9 @@
         <activity android:name=".customer_blacklist" />
         <activity android:name=".MainActivity" />
         <activity android:name=".PlaceAppointmentForm" />
-        <activity android:name=".SelectCarWash" />
+        <activity android:name=".SelectCarWash">
+
+        </activity>
         <activity android:name=".ChangeUserPwd" />
         <activity android:name=".viewCarWash" />
         <activity android:name=".AppointmentSummary" />

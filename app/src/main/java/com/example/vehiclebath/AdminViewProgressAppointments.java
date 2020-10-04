@@ -106,7 +106,7 @@ public class AdminViewProgressAppointments extends AppCompatActivity {
                     appdata.put("Date",date);
                     appdata.put("Time",time);
                     appdata.put("CarWashType", washType);
-                    appdata.put("Customer", cName);
+                    appdata.put("C_Name", cName);
 
                     ref.child("FinishedAppointments").child(key).updateChildren(appdata).addOnCompleteListener(new OnCompleteListener<Void>() {
                         @Override

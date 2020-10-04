@@ -61,11 +61,11 @@ public class PlaceAppointmentForm extends AppCompatActivity {
 
         carWashTypeVal = getIntent().getStringExtra("Type");
 
-        carWashtypeName = findViewById(R.id.typeSpinner);
+        carWashtypeName = findViewById(R.id.fm_serviceType);
         carWashtypeName.setText(carWashTypeVal);
 
         //Spinner Type
-        spinner = findViewById(R.id.spin_type);
+        spinner = findViewById(R.id.fm_vehicleType);
         ArrayList<String> arrayList = new ArrayList<>();
         arrayList.add("CAR");
         arrayList.add("VAN");
@@ -85,7 +85,7 @@ public class PlaceAppointmentForm extends AppCompatActivity {
         });
 
 
-        dateText=findViewById(R.id.editTextDate);
+        dateText=findViewById(R.id.fm_date);
         dateText.setInputType(InputType.TYPE_NULL);
         dateText.setOnClickListener(new View.OnClickListener() {
             //@RequiresApi(api = Build.VERSION_CODES.N)
@@ -108,7 +108,7 @@ public class PlaceAppointmentForm extends AppCompatActivity {
 
 
         //Time Picker
-        TimeText = findViewById(R.id.editTextTime);
+        TimeText = findViewById(R.id.fm_Time);
         TimeText.setInputType(InputType.TYPE_NULL);
         TimeText.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -127,7 +127,7 @@ public class PlaceAppointmentForm extends AppCompatActivity {
             }
         });
 
-        btn_addTypeDB = findViewById(R.id.btnSearchCarwash);
+        btn_addTypeDB = findViewById(R.id.cusplaceApp);
 
         btn_addTypeDB.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -180,6 +180,8 @@ public class PlaceAppointmentForm extends AppCompatActivity {
                             appdata.put("Date",date);
                             appdata.put("Time",time);
                             appdata.put("CarWashType", carWashTypeVal);
+                            appdata.put("C_Name", "0773134567");
+
 
                             ref.child("ProgressAppointments").child(key).updateChildren(appdata).addOnCompleteListener(new OnCompleteListener<Void>() {
                                 @Override

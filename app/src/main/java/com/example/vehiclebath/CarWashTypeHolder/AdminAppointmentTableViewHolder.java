@@ -12,14 +12,14 @@ import com.example.vehiclebath.R;
 
 public class AdminAppointmentTableViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
 
-    public TextView CName, type, dateTime;
+    public TextView C_Name, type, dateTime;
     public ImageButton btnF;
     public ItemClickListener listner;
 
     public AdminAppointmentTableViewHolder (@NonNull View itemView){
         super(itemView);
 
-        CName = (android.widget.TextView)itemView.findViewById(R.id.col1);
+        C_Name = (android.widget.TextView)itemView.findViewById(R.id.col1);
         type = (TextView)itemView.findViewById(R.id.col2);
         dateTime = (TextView)itemView.findViewById(R.id.col3);
         btnF = (ImageButton)itemView.findViewById(R.id.btn_fail);

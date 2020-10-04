@@ -76,7 +76,7 @@ public class AdminUpdateAppointment extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
                         if(task.isSuccessful()){
-                            Toast.makeText(AdminUpdateAppointment.this, "Appointment Placed Successfully", Toast.LENGTH_LONG).show();
+                            Toast.makeText(AdminUpdateAppointment.this, "Appointment Clash Resolved Successfully", Toast.LENGTH_LONG).show();
                             ref.child("ClashAppointments").child(key).removeValue();
                         }
                         else{
