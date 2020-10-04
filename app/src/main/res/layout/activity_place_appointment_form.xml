@@ -7,7 +7,7 @@
     tools:context=".PlaceAppointmentForm">
 
     <EditText
-        android:id="@+id/typeSpinner"
+        android:id="@+id/eACusName"
         android:layout_width="180dp"
         android:layout_height="39dp"
         android:layout_marginTop="44dp"
@@ -17,7 +17,7 @@
         android:gravity="center"/>
 
     <Spinner
-        android:id="@+id/spin_type"
+        android:id="@+id/eAType"
         android:layout_width="180dp"
         android:layout_height="39dp"
         android:layout_marginTop="28dp"
@@ -27,7 +27,7 @@
         android:gravity="center"/>
 
     <EditText
-        android:id="@+id/editTextDate"
+        android:id="@+id/eADate"
         android:layout_width="180dp"
         android:layout_height="39dp"
         android:layout_marginTop="44dp"
@@ -68,7 +68,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textView" />
 
     <Button
-        android:id="@+id/btnSearchCarwash"
+        android:id="@+id/updateAppointment"
         android:layout_width="166dp"
         android:layout_height="55dp"
         android:layout_marginTop="52dp"
@@ -136,7 +136,7 @@
         android:gravity="center"/>
 
     <EditText
-        android:id="@+id/editTextTime"
+        android:id="@+id/EAtime"
         android:layout_width="180dp"
         android:layout_height="39dp"
         android:layout_marginTop="44dp"

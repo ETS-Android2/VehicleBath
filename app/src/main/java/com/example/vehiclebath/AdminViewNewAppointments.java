@@ -5,17 +5,26 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.example.vehiclebath.CarWashTypeHolder.AdminAppointmentTableViewHolder;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+import java.util.HashMap;
 
 public class AdminViewNewAppointments extends AppCompatActivity {
 
@@ -47,20 +56,30 @@ public class AdminViewNewAppointments extends AppCompatActivity {
                     protected void onBindViewHolder(@NonNull AdminAppointmentTableViewHolder holder, int position, @NonNull Appointments model) {
                         holder.CName.setText(model.getC_Name());
                         holder.type.setText(model.getCarWashType());
-                        String date =  model.getDate()+ "  " + model.getTime();
+                        final String date =  model.getDate()+ "  " + model.getTime();
                         holder.dateTime.setText(date);
 
                         String dateI =  model.getDate().replace("/","");
-                        String time = model.getTime();
+                        final String time = model.getTime();
+
+                        final String washType, cName;
+
+                        washType = model.getCarWashType();
+                        cName = model.getC_Name();
 
                         final String Aid = "A"+dateI+"_"+time;
 
                         holder.btnF.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View v) {
-                                Intent intent = new Intent(AdminViewNewAppointments.this,admin_main.class);
-                                intent.putExtra("Aid", Aid);
+                                //createProgressAppointment(cName, washType, date, time );
+                                Intent intent = new Intent(AdminViewNewAppointments.this, AdminUpdateAppointment.class );
+                                intent .putExtra("cName", cName );
+                                intent .putExtra("washType", washType );
+                                intent .putExtra("date", date );
+                                intent .putExtra("time", time );
                                 startActivity(intent);
+
                             }
                         });
                     }
@@ -77,4 +96,51 @@ public class AdminViewNewAppointments extends AppCompatActivity {
         table_recycler.setAdapter(adapter);
         adapter.startListening();
     }
+
+//    private void createProgressAppointment(final String cName, final String washType, final String date, final String time) {
+//
+//        final String key = "A"+date.replace("/","")+"_"+time ;
+//
+//        final DatabaseReference ref = FirebaseDatabase.getInstance().getReference();
+//        ref.addListenerForSingleValueEvent(new ValueEventListener() {
+//            @SuppressLint("ShowToast")
+//            @Override
+//            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+//                if(!(dataSnapshot.child("ProgressAppointments").child(key).exists())){
+//                    HashMap<String, Object> appdata = new HashMap<>();
+//                    appdata.put("Date",date);
+//                    appdata.put("Time",time);
+//                    appdata.put("CarWashType", washType);
+//                    appdata.put("Customer",cName);
+//
+//                    ref.child("ProgressAppointments").child(key).updateChildren(appdata).addOnCompleteListener(new OnCompleteListener<Void>() {
+//                        @Override
+//                        public void onComplete(@NonNull Task<Void> task) {
+//                            if(task.isSuccessful()){
+//                                Toast.makeText(AdminViewNewAppointments.this, "Appointment Placed Successfully", Toast.LENGTH_LONG).show();
+//                                ref.child("ClashAppointments").child(key).removeValue();
+//                            }
+//                            else{
+//                                Toast.makeText(AdminViewNewAppointments.this, "Error", Toast.LENGTH_LONG).show();
+//                            }
+////                            Intent intent =  new Intent(AdminViewProgressAppointments.this, Success.class);
+////                            startActivity(intent);
+//                        }
+//                    });
+//
+//                }
+//                else{
+//                    Toast.makeText(AdminViewNewAppointments.this, "Error", Toast.LENGTH_LONG).show();
+//                }
+//            }
+//
+//            @Override
+//            public void onCancelled(@NonNull DatabaseError databaseError) {
+//
+//            }
+//        });
+//
+//    }
+
+
 }

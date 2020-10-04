@@ -93,7 +93,7 @@ public class AdminViewProgressAppointments extends AppCompatActivity {
         adapter.startListening();
     }
 
-    private void createFinishedAppointment(String cName, final String washType, final String date, final String time) {
+    private void createFinishedAppointment(final String cName, final String washType, final String date, final String time) {
         final String key = "A"+date.replace("/","")+"_"+time ;
 
         final DatabaseReference ref = FirebaseDatabase.getInstance().getReference();
@@ -106,6 +106,7 @@ public class AdminViewProgressAppointments extends AppCompatActivity {
                     appdata.put("Date",date);
                     appdata.put("Time",time);
                     appdata.put("CarWashType", washType);
+                    appdata.put("Customer", cName);
 
                     ref.child("FinishedAppointments").child(key).updateChildren(appdata).addOnCompleteListener(new OnCompleteListener<Void>() {
                         @Override
@@ -117,13 +118,10 @@ public class AdminViewProgressAppointments extends AppCompatActivity {
                             else{
                                 Toast.makeText(AdminViewProgressAppointments.this, "Error", Toast.LENGTH_LONG).show();
                             }
-
 //                            Intent intent =  new Intent(AdminViewProgressAppointments.this, Success.class);
 //                            startActivity(intent);
                         }
                     });
-
-
 
                 }
                 else{
@@ -133,7 +131,6 @@ public class AdminViewProgressAppointments extends AppCompatActivity {
 
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
-
             }
         });
 
