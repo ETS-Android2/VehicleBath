@@ -175,13 +175,13 @@ public class PlaceAppointmentForm extends AppCompatActivity {
                     @SuppressLint("ShowToast")
                     @Override
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                        if(!(dataSnapshot.child("Appointments").child(key).exists())){
+                        if(!(dataSnapshot.child("ProgressAppointments").child(key).exists())){
                             HashMap<String, Object> appdata = new HashMap<>();
                             appdata.put("Date",date);
                             appdata.put("Time",time);
                             appdata.put("CarWashType", carWashTypeVal);
 
-                            ref.child("Appointments").child(key).updateChildren(appdata).addOnCompleteListener(new OnCompleteListener<Void>() {
+                            ref.child("ProgressAppointments").child(key).updateChildren(appdata).addOnCompleteListener(new OnCompleteListener<Void>() {
                                 @Override
                                 public void onComplete(@NonNull Task<Void> task) {
                                     if(task.isSuccessful()){
