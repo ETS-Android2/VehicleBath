@@ -51,6 +51,7 @@
         <activity android:name=".ChangeUserPwd" />
         <activity android:name=".viewCarWash" />
         <activity android:name=".AppointmentSummary" />
+<<<<<<< HEAD
         <activity android:name=".orgYourAdvertisement"/>
         <activity android:name=".orgDeleteAdvertisement"/>
         <activity android:name=".orgAddAdvertisement"/>
@@ -67,6 +68,20 @@
         <activity android:name=".ChangeUserPwd" />
         <activity android:name=".viewCarWash"/>
         <activity android:name=".AppointmentSummary"/>
+=======
+
+        <activity android:name=".orgYourAdvertisement" android:parentActivityName=".admin_main"/>
+        <activity android:name=".orgAddAdvertisement" android:parentActivityName=".orgYourAdvertisement"/>
+        <activity android:name=".addSubscrip" android:parentActivityName=".adminSubscripDetail"/>
+        <activity android:name=".addSubscripUser" android:parentActivityName=".admin_main"/>
+        <activity android:name=".adminSubscripDetail" android:parentActivityName=".admin_main">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+>>>>>>> origin/master
     </application>
 
 </manifest>
