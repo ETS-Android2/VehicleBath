@@ -27,7 +27,9 @@
         </activity>
         <activity android:name=".OrganizationReport_or_Activate_Activity" />
         <activity android:name=".CustomerReportedActivity" />
-        <activity android:name=".SettingsActivity1" />
+        <activity android:name=".SettingsActivity1" >
+
+        </activity>
         <activity android:name=".MainActivityJoe" />
         <activity android:name=".ViewUserLoyalty" />
         <activity android:name=".VerifyUserPwd" />
@@ -37,10 +39,20 @@
         <activity android:name=".UpdateUser" />
         <activity android:name=".UpdateOrg" />
         <activity android:name=".SelectType" />
-        <activity android:name=".RegisterUser" />
+        <activity android:name=".RegisterUser"
+            android:parentActivityName=".LoginNew">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity android:name=".OrgProfile" />
         <activity android:name=".OrgLocationUpdate" />
         <activity android:name=".OrgLocationInsert" />
+        <activity android:name=".OrgHomePage">
+
+        </activity>
         <activity android:name=".OrgHomePage" />
         <activity android:name=".LoginNew" />
         <activity android:name=".ConfirmOrgRegistration" />
@@ -57,12 +69,15 @@
         <activity android:name=".customer_notifications" />
         <activity android:name=".report_customer_message" />
         <activity android:name=".admin_main" />
+        <activity android:name=".admin_main"></activity>
         <activity android:name=".customer_blacklist" />
         <activity android:name=".MainActivity" />
         <activity android:name=".PlaceAppointmentForm" />
         <activity android:name=".SelectCarWash">
 
         </activity>
+        <activity android:name=".PlaceAppointmentForm" />
+        <activity android:name=".SelectCarWash" />
         <activity android:name=".ChangeUserPwd" />
         <activity android:name=".viewCarWash" />
         <activity android:name=".AppointmentSummary" />
