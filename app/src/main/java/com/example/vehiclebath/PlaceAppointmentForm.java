@@ -169,7 +169,7 @@ public class PlaceAppointmentForm extends AppCompatActivity {
             private void validateAppointment(final String date, final String time, final String vehicleType) {
                 final DatabaseReference ref;
                 ref = FirebaseDatabase.getInstance().getReference();
-                final String key = "A"+time+"_"+date.replace("/","");
+                final String key = "A"+date.replace("/","")+"_"+time ;
 
                 ref.addListenerForSingleValueEvent(new ValueEventListener() {
                     @SuppressLint("ShowToast")
