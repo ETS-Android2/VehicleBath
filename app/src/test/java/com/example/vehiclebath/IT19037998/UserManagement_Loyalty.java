@@ -19,39 +19,30 @@ public class UserManagement_Loyalty {
 
 
 
-//    @BeforeClass
-//    public static void createUserLoyalty() {
-//        viewUserLoyalty = new ViewUserLoyalty();
-//    }
-//
-//    @Before
-//    public void setup(){
-//        result =  viewUserLoyalty.calLoyaltyPoints(1500);
-//    }
-//
-//    @Test
-//    public void calLoyalty() {
-//        assertEquals(15, result, 0.001);
-//    }
-//
-//    @After
-//    public void clearResultValue() {
-//        result = 0;
-//    }
-//    @AfterClass
-//    public static void clearObject() {
-//        viewUserLoyalty = null;
-//    }
+    @BeforeClass
+    public static void createUserLoyalty() {
+        viewUserLoyalty = new ViewUserLoyalty();
+    }
 
     @Before
     public void setup(){
-        viewUserLoyalty = new ViewUserLoyalty();
+        result =  viewUserLoyalty.calLoyaltyPoints(1500);
     }
-    @Test
-    public void LoyaltyPointsCal() {
-        float results = viewUserLoyalty.calLoyaltyPoints(1500);
-        assertEquals(15, results, 0.001);
 
+    @Test
+    public void calLoyalty() {
+        assertEquals(15, result, 0.001);
     }
+
+    @After
+    public void clearResultValue() {
+        result = 0;
+    }
+    @AfterClass
+    public static void clearObject() {
+        viewUserLoyalty = null;
+    }
+
+
 
 }
