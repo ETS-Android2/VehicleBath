@@ -21,7 +21,8 @@
 
         </activity>
         <activity android:name=".MainActivityJoe" />
-        <activity android:name=".ViewUserLoyalty" />
+        <activity android:name=".ViewUserLoyalty"
+            android:parentActivityName=".HomeUserActivity"/>
         <activity android:name=".VerifyUserPwd" />
         <activity android:name=".VerifyOrgPwd" />
         <activity android:name=".UserProfile" />
@@ -31,11 +32,7 @@
         <activity android:name=".SelectType" />
         <activity android:name=".RegisterUser"
             android:parentActivityName=".LoginNew">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity android:name=".OrgProfile" />
         <activity android:name=".OrgLocationUpdate" />
@@ -43,7 +40,13 @@
         <activity android:name=".OrgHomePage">
 
         </activity>
-        <activity android:name=".LoginNew" />
+        <activity android:name=".LoginNew" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity android:name=".ConfirmOrgRegistration" />
         <activity android:name=".ChangeOrgPwd" />
         <activity android:name=".RegisterOrg" />
