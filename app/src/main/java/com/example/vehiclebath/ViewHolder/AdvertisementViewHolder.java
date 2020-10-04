@@ -1,6 +1,7 @@
 package com.example.vehiclebath.ViewHolder;
 
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -14,7 +15,9 @@ public class AdvertisementViewHolder extends RecyclerView.ViewHolder implements 
 
     public TextView adName,adDesc;
     public ImageView imageViewAd;
+    public Button btnDelete;
     public AdClickListner adClickListner;
+
 
     public AdvertisementViewHolder(@NonNull View itemView) {
         super(itemView);
@@ -22,6 +25,8 @@ public class AdvertisementViewHolder extends RecyclerView.ViewHolder implements 
         imageViewAd = (ImageView) itemView.findViewById(R.id.viewAdImg);
         adName = (TextView) itemView.findViewById(R.id.tvAdName);
         adDesc = (TextView) itemView.findViewById(R.id.tvAdDesc);
+        btnDelete = (Button)itemView.findViewById(R.id.btnAdDelete);
+
     }
 
     public void setAdClickListner(AdClickListner adClickListner){

@@ -1,23 +1,21 @@
 package com.example.vehiclebath;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.app.ProgressDialog;
 import android.content.ContentResolver;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-import android.os.Handler;
 import android.text.TextUtils;
 import android.view.View;
 import android.webkit.MimeTypeMap;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.ProgressBar;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.gms.tasks.Continuation;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -30,9 +28,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
-import com.google.firebase.storage.OnProgressListener;
 import com.google.firebase.storage.StorageReference;
-import com.google.firebase.storage.StorageTask;
 import com.google.firebase.storage.UploadTask;
 
 import java.util.HashMap;
@@ -167,15 +163,16 @@ public class orgAddAdvertisement extends AppCompatActivity {
                                 .addOnFailureListener(new OnFailureListener() {
                                     @Override
                                     public void onFailure(@NonNull Exception e) {
+                                        progressDialog.dismiss();
                                         Toast.makeText(orgAddAdvertisement.this, e.getMessage(), Toast.LENGTH_LONG).show();
                                     }
                                 });
-                        progressDialog.dismiss();
                     }
                     else {
-                        Toast.makeText(orgAddAdvertisement.this,"Added Advertisement exist",Toast.LENGTH_LONG).show();
+                        progressDialog.dismiss();
+                        Toast.makeText(orgAddAdvertisement.this,"Added Advertisement Already Exist!!!",Toast.LENGTH_LONG).show();
                     }
-                    progressDialog.dismiss();
+
                 }
                 @Override
                 public void onCancelled(@NonNull DatabaseError error) {
@@ -197,14 +194,15 @@ public class orgAddAdvertisement extends AppCompatActivity {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
                 if (task.isSuccessful()) {
+                    progressDialog.dismiss();
                     Toast.makeText(orgAddAdvertisement.this, "New Advertisement is Added", Toast.LENGTH_SHORT).show();
 
                     Intent intent = new Intent(orgAddAdvertisement.this, orgYourAdvertisement.class);
                     startActivity(intent);
                 } else {
+                    progressDialog.dismiss();
                     Toast.makeText(orgAddAdvertisement.this, "Failed to Add New Advertisement", Toast.LENGTH_LONG).show();
                 }
-                progressDialog.dismiss();
             }
         });
     }

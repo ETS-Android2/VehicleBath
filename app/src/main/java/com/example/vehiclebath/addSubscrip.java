@@ -1,8 +1,5 @@
 package com.example.vehiclebath;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
@@ -13,6 +10,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -26,7 +26,7 @@ import java.util.HashMap;
 
 public class addSubscrip extends AppCompatActivity {
 
-    private EditText subName,subPrice,subdPerc,subValidity;
+    private EditText subName,subPrice,subdPerc;
     private Spinner spinner;
     private Button btnAddSub;
     private ProgressDialog progressDialog;
@@ -40,6 +40,8 @@ public class addSubscrip extends AppCompatActivity {
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
+
+
         spinner = (Spinner) findViewById(R.id.spinnerSubAvail);
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,R.array.Availability, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -47,7 +49,6 @@ public class addSubscrip extends AppCompatActivity {
 
         subName = findViewById(R.id.etSubName);
         subPrice = findViewById(R.id.etSubPrice);
-        subValidity = findViewById(R.id.etSubValidity);
         subdPerc = findViewById(R.id.etSubdPerc);
         btnAddSub = findViewById(R.id.btnAdminAddSub2);
         progressDialog = new ProgressDialog(this);
@@ -63,7 +64,6 @@ public class addSubscrip extends AppCompatActivity {
     private void addSubscription() {
         String subscriptionName = subName.getText().toString().trim();
         String subscriptionPrice = subPrice.getText().toString().trim();
-        String subscriptionValidity = subValidity.getText().toString().trim();
         String subscriptionDPercentage = subdPerc.getText().toString().trim();
         String subscriptionAvailability = spinner.getSelectedItem().toString().trim();
 
@@ -72,9 +72,6 @@ public class addSubscrip extends AppCompatActivity {
         }
         else if(TextUtils.isEmpty(subscriptionPrice)){
             Toast.makeText(this,"Please Enter Subscription Price",Toast.LENGTH_SHORT).show();
-        }
-        else if(TextUtils.isEmpty(subscriptionValidity)){
-            Toast.makeText(this,"Please Enter Subscription Validity",Toast.LENGTH_SHORT).show();
         }
         else if(TextUtils.isEmpty(subscriptionAvailability)){
             Toast.makeText(this,"Please Select Subscription Availability",Toast.LENGTH_SHORT).show();
@@ -88,11 +85,11 @@ public class addSubscrip extends AppCompatActivity {
             progressDialog.setCanceledOnTouchOutside(false);
             progressDialog.show();
 
-            addSubscriptionToDB(subscriptionName,subscriptionPrice,subscriptionValidity,subscriptionDPercentage,subscriptionAvailability);
+            addSubscriptionToDB(subscriptionName,subscriptionPrice,subscriptionDPercentage,subscriptionAvailability);
         }
     }
 
-    private void addSubscriptionToDB(final String subscriptionName, final String subscriptionPrice, final String subscriptionValidity,final String subscriptionDPercentage, final String subscriptionAvailability) {
+    private void addSubscriptionToDB(final String subscriptionName, final String subscriptionPrice,final String subscriptionDPercentage, final String subscriptionAvailability) {
         final DatabaseReference RootRef;
         RootRef = FirebaseDatabase.getInstance().getReference();
 
@@ -103,7 +100,6 @@ public class addSubscrip extends AppCompatActivity {
                     HashMap<String,Object> subDataMap = new HashMap<>();
                     subDataMap.put("Name",subscriptionName);
                     subDataMap.put("Price",subscriptionPrice);
-                    subDataMap.put("Validity",subscriptionValidity);
                     subDataMap.put("DiscountPercentage",subscriptionDPercentage);
                     subDataMap.put("Availability",subscriptionAvailability);
 
@@ -112,27 +108,29 @@ public class addSubscrip extends AppCompatActivity {
                                 @Override
                                 public void onComplete(@NonNull Task<Void> task) {
                                     if(task.isSuccessful()){
+                                        progressDialog.dismiss();
                                         Toast.makeText(addSubscrip.this,"New Subscription Plan is Added",Toast.LENGTH_SHORT).show();
 
                                         Intent intent = new Intent(addSubscrip.this,adminSubscripDetail.class);
                                         startActivity(intent);
                                     }
                                     else{
+                                        progressDialog.dismiss();
                                         Toast.makeText(addSubscrip.this,"Failed to Add New Subscription Plan",Toast.LENGTH_SHORT).show();
                                     }
-                                    progressDialog.dismiss();
                                 }
                             });
                 }
                 else {
-                    Toast.makeText(addSubscrip.this,"Added Subscrpition Plan exist",Toast.LENGTH_LONG).show();
+                    progressDialog.dismiss();
+                    Toast.makeText(addSubscrip.this,"Added Subscrpition Plan Already Exist",Toast.LENGTH_LONG).show();
                 }
                 progressDialog.dismiss();
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-
+                progressDialog.dismiss();
             }
         });
     }
