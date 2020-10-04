@@ -26,7 +26,7 @@ public class adminViewAllAppointments extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_admin_view_all_appointments);
 
-        reference = FirebaseDatabase.getInstance().getReference().child("Appointments");
+        reference = FirebaseDatabase.getInstance().getReference().child("FinishedAppointments");
         table_recycler1 = findViewById(R.id.tablerowrecycler1);
         table_recycler1.setHasFixedSize(true);
         table_recycler1.setLayoutManager(new LinearLayoutManager(this));

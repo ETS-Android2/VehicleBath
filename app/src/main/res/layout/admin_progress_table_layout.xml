@@ -2,7 +2,9 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical">
 
     <TableLayout
         android:layout_width="match_parent"
@@ -16,33 +18,49 @@
             android:layout_height="wrap_content">
 
             <TextView
-                android:id="@+id/acol1"
+                android:id="@+id/bcol"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-
                 android:text="TextView"
                 android:textColor="#000000" />
 
             <TextView
-                android:id="@+id/acol2"
+                android:id="@+id/bcol2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-
                 android:text="TextView"
                 android:textColor="#000000" />
 
             <TextView
-                android:id="@+id/acol3"
+                android:id="@+id/bcol3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="TextView"
                 android:textColor="#000000" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1.5">
+
+
+                <ImageButton
+                    android:id="@+id/pbtnF"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/admin_circle_button"
+                    android:backgroundTint="#28a745"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:foregroundGravity="center"
+                    android:src="@drawable/ic_baseline_check_24"
+                    tools:src="@drawable/ic_baseline_check_24" />
+            </RelativeLayout>
 
         </TableRow>
 
     </TableLayout>
-
 </androidx.constraintlayout.widget.ConstraintLayout>
