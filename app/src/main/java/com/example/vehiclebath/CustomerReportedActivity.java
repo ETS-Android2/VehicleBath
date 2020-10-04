@@ -18,8 +18,11 @@ import com.example.vehiclebath.Model.UsersReport;
 import com.example.vehiclebath.UserHolder.UserViewHolderReport;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 public class CustomerReportedActivity extends AppCompatActivity {
 
@@ -28,9 +31,12 @@ public class CustomerReportedActivity extends AppCompatActivity {
 
 
     Intent i = getIntent();
-    private DatabaseReference UserRepRef;
+    private DatabaseReference UserRepRef,ReportedUsersTot;
     private RecyclerView recyclerView;
     RecyclerView.LayoutManager layoutManager;
+
+    private int sum = 0;
+    private TextView tvUserReport;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,7 +50,33 @@ public class CustomerReportedActivity extends AppCompatActivity {
         recyclerView.setHasFixedSize(true);
         layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
+        tvUserReport = findViewById(R.id.userReportSum);
 
+        ReportedUsersTot = FirebaseDatabase.getInstance().getReference().child("UsersReport");
+
+
+        //---------------------------------SUM-------------------------------------//
+
+        ReportedUsersTot.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot)
+            {
+                if(snapshot.exists())
+                {
+                    sum = (int)snapshot.getChildrenCount();
+                    tvUserReport.setText(Integer.toString(sum)+" Users");
+                }else
+                {
+                    tvUserReport.setText("0 Users");
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+        //---------------------------------SUM-------------------------------------//
 
     }
 
