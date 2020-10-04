@@ -101,35 +101,22 @@
     <string name="loginH">Login</string>
     <string name="UOchk">I accept terms and policies</string>
     <string name="btn_customer_reports">Report Customer</string>
-  
-    <string name="selectSub">Select Your Subscription</string>
-    <string name="plat">\t\tPlatinum \n\t\t\t\t\tValidity: Lifetime \n\t\t\t\t\tPrice: 50$</string>
-    <string name="gold">\t\tGold \n\t\t\t\t\tValidity: 24 months \n\t\t\t\t\tPrice: 20$</string>
-    <string name="silver">\t\tSilver \n\t\t\t\t\tValidity: 9 months \n\t\t\t\t\tPrice: 10$</string>
-    <string name="bron">\t\tBronze \n\t\t\t\t\tValidity: 3 months \n\t\t\t\t\tPrice: 5$</string>
+
+    <!--    Yathushan-->
+
     <string name="btnconf">Confirm</string>
-    <string name="updateSub">Update Your Subscription</string>
     <string name="subscripHead">Subscription Plan Details</string>
     <string name="subCol1Head">Subscription Name</string>
     <string name="subCol2Head">Price\n($)</string>
-    <string name="subRow2col1">Platinum</string>
-    <string name="subRow2col2">XX</string>
-    <string name="subRow3col1">Gold</string>
-    <string name="subRow3col2">XX</string>
-    <string name="subRow4col1">Silver</string>
-    <string name="subRow4col2">XX</string>
-    <string name="subRow5col1">Bronze</string>
-    <string name="subRow5col2">XX</string>
     <string name="btnAdd">Add</string>
     <string name="btnUpdate">Update</string>
     <string name="addSub">Add a Subscription Plan</string>
     <string name="lblName">Name</string>
     <string name="lblPrice">Price</string>
-    <string name="lblValidPeri">Validity Period</string>
-    <string name="lblmonth">(Months)</string>
-    <string name="lblDPerc">Discount Percentage(%)</string>
+    <string name="lblSubPeri">Subscription Period:</string>
+    <string name="lblyear">(Years)</string>
+    <string name="lblDPerc">Discount Percentage</string>
     <string name="lblDiscPerc">Discount Percentage</string>
-    <string name="lblDPerc2">(for appointments)</string>
     <string name="lblAvail">Availability</string>
     <string-array name="Availability">
         <item>Enable</item>
@@ -143,10 +130,6 @@
     <string name="adminDeleteAdvert">Delete Advertisement</string>
     <string name="btnDelete">Delete</string>
     <string name="adminYourAdvert">Your Advertisements</string>
-    <string name="adminAdvertiseDet">Advertisements Details</string>
-    <string name="admAdvertDetlbl1">No.of Advertisements Displayed</string>
-    <string name="admAdvertDetlbl2">No.of Organizations Advertising</string>
-    <string name="admAdvertDetlbl3">Earned Advertising Income</string>
     <string name="btnBrowse">Browse</string>
     <string name="inputHint">Enter Adevertisement Name</string>
     <string name="inputHint2">Enter File Name</string>
@@ -155,12 +138,7 @@
     <string name="inputHint5">Enter Subscription Name</string>
     <string name="inputHint6">Enter Subscription Price</string>
     <string name="inputHint7">Enter Discount Percentage</string>
-    <string name="inputHint8">Enter Validity Period</string>
-    <string name="inputDemo">XXXXXXXXX</string>
-    <string name="inputDemo2">XX</string>
-    <string name="inputDemo3">XXXXX XXXXXXX XXXXXX XXXX XXXXXXX XXXXXXXXX XXXXXXX XXXXXXXX </string>
-    <string name="inputDemo4">\nXX</string>
-    <string name="inputDemo5">\nRs.XXXX</string>
+    <string name="inputHint8">Enter Subscription Period</string>
     <string name="updateSelectSub">Select Your Subscription Plan for Update</string>
     <string name="btnNext">Next</string>
     <string name="selectSubPlan">Select Subscription Plan</string>
