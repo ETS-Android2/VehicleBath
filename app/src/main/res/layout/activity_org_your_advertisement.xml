@@ -14,10 +14,10 @@
 
         <Button
             android:id="@+id/btnAdminAddAdvert"
-            android:layout_width="124dp"
-            android:layout_height="37dp"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
             android:layout_marginTop="12dp"
-            android:background="@drawable/common_google_signin_btn_text_light_focused"
+            android:background="@android:drawable/editbox_background"
             android:backgroundTint="#225EBB"
             android:fontFamily="@font/trykker"
             android:text="@string/btnAdd"
@@ -52,7 +52,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.49"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/btnAdminAddAdvert"
+            app:layout_constraintTop_toBottomOf="@+id/btnAdminAddAdvert"
             app:layout_constraintVertical_bias="0.0" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>

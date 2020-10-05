@@ -10,21 +10,30 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.example.vehiclebath.Model.Users;
 import com.example.vehiclebath.UserHolder.UserViewHolder;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+import java.util.HashMap;
 
 public class customers extends AppCompatActivity {
 
 
     Intent i = getIntent();
-    private DatabaseReference UserRef;
+    private DatabaseReference UserRef,UsersTot;
     private RecyclerView recyclerView;
     RecyclerView.LayoutManager layoutManager;
+    private int sum = 0;
+    private TextView tvUser;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,9 +47,45 @@ public class customers extends AppCompatActivity {
         recyclerView.setHasFixedSize(true);
         layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
+        tvUser = findViewById(R.id.userSum);
 
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        //getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+        UsersTot = FirebaseDatabase.getInstance().getReference().child("Users");
+
+
+        //---------------------------------SUM-------------------------------------//
+
+        UsersTot.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot)
+            {
+                if(snapshot.exists())
+                {
+                    sum = (int)snapshot.getChildrenCount();
+                    tvUser.setText(Integer.toString(sum)+" Users");
+                }else
+                {
+                    tvUser.setText("0 Users");
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+        //---------------------------------SUM-------------------------------------//
+
+
+
+
+
     }
+
+
+
+
 
 
     @Override

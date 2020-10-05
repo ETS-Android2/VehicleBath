@@ -7,8 +7,24 @@
     tools:context=".CustomerReportActivity">
 
 
+
+    <TextView
+        android:id="@+id/userReportSum"
+        android:layout_width="115dp"
+        android:layout_height="33dp"
+        android:background="@drawable/hollow_button"
+        android:textStyle="italic"
+        android:textSize="20dp"
+        android:textAlignment="center"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="15dp"
+        android:textColor="#DD0000"
+
+        />
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyle_report"
+        android:layout_below="@+id/userReportSum"
         android:layout_width="409dp"
         android:layout_height="729dp"
         tools:layout_editor_absoluteX="1dp"

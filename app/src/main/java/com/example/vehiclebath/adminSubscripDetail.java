@@ -1,27 +1,29 @@
 package com.example.vehiclebath;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
+import android.app.AlertDialog;
 import android.app.ProgressDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.Toast;
 
-import com.example.vehiclebath.Model.Advertisement;
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.example.vehiclebath.Model.Subscription;
-import com.example.vehiclebath.ViewHolder.AdvertisementViewHolder;
 import com.example.vehiclebath.ViewHolder.SubscriptionViewHolder;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.squareup.picasso.Picasso;
 
 public class adminSubscripDetail extends AppCompatActivity {
 
@@ -30,13 +32,14 @@ public class adminSubscripDetail extends AppCompatActivity {
     private DatabaseReference databaseReference;
     RecyclerView.LayoutManager layoutManager;
     private Button btnAddSub;
+    private ProgressDialog progressDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_admin_subscrip_detail);
 
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        //getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         databaseReference = FirebaseDatabase.getInstance().getReference().child("Subscription");
         subRecyclerView = findViewById(R.id.subRecycler);
@@ -44,6 +47,8 @@ public class adminSubscripDetail extends AppCompatActivity {
         layoutManager = new LinearLayoutManager(this);
         subRecyclerView.setLayoutManager(layoutManager);
         btnAddSub = findViewById(R.id.btnAdminAddSub1);
+        progressDialog = new ProgressDialog(this);
+
         btnAddSub.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -62,12 +67,43 @@ public class adminSubscripDetail extends AppCompatActivity {
 
         FirebaseRecyclerAdapter<Subscription, SubscriptionViewHolder> adapter = new FirebaseRecyclerAdapter   <Subscription, SubscriptionViewHolder>(options) {
             @Override
-            protected void onBindViewHolder(@NonNull SubscriptionViewHolder subscriptionViewHolder, int i, @NonNull Subscription subscription) {
+            protected void onBindViewHolder(@NonNull SubscriptionViewHolder subscriptionViewHolder, int i, @NonNull final Subscription subscription) {
                 subscriptionViewHolder.subName.setText(subscription.getName());
                 subscriptionViewHolder.subPrice.setText(subscription.getPrice());
                 subscriptionViewHolder.subDPerc.setText(subscription.getDiscountPercentage());
-                subscriptionViewHolder.subValidity.setText(subscription.getValidity());
                 subscriptionViewHolder.subAvailability.setText(subscription.getAvailability());
+
+
+                subscriptionViewHolder.btnSubDelete.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        AlertDialog.Builder builder = new AlertDialog.Builder(adminSubscripDetail.this);
+                        builder.setCancelable(true);
+                        builder.setTitle("Delete Subscription");
+                        builder.setMessage("Are you sure?");
+                        builder.setPositiveButton("Confirm",
+                                new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialog, int which) {
+                                        progressDialog.setTitle("Deleting Subscription");
+                                        progressDialog.setMessage("Deleting Records to Database");
+                                        progressDialog.setCanceledOnTouchOutside(false);
+                                        progressDialog.show();
+
+                                        String name = subscription.getName();
+                                        deleteSub(name);
+                                    }
+                                });
+                        builder.setNegativeButton(android.R.string.cancel, new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                            }
+                        });
+
+                        AlertDialog dialog = builder.create();
+                        dialog.show();
+                    }
+                });
             }
 
             @NonNull
@@ -81,4 +117,23 @@ public class adminSubscripDetail extends AppCompatActivity {
         subRecyclerView.setAdapter(adapter);
         adapter.startListening();
     }
+
+    private void deleteSub(String name) {
+
+        DatabaseReference deleteDRef = FirebaseDatabase.getInstance().getReference().child("Subscription").child(name);
+        deleteDRef.removeValue().addOnSuccessListener(new OnSuccessListener<Void>() {
+            @Override
+            public void onSuccess(Void aVoid) {
+                progressDialog.dismiss();
+                Toast.makeText(adminSubscripDetail.this,"Subscription Deleted",Toast.LENGTH_LONG).show();
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                progressDialog.dismiss();
+                Toast.makeText(adminSubscripDetail.this,"Subscription Delete Failed",Toast.LENGTH_LONG).show();
+            }
+        });
+    }
+
 }

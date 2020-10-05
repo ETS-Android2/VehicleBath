@@ -1,16 +1,20 @@
 package com.example.vehiclebath;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.NotificationCompat;
+import androidx.core.app.NotificationManagerCompat;
 
 import android.app.AlertDialog;
+import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -32,6 +36,9 @@ import java.util.HashMap;
 
 public class OrganizationReport_or_Activate_Activity extends AppCompatActivity {
 
+
+    private static final String CHANNEL_ID = "channel_id01";
+    private static final int NOTIFICATION_ID = 1;
     private TextView name_OR_activate,phone_OR_activate,password_OR_activate,email_OR_activate;
     private Button organization_OR_activate;
     private String userPhone ="";
@@ -42,6 +49,8 @@ public class OrganizationReport_or_Activate_Activity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_organization_report_or__activate_);
+
+
 
         userPhone = getIntent().getStringExtra("UserPhone");
 
@@ -74,11 +83,12 @@ public class OrganizationReport_or_Activate_Activity extends AppCompatActivity {
                 //set icon
                 .setIcon(android.R.drawable.ic_dialog_alert)
                 //set title
-                .setTitle("Are you sure to Exit")
+                .setTitle("Are you sure you want to activate User")
                 //set message
-                .setMessage("Exiting will call finish() method")
+                .setMessage("Click yes to activate")
                 //set positive button
                 .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                    @RequiresApi(api = Build.VERSION_CODES.O)
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
                         //set what would happen when positive button is clicked
@@ -107,37 +117,50 @@ public class OrganizationReport_or_Activate_Activity extends AppCompatActivity {
 
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.O)
     private void DisplayNotification() {
 
         //-------------------------------Notification--------------------------------------//
-        String messsage1 = "Vehicle Bath have submitted a report";
-        String messsage2 = "You have submitted a report on customer";
-        NotificationCompat.Builder builder = new NotificationCompat.Builder(
-                OrganizationReport_or_Activate_Activity.this
-        )
-                .setSmallIcon(R.drawable.logo1)
-                .setContentTitle("Vehicle Bath")
-                .setContentText(messsage1)
-                .setContentText(messsage2)
-                .setAutoCancel(true);
 
-        Intent intent = new Intent(OrganizationReport_or_Activate_Activity.this,OrgnizationReport_or_Activity.class);
-        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-        intent.putExtra("message",messsage1);
-        intent.putExtra("message",messsage2);
+        createNotificationChannel();
 
-        PendingIntent pendingIntent = PendingIntent.getActivity(OrganizationReport_or_Activate_Activity.this,
-                0,intent,PendingIntent.FLAG_UPDATE_CURRENT);
+        //Creating notification
+        NotificationCompat.Builder builder = new NotificationCompat.Builder(this,CHANNEL_ID);
+        //icon
+        builder.setSmallIcon(R.drawable.logo1);
+        //title
+        builder.setContentTitle("Activation Successfull");
+        //description
+        builder.setContentText("You have activated a User. User details are successfully added activated ");
+        //set priority
+        builder.setPriority(NotificationCompat.PRIORITY_DEFAULT);
 
-        builder.setContentIntent(pendingIntent);
-        NotificationManager notificationManager = (NotificationManager)getSystemService(
-                Context.NOTIFICATION_SERVICE
-        );
-        notificationManager.notify(0,builder.build());
+        //notification manager
+        NotificationManagerCompat notificationManagerCompat = NotificationManagerCompat.from(this);
+        notificationManagerCompat.notify(NOTIFICATION_ID,builder.build());
 
-        //-------------------------------Notification--------------------------------------//
+
+
+
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.O)
+    private void createNotificationChannel() {
+
+        if(Build.VERSION.SDK_INT>=Build.VERSION_CODES.ECLAIR_0_1)
+        {
+            CharSequence name = "My Notification";
+            String description  = "My Notification description";
+
+            int importance = NotificationManager.IMPORTANCE_DEFAULT;
+            NotificationChannel notificationChannel = new NotificationChannel(CHANNEL_ID,name,importance);
+
+            NotificationManager notificationManager = (NotificationManager)getSystemService(NOTIFICATION_SERVICE);
+            notificationManager.createNotificationChannel(notificationChannel);
+        }
+
+    }
+    //-------------------------------Notification--------------------------------------//
     private void CreateReport() {
         String userName =name_OR_activate.getText().toString();
         String userPhone =phone_OR_activate.getText().toString();
@@ -184,7 +207,7 @@ public class OrganizationReport_or_Activate_Activity extends AppCompatActivity {
                                         //Delete user from UsersReport
                                         RootRef.child("UsersReport").child(userPhone).removeValue();
 
-                                         Intent intent = new Intent(OrganizationReport_or_Activate_Activity.this,admin_main.class);
+                                         Intent intent = new Intent(OrganizationReport_or_Activate_Activity.this,CustomerReportedActivity.class);
                                          startActivity(intent);
 
                                     }
@@ -192,7 +215,7 @@ public class OrganizationReport_or_Activate_Activity extends AppCompatActivity {
 
                                         Toast.makeText(OrganizationReport_or_Activate_Activity.this, "Network Error : Please try again after some time", Toast.LENGTH_SHORT).show();
 
-                                        Intent intent = new Intent(OrganizationReport_or_Activate_Activity.this,admin_main.class);
+                                        Intent intent = new Intent(OrganizationReport_or_Activate_Activity.this,CustomerReportedActivity.class);
                                         startActivity(intent);
                                     }
                                    // loadingBar.dismiss();
@@ -206,7 +229,7 @@ public class OrganizationReport_or_Activate_Activity extends AppCompatActivity {
                     loadingBar.dismiss();
 
 
-                    Intent intent = new Intent(OrganizationReport_or_Activate_Activity.this,admin_main.class);
+                    Intent intent = new Intent(OrganizationReport_or_Activate_Activity.this,CustomerReportedActivity.class);
                     startActivity(intent);
                 }
             }

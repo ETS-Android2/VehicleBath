@@ -33,6 +33,8 @@ import java.util.HashMap;
 
 public class OrgnizationReport_or_Activity extends AppCompatActivity {
 
+
+
     private TextView name_OR,phone_OR,password_OR,email_OR;
     private Button organization_OR;
     private String userPhone ="";
@@ -43,6 +45,8 @@ public class OrgnizationReport_or_Activity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_orgnization_report_or_);
+
+        String message = getIntent().getStringExtra("message");
 
         userPhone = getIntent().getStringExtra("UserPhone");
 
@@ -65,71 +69,17 @@ public class OrgnizationReport_or_Activity extends AppCompatActivity {
             public void onClick(View view) {
                 CreateReport();
 
-//                //-------------------------------Alert dialogue--------------------------------------//
-//                AlertDialog alertDialog = new AlertDialog.Builder(this)
-//                        //set icon
-//                        .setIcon(android.R.drawable.ic_dialog_alert)
-//                        //set title
-//                        .setTitle("Are you sure to Exit")
-//                        //set message
-//                        .setMessage("Exiting will call finish() method")
-//                        //set positive button
-//                        .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-//                            @Override
-//                            public void onClick(DialogInterface dialogInterface, int i) {
-//                                //set what would happen when positive button is clicked
-//
-//                                finish();
-//
-//                                //loadingBar.dismiss();
-//                            }
-//                        })
-//                        //set negative button
-//                        .setNegativeButton("No", new DialogInterface.OnClickListener() {
-//                            @Override
-//                            public void onClick(DialogInterface dialogInterface, int i) {
-//                                //set what should happen when negative button is clicked
-//                                Intent intent = new Intent(OrgnizationReport_or_Activity.this,OrgnizationReport_or_Activity.class);
-//                                startActivity(intent);
-//
-//                                Toast.makeText(getApplicationContext(),"You selected No",Toast.LENGTH_LONG).show();
-//                            }
-//                        })
-//                        .show();
-//
-//                //-------------------------------Alert dialogue--------------------------------------//
+
             }
         });
 
 
 
 
-        //---------------------------------------------------------------------//
-//        organization_OR.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                openDialog();
-//
-//            }
-//        });
     }
 
 
-//    @Override
-//    public boolean onCreateOptionsMenu(Menu menu) {
-//        getMenuInflater().inflate(R.menu.main,menu);
-//        return super.onCreateOptionsMenu(menu);
-//    }
-        //---------------------------------------------------------------------//
 
-
-//    private void openDialog() {
-//        Dialog2 dialog2 = new Dialog2();
-//        dialog2.show(getSupportFragmentManager(),"Example Dialogue");
-//
-//    }
-
-    //---------------------------------------------------------------------//
     private void CreateReport()
     {
         String userName =name_OR.getText().toString();
@@ -196,7 +146,7 @@ public class OrgnizationReport_or_Activity extends AppCompatActivity {
 
                                         RootRef.child("Users").child(userPhone).removeValue();
 
-                                         Intent intent = new Intent(OrgnizationReport_or_Activity.this,admin_main.class);
+                                         Intent intent = new Intent(OrgnizationReport_or_Activity.this,customers.class);
                                          startActivity(intent);
 
                                     }
@@ -204,7 +154,7 @@ public class OrgnizationReport_or_Activity extends AppCompatActivity {
                                         loadingBar.dismiss();
                                         Toast.makeText(OrgnizationReport_or_Activity.this, "Network Error : Please try again after some time", Toast.LENGTH_SHORT).show();
 
-                                        Intent intent = new Intent(OrgnizationReport_or_Activity.this,admin_main.class);
+                                        Intent intent = new Intent(OrgnizationReport_or_Activity.this,customers.class);
                                         startActivity(intent);
                                     }
                                 }
@@ -217,7 +167,7 @@ public class OrgnizationReport_or_Activity extends AppCompatActivity {
                     loadingBar.dismiss();
 
 
-                    Intent intent = new Intent(OrgnizationReport_or_Activity.this,admin_main.class);
+                    Intent intent = new Intent(OrgnizationReport_or_Activity.this,customers.class);
                     startActivity(intent);
                 }
             }

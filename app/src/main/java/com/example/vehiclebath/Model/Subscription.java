@@ -2,17 +2,16 @@ package com.example.vehiclebath.Model;
 
 public class Subscription {
 
-    private String Name,Price,DiscountPercentage,Validity,Availability;
+    private String Name,Price,DiscountPercentage,Availability;
 
     public Subscription() {
 
     }
 
-    public Subscription(String name, String price, String discountPercentage, String validity, String availability) {
+    public Subscription(String name, String price, String discountPercentage, String availability) {
         Name = name;
         Price = price;
         DiscountPercentage = discountPercentage;
-        Validity = validity;
         Availability = availability;
     }
 
@@ -25,7 +24,7 @@ public class Subscription {
     }
 
     public String getPrice() {
-        return "Rs."+Price;
+        return Price;
     }
 
     public void setPrice(String price) {
@@ -33,19 +32,11 @@ public class Subscription {
     }
 
     public String getDiscountPercentage() {
-        return DiscountPercentage+"%";
+        return DiscountPercentage;
     }
 
     public void setDiscountPercentage(String discountPercentage) {
         DiscountPercentage = discountPercentage;
-    }
-
-    public String getValidity() {
-        return Validity+" months";
-    }
-
-    public void setValidity(String validity) {
-        Validity = validity;
     }
 
     public String getAvailability() {
@@ -55,4 +46,5 @@ public class Subscription {
     public void setAvailability(String availability) {
         Availability = availability;
     }
+
 }
