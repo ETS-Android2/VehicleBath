@@ -109,7 +109,7 @@ public class RegisterUser extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 if (!(snapshot.child("Users").child(number).exists())) {
-                    HashMap<String , Object> userDataMap = new HashMap<>();
+                    final HashMap<String , Object> userDataMap = new HashMap<>();
                     userDataMap.put("Phone", number);
                     userDataMap.put("Password", password);
                     userDataMap.put("Email", email);
@@ -120,11 +120,23 @@ public class RegisterUser extends AppCompatActivity {
                                 @Override
                                 public void onComplete(@NonNull Task<Void> task) {
                                     if (task.isSuccessful()) {
-                                        Toast.makeText(RegisterUser.this,"Your registration is successful",Toast.LENGTH_SHORT).show();
-                                        loadingBar.dismiss();
+                                        RootRef.child("User").child(number).updateChildren(userDataMap)
+                                                .addOnCompleteListener(new OnCompleteListener<Void>() {
+                                                    @Override
+                                                    public void onComplete(@NonNull Task<Void> task) {
+                                                        if (task.isSuccessful()){
+                                                            Toast.makeText(RegisterUser.this,"Your registration is successful",Toast.LENGTH_SHORT).show();
+                                                            loadingBar.dismiss();
 
-                                        Intent intent = new Intent(RegisterUser.this,LoginNew.class);
-                                        startActivity(intent);
+                                                            Intent intent = new Intent(RegisterUser.this,LoginNew.class);
+                                                            startActivity(intent);
+                                                        }
+                                                        else {
+                                                            loadingBar.dismiss();
+                                                            Toast.makeText(RegisterUser.this,"Network Error", Toast.LENGTH_SHORT).show();
+                                                        }
+                                                    }
+                                                });
                                     }
                                     else {
                                         loadingBar.dismiss();
