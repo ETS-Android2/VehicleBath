@@ -49,6 +49,9 @@ public class HomeUserActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_user);
 
+        //getting User Name
+        final String logged = getIntent().getStringExtra("logged");
+
         Paper.init(this);
         bookNowBTN = findViewById(R.id.bookNowBTN);
 
@@ -96,6 +99,7 @@ public class HomeUserActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(HomeUserActivity.this, SelectCarWash.class);
+                intent.putExtra("logged", logged);
                 startActivity(intent);
             }
         });

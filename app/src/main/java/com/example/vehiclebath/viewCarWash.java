@@ -19,7 +19,7 @@ import java.net.Proxy;
 
 public class viewCarWash extends AppCompatActivity {
 
-    private String TypeName;
+    private String TypeName, logged;
     private TextView carWashTypeName, TypePrice, TypeDescription;
     private Button btnSearch;
     private DatabaseReference ref;
@@ -28,6 +28,8 @@ public class viewCarWash extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_car_wash);
+
+        logged = getIntent().getStringExtra("logged");
 
         TypeName = getIntent().getStringExtra("TypeName");
 
@@ -44,6 +46,7 @@ public class viewCarWash extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(viewCarWash.this, PlaceAppointmentForm.class);
                 intent.putExtra("Type", TypeName);
+                intent.putExtra("logged", logged);
                 startActivity(intent);
             }
         });

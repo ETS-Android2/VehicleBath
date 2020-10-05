@@ -34,13 +34,15 @@ public class SelectCarWash extends AppCompatActivity {
     private RecyclerView product_recycler;
     private ImageAdapter imageAdapter;
     private List<CarWashType> carWashTypes;
-    private String passTypeName ;
+    private String passTypeName, logged ;
     private ProgressBar progressBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_select_car_wash);
+
+        logged = getIntent().getStringExtra("logged");
 
         reference = FirebaseDatabase.getInstance().getReference().child("CarWashType");
         product_recycler = findViewById(R.id.product_recycler);
@@ -75,6 +77,7 @@ public class SelectCarWash extends AppCompatActivity {
                             public void onClick(View v) {
                                 Intent intent = new Intent(SelectCarWash.this, viewCarWash.class);
                                 intent.putExtra("TypeName", model.getTypeName());
+                                intent.putExtra("logged", logged);
                                 startActivity(intent);
                             }
                         });

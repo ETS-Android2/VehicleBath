@@ -51,13 +51,15 @@ public class PlaceAppointmentForm extends AppCompatActivity {
     private ProgressDialog loadingBar;
 
     private EditText carWashtypeName;
-    private String carWashTypeVal;
+    private String carWashTypeVal, logged;
     private DatabaseReference SessionReference;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_place_appointment_form);
+
+        logged = getIntent().getStringExtra("logged");
 
         loadingBar = new ProgressDialog(this);
 
@@ -182,9 +184,9 @@ public class PlaceAppointmentForm extends AppCompatActivity {
                             appdata.put("Date",date);
                             appdata.put("Time",time);
                             appdata.put("CarWashType", carWashTypeVal);
-                            SessionReference =
-                                    FirebaseDatabase.getInstance().getReference().child(Prevalent.currentOnlineUser.getPhone());
-                            appdata.put("C_Name", SessionReference);
+//                            SessionReference =
+//                                    FirebaseDatabase.getInstance().getReference().child(Prevalent.currentOnlineUser.getPhone());
+                            appdata.put("C_Name", logged);
 
 
                             ref.child("ProgressAppointments").child(key).updateChildren(appdata).addOnCompleteListener(new OnCompleteListener<Void>() {
@@ -227,7 +229,7 @@ public class PlaceAppointmentForm extends AppCompatActivity {
                                             public void onComplete(@NonNull Task<Void> task) {
                                                 if(task.isSuccessful()){
                                                     Toast.makeText(PlaceAppointmentForm.this, "We already have an Appointment on that time", Toast.LENGTH_LONG).show();
-                                                    Toast.makeText(PlaceAppointmentForm.this, "Please select another time", Toast.LENGTH_LONG).show();
+                                                    Toast.makeText(PlaceAppointmentForm.this, "Please wait for Approval", Toast.LENGTH_LONG).show();
                                                 }
                                                 else{
                                                     Toast.makeText(PlaceAppointmentForm.this, "Error", Toast.LENGTH_LONG).show();
@@ -241,6 +243,7 @@ public class PlaceAppointmentForm extends AppCompatActivity {
                                                 intent.putExtra("vehicleType",vehicleType);
 
                                                 startActivity(intent);
+                                                loadingBar.dismiss();
                                             }
                                         });
 
@@ -269,6 +272,6 @@ public class PlaceAppointmentForm extends AppCompatActivity {
 
         });
 
-
+        loadingBar.dismiss();
     }
 }

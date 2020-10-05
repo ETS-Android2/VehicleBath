@@ -119,6 +119,7 @@ public class LoginNew extends AppCompatActivity {
                                 Toast.makeText(LoginNew.this,"Your are logged in!!", Toast.LENGTH_SHORT).show();
                                 loadingBar.dismiss();
                                 Intent intent = new Intent(LoginNew.this,HomeUserActivity.class);
+                                intent.putExtra("logged", number);
                                 Prevalent.currentOnlineUser = usersData;
                                 startActivity(intent);
                             }

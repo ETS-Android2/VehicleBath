@@ -14,6 +14,7 @@
         android:theme="@style/AppTheme">
         <activity android:name=".CusShowAllAppointments"></activity>
         <activity android:name=".AdminUpdateAppointment" />
+        <activity android:name=".UserRating" />
         <activity android:name=".AdminViewProgressAppointments">
         </activity>
         <activity android:name=".adminViewAllAppointments">
