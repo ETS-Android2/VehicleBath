@@ -75,6 +75,7 @@ public class orgYourAdvertisement extends AppCompatActivity {
                 advertisementViewHolder.adDesc.setText(advertisement.getDescription());
                 Picasso.get().load(advertisement.getImageUrl()).into(advertisementViewHolder.imageViewAd);
 
+
                 advertisementViewHolder.btnDelete.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {

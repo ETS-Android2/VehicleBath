@@ -108,6 +108,7 @@ public class customers extends AppCompatActivity {
                         holder.UserPhone.setText(model.getPhone());
 
 
+
                         holder.itemView.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View view) {

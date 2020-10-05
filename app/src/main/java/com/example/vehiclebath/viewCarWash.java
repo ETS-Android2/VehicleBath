@@ -37,18 +37,6 @@ public class viewCarWash extends AppCompatActivity {
 
         btnSearch = findViewById(R.id.btnPlaceAppointment);
 
-//        btnSearch.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                startSelectCarWash();
-//            }
-//
-//            private void startSelectCarWash(){
-//                Intent intent = new Intent(viewCarWash.this, PlaceAppointmentForm.class);
-//                startActivity(intent);
-//            }
-//        });
-
         TypeDisplay(TypeName);
 
         btnSearch.setOnClickListener(new View.OnClickListener() {

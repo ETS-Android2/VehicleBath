@@ -5,15 +5,28 @@ public class CarWashType {
     private String typeName;
     private String typeDescription;
     private String typePrice;
+    private String imgUrl;
+
 
     public CarWashType(){
 
     }
 
-    public CarWashType(String typeName, String typeDescription, String typePrice) {
+    public CarWashType(String typeName, String typeDescription, String typePrice, String imgUrl) {
+
+
         this.typeName = typeName;
         this.typeDescription = typeDescription;
         this.typePrice = typePrice;
+        this.imgUrl = imgUrl;
+    }
+
+    public String getImgUrl() {
+        return imgUrl;
+    }
+
+    public void setImgUrl(String imgUrl) {
+        this.imgUrl = imgUrl;
     }
 
     public String getTypeName() {
@@ -39,5 +52,4 @@ public class CarWashType {
     public void setTypePrice(String typePrice) {
         this.typePrice = typePrice;
     }
-
 }

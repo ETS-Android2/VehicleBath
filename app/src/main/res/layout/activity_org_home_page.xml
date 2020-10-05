@@ -24,7 +24,7 @@
         app:titleTextColor="#FFFFFF" />
 
     <TextView
-        android:id="@+id/textView13"
+        android:id="@+id/Showtime"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="168dp"
@@ -43,7 +43,7 @@
         android:foregroundTint="#8BC34A"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView13">
+        app:layout_constraintTop_toBottomOf="@+id/Showtime">
 
         <Button
             android:id="@+id/btn_view_vAppointments"
