@@ -88,17 +88,13 @@ public class UserRating extends AppCompatActivity {
                         toast.show();
                         //toast.setGravity(Gravity.CENTER,0,-150);
                         //------------------Rating Toast Message-------------------------//
-
-
                         Rootref.push().setValue(v);
 
-                        Intent intent = new Intent(UserRating.this,admin_main.class);
+                        Intent intent = new Intent(UserRating.this,HomeUserActivity.class);
                         startActivity(intent);
-
                     }
                 });
             }
-
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
 

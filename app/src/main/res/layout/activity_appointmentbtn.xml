@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -8,59 +8,57 @@
 
     <Button
         android:id="@+id/btn_Progress_apnt"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="100dp"
-        android:layout_marginBottom="10dp"
-        android:layout_marginLeft="15dp"
-        android:layout_marginRight="15dp"
+        android:layout_width="374dp"
+        android:layout_height="71dp"
+        android:layout_marginTop="60dp"
         android:background="@drawable/btn_rounded"
-        android:padding="17dp"
-        android:textAllCaps="false"
-        android:textSize="25dp"
-        android:text="Progress Appointments"
-        android:textColor="@android:color/white"
         android:drawableRight="@drawable/ic_baseline_double_arrow_24"
+        android:padding="17dp"
+        android:text="Progress Appointments"
+        android:textAllCaps="false"
+        android:textColor="@android:color/white"
 
-        />
+        android:textSize="25dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.648"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_Clashed_apnt" />
 
     <Button
         android:id="@+id/btn_Finished_apnt"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:layout_marginBottom="10dp"
-        android:layout_marginLeft="15dp"
-        android:layout_marginRight="15dp"
+        android:layout_width="374dp"
+        android:layout_height="71dp"
+        android:layout_marginTop="60dp"
         android:background="@drawable/btn_rounded"
-        android:padding="17dp"
-        android:textAllCaps="false"
-        android:textSize="25dp"
-        android:text="Finished Appointments"
-        android:textColor="@android:color/white"
-        android:layout_below="@+id/btn_Progress_apnt"
         android:drawableRight="@drawable/ic_baseline_mobile_friendly_24"
+        android:padding="17dp"
+        android:text="Finished Appointments"
+        android:textAllCaps="false"
+        android:textColor="@android:color/white"
 
-        />
+        android:textSize="25dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.648"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_Progress_apnt" />
 
     <Button
         android:id="@+id/btn_Clashed_apnt"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:layout_marginBottom="10dp"
-        android:layout_marginLeft="15dp"
-        android:layout_marginRight="15dp"
+        android:layout_width="374dp"
+        android:layout_height="71dp"
+        android:layout_marginTop="92dp"
         android:background="@drawable/btn_rounded"
-        android:padding="17dp"
-        android:textAllCaps="false"
-        android:textSize="25dp"
-        android:text="Clashed Appointments"
-        android:textColor="@android:color/white"
-        android:layout_below="@+id/btn_Finished_apnt"
         android:drawableRight="@drawable/ic_baseline_timer_off_24"
+        android:padding="17dp"
+        android:text="Clashed Appointments"
+        android:textAllCaps="false"
+        android:textColor="@android:color/white"
 
-        />
+        android:textSize="25dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.632"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 
-</RelativeLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

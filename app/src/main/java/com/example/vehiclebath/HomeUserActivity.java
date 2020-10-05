@@ -14,6 +14,7 @@ import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -40,6 +41,7 @@ public class HomeUserActivity extends AppCompatActivity {
     private RecyclerView postList;
     private Toolbar mToolbar;
     private TextView navProfileName;
+    private Button bookNowBTN;
     RecyclerView.LayoutManager layoutManager;
 
     @Override
@@ -48,10 +50,7 @@ public class HomeUserActivity extends AppCompatActivity {
         setContentView(R.layout.activity_home_user);
 
         Paper.init(this);
-
-
-
-
+        bookNowBTN = findViewById(R.id.bookNowBTN);
 
 //        View headerView = navigationView.getHeaderView(0);
 //        TextView userNameTextView = headerView.findViewById(R.id.nav_user_full_name);
@@ -90,6 +89,14 @@ public class HomeUserActivity extends AppCompatActivity {
 
 
                 return false;
+            }
+        });
+
+        bookNowBTN.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(HomeUserActivity.this, SelectCarWash.class);
+                startActivity(intent);
             }
         });
 
@@ -141,7 +148,7 @@ public class HomeUserActivity extends AppCompatActivity {
                 break;
 
             case R.id.nav_view:
-
+                viewActivity();
                 Toast.makeText(this,"View Your Bookings", Toast.LENGTH_SHORT).show();
                 break;
 
@@ -191,12 +198,12 @@ public class HomeUserActivity extends AppCompatActivity {
         Intent settingsIntent = new Intent(HomeUserActivity.this, HomeUserActivity.class);
         startActivity(settingsIntent);
     }
-//    private void viewActivity()
-//    {
-//        Paper.book().destroy();
-//        Intent settingsIntent = new Intent(HomeUserActivity.this, HomeUserActivity.class);
-//        startActivity(settingsIntent);
-//    }
+    private void viewActivity()
+    {
+        Paper.book().destroy();
+        Intent settingsIntent = new Intent(HomeUserActivity.this, CusShowAllAppointments.class);
+        startActivity(settingsIntent);
+    }
 
 }
 

@@ -24,6 +24,7 @@ import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
+import com.example.vehiclebath.Prevalent1.Prevalent;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.snackbar.Snackbar;
@@ -51,6 +52,7 @@ public class PlaceAppointmentForm extends AppCompatActivity {
 
     private EditText carWashtypeName;
     private String carWashTypeVal;
+    private DatabaseReference SessionReference;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -180,7 +182,9 @@ public class PlaceAppointmentForm extends AppCompatActivity {
                             appdata.put("Date",date);
                             appdata.put("Time",time);
                             appdata.put("CarWashType", carWashTypeVal);
-                            appdata.put("C_Name", "0773134567");
+                            SessionReference =
+                                    FirebaseDatabase.getInstance().getReference().child(Prevalent.currentOnlineUser.getPhone());
+                            appdata.put("C_Name", SessionReference);
 
 
                             ref.child("ProgressAppointments").child(key).updateChildren(appdata).addOnCompleteListener(new OnCompleteListener<Void>() {
@@ -188,7 +192,6 @@ public class PlaceAppointmentForm extends AppCompatActivity {
                                 public void onComplete(@NonNull Task<Void> task) {
                                     if(task.isSuccessful()){
                                         Toast.makeText(PlaceAppointmentForm.this, "Appointment Placed Successfully", Toast.LENGTH_LONG).show();
-
                                     }
                                     else{
                                         Toast.makeText(PlaceAppointmentForm.this, "Error", Toast.LENGTH_LONG).show();

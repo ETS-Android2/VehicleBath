@@ -16,6 +16,7 @@ public class AppointmentSummary extends AppCompatActivity {
 
     private String washType, time, date;
     private TextView Showtime, showDate, showWashType;
+    private FloatingActionButton Rating, btnHome;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,7 +36,8 @@ public class AppointmentSummary extends AppCompatActivity {
         showDate.setText("Date : "+ date);
         showWashType.setText("Type : " + washType);
 
-        FloatingActionButton btnHome = (FloatingActionButton) findViewById(R.id.btnHome);
+        btnHome = (FloatingActionButton)findViewById(R.id.btnHome);
+        Rating = (FloatingActionButton)findViewById(R.id.Rating);
 
         btnHome.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -44,8 +46,16 @@ public class AppointmentSummary extends AppCompatActivity {
             }
 
             private void startSelectCarWash() {
-                Intent intent = new Intent(AppointmentSummary.this, SelectCarWash.class);
+                Intent intent = new Intent(AppointmentSummary.this, HomeUserActivity.class);
                 startActivity(intent);
+            }
+        });
+
+        Rating.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent1 = new Intent(AppointmentSummary.this, UserRating.class);
+                startActivity(intent1);
             }
         });
 
