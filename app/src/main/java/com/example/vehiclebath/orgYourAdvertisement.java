@@ -42,7 +42,7 @@ public class orgYourAdvertisement extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_org_your_advertisement);
 
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        //getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         databaseReference = FirebaseDatabase.getInstance().getReference().child("Advertisement");
         adRecyclerView = findViewById(R.id.adRecycler);

@@ -211,7 +211,7 @@ public class SettingsActivity1 extends AppCompatActivity {
 
 
 
-        startActivity(new Intent(SettingsActivity1.this,MainActivity.class));
+        startActivity(new Intent(SettingsActivity1.this,HomeUserActivity.class));
         Toast.makeText(SettingsActivity1.this,"Profile Info Updated Successfully", Toast.LENGTH_LONG).show();
         finish();
 

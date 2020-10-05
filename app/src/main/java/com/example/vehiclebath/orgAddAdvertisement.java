@@ -50,7 +50,7 @@ public class orgAddAdvertisement extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_org_add_advertisement);
 
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        //getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         storageReference = FirebaseStorage.getInstance().getReference().child("AdvertisementImage");
         databaseReference = FirebaseDatabase.getInstance().getReference();

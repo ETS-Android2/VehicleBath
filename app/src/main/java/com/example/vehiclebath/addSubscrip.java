@@ -38,7 +38,7 @@ public class addSubscrip extends AppCompatActivity {
 
         Intent intent = getIntent();
 
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        //getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
 
 

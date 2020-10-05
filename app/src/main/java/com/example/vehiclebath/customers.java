@@ -49,7 +49,7 @@ public class customers extends AppCompatActivity {
         recyclerView.setLayoutManager(layoutManager);
         tvUser = findViewById(R.id.userSum);
 
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        //getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         UsersTot = FirebaseDatabase.getInstance().getReference().child("Users");
 

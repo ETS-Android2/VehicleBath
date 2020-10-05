@@ -5,6 +5,7 @@ import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
@@ -68,6 +69,12 @@ public class HomeUserActivity extends AppCompatActivity {
         actionBarDrawerToggle.syncState();
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         navigationView = (NavigationView) findViewById(R.id.navigation_view);
+
+        userViewRecycler = findViewById(R.id.all_users_post_list);
+        userViewRecycler.setHasFixedSize(true);
+        layoutManager = new LinearLayoutManager(this);
+        userViewRecycler.setLayoutManager(layoutManager);
+
 
         View navView = navigationView.inflateHeaderView(R.layout.navigation_header);
         TextView navProfileName = (TextView) navView.findViewById(R.id.nav_user_full_name);
