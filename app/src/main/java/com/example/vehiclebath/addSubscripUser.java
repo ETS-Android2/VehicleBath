@@ -42,7 +42,7 @@ public class addSubscripUser extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_subscrip_user);
 
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        //getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         databaseReference = FirebaseDatabase.getInstance().getReference();
         arrayList = new ArrayList<>();

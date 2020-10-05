@@ -6,31 +6,51 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".HomeUserActivity">
-
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-
         <include
             android:id="@+id/main_page_toolbar"
             layout="@layout/app_bar_layout"
             >
         </include>
-
         <FrameLayout
             android:id="@+id/main_container"
-            android:layout_width="match_parent"
-            android:layout_height="530dp"
+            android:layout_width="350dp"
+            android:layout_height="480dp"
             android:layout_alignParentStart="true"
-            android:layout_marginStart="0dp">
-
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="30dp"
+            android:layout_marginBottom="38dp">
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/all_users_post_list"
-                android:layout_width="match_parent"
-                android:layout_height="551dp" />
+                android:layout_width="350dp"
+                android:layout_height="match_parent"
+                android:layout_marginStart="0dp" />
         </FrameLayout>
+        <Button
+            android:id="@+id/bookNowBTN"
+            android:layout_width="166dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="72dp"
+            android:layout_marginEnd="113dp"
+            android:background="@drawable/shapeq"
+            android:backgroundTint="#225EBB"
+            android:text="Book Now"
+            android:textColor="#FFFFFF" ></Button>
+        <ImageView
+            android:id="@+id/imageView4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="83dp"
+            android:layout_marginEnd="242dp"
+            android:background="#FFFFFF"
+            app:srcCompat="@drawable/ic_baseline_touch_app_24" />
     </RelativeLayout>
-
     <com.google.android.material.navigation.NavigationView
         android:id="@+id/navigation_view"
         android:layout_width="wrap_content"
@@ -38,7 +58,5 @@
         android:layout_gravity="start"
         android:layout_marginBottom="3dp"
         app:menu="@menu/navigation_menu">
-
     </com.google.android.material.navigation.NavigationView>
-
 </androidx.drawerlayout.widget.DrawerLayout>

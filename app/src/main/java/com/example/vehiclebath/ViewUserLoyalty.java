@@ -32,7 +32,7 @@ public class ViewUserLoyalty extends AppCompatActivity {
         float total = (float) 1500.0;
 
         float LP = calLoyaltyPoints(total);
-        String loyalty = Float.toString(LP);
+        String loyalty = "Your Loyalty Points Are "+ Float.toString(LP);
         loyaltyValue.setText(loyalty);
 
 

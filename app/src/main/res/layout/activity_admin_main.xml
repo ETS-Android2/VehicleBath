@@ -7,48 +7,27 @@
     tools:context=".admin_main">
 
 
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar2"
-        android:layout_width="match_parent"
-        android:layout_height="?actionBarSize"
-        android:background="#143567"
-        android:theme="@style/ThemeOverlay.AppCompat.Light"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+    <include
+        android:id="@+id/register_user_toolbar"
+        layout="@layout/app_bar_layout"
         app:logo="@drawable/logo13"
-        app:title="@string/appName"
+        />
 
-        app:titleMarginStart="40dp"
-        app:titleTextColor="#FFFFFF" />
-
-<!--    <Button-->
-<!--        android:id="@+id/btnOrganization"-->
-<!--        android:layout_width="353dp"-->
-<!--        android:layout_height="66dp"-->
-<!--        android:layout_marginStart="6dp"-->
-<!--        android:layout_marginEnd="16dp"-->
-<!--        android:background="@drawable/btn_rounded"-->
-<!--        android:drawableRight="@drawable/ic_baseline_local_car_wash_24"-->
-<!--        android:text="@string/adHmbtn1"-->
-<!--        android:textAlignment="center"-->
-<!--        android:textAllCaps="false"-->
-
-<!--        android:textColor="#FFFFFF"-->
-<!--        android:textSize="24sp"-->
-<!--        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--    <androidx.appcompat.widget.Toolbar-->
+<!--        android:id="@+id/toolbar2"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="?actionBarSize"-->
+<!--        android:background="#143567"-->
+<!--        android:theme="@style/ThemeOverlay.AppCompat.Light"-->
 <!--        app:layout_constraintEnd_toEndOf="parent"-->
-<!--        app:layout_constraintHorizontal_bias="0.638"-->
+<!--        app:layout_constraintHorizontal_bias="0.0"-->
 <!--        app:layout_constraintStart_toStartOf="parent"-->
 <!--        app:layout_constraintTop_toTopOf="parent"-->
-<!--        app:layout_constraintVertical_bias="0.172" />-->
+<!--        app:logo="@drawable/logo13"-->
+<!--        app:title="@string/appName"-->
 
-    <!--        app:layout_constraintBottom_toBottomOf="parent"-->
-<!--        app:layout_constraintEnd_toEndOf="parent"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintTop_toBottomOf="@+id/btnOrganization"-->
-<!--        app:layout_constraintVertical_bias="0.0" />-->
+<!--        app:titleMarginStart="40dp"-->
+<!--        app:titleTextColor="#FFFFFF" />-->
 
 
     <Button
@@ -67,8 +46,8 @@
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar2"
-        app:layout_goneMarginTop="100dp"
+        app:layout_constraintTop_toBottomOf="@+id/register_user_toolbar"
+        app:layout_goneMarginTop="50dp"
         tools:ignore="MissingConstraints" />
 
     <Button
