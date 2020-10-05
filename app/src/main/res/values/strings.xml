@@ -156,6 +156,8 @@
 
     <string name="price">Rs.</string>
     <string name="dialog_message">Report</string>
+    <string name="rateus">Please be kind enough to rate our service..</string>
+    <string name="adminRate">Ratings</string>
 
     <string name="drawer_open">Drawer Open</string>
     <string name="drawer_close">Drawer Close</string>

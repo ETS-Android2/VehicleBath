@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".AppointmentbtnActivity">
+
+    <Button
+        android:id="@+id/btn_Progress_apnt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="100dp"
+        android:layout_marginBottom="10dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:background="@drawable/btn_rounded"
+        android:padding="17dp"
+        android:textAllCaps="false"
+        android:textSize="25dp"
+        android:text="Progress Appointments"
+        android:textColor="@android:color/white"
+        android:drawableRight="@drawable/ic_baseline_double_arrow_24"
+
+        />
+
+    <Button
+        android:id="@+id/btn_Finished_apnt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:background="@drawable/btn_rounded"
+        android:padding="17dp"
+        android:textAllCaps="false"
+        android:textSize="25dp"
+        android:text="Finished Appointments"
+        android:textColor="@android:color/white"
+        android:layout_below="@+id/btn_Progress_apnt"
+        android:drawableRight="@drawable/ic_baseline_mobile_friendly_24"
+
+        />
+
+    <Button
+        android:id="@+id/btn_Clashed_apnt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:background="@drawable/btn_rounded"
+        android:padding="17dp"
+        android:textAllCaps="false"
+        android:textSize="25dp"
+        android:text="Clashed Appointments"
+        android:textColor="@android:color/white"
+        android:layout_below="@+id/btn_Finished_apnt"
+        android:drawableRight="@drawable/ic_baseline_timer_off_24"
+
+        />
+
+
+</RelativeLayout>
