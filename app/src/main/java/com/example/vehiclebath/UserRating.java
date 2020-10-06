@@ -90,7 +90,7 @@ public class UserRating extends AppCompatActivity {
                         //------------------Rating Toast Message-------------------------//
                         Rootref.push().setValue(v);
 
-                        Intent intent = new Intent(UserRating.this,HomeUserActivity.class);
+                        Intent intent = new Intent(UserRating.this, HomeUserActivity.class);
                         startActivity(intent);
                     }
                 });

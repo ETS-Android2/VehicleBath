@@ -26,7 +26,11 @@
         <activity android:name=".AdminRating" />
         <activity android:name=".AppointmentbtnActivity" />
         <activity android:name=".SettingsActivity1" />
-        <activity android:name=".MainActivityJoe"/>
+        <activity android:name=".MainActivityJoe"><intent-filter>
+            <action android:name="android.intent.action.MAIN" />
+            <category android:name="android.intent.category.LAUNCHER" />
+        </intent-filter>
+        </activity>
         <activity android:name=".ViewUserLoyalty" />
         <activity android:name=".VerifyUserPwd" />
         <activity android:name=".VerifyOrgPwd" />
@@ -52,12 +56,7 @@
         <activity android:name=".Rating_organization" />
         <activity android:name=".customer_notifications" />
         <activity android:name=".report_customer_message" />
-        <activity android:name=".admin_main" android:parentActivityName=".LoginNew">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+        <activity android:name=".admin_main" android:parentActivityName=".LoginNew"/>
         <activity android:name=".customer_blacklist" />
         <activity android:name=".MainActivity" />
         <activity android:name=".PlaceAppointmentForm" />

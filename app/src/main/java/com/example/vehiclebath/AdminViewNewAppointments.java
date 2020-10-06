@@ -81,12 +81,17 @@ public class AdminViewNewAppointments extends AppCompatActivity {
                 new FirebaseRecyclerAdapter<Appointments, AdminAppointmentTableViewHolder>(options) {
                     @Override
                     protected void onBindViewHolder(@NonNull AdminAppointmentTableViewHolder holder, int position, @NonNull Appointments model) {
+
+                        final String key1 = "A"+model.getDate()+"_"+model.getTime();
+
+
                         holder.C_Name.setText(model.getC_Name());
                         holder.type.setText(model.getCarWashType());
-                        final String date =  model.getDate()+ "  " + model.getTime();
-                        holder.dateTime.setText(date);
+                        final String dateI =  model.getDate()+ "  " + model.getTime();
+                        holder.dateTime.setText(dateI);
 
-                        String dateI =  model.getDate().replace("/","");
+//                        dateI =  model.getDate().replace("/","");
+
                         final String time = model.getTime();
 
                         final String washType, cName;
@@ -103,8 +108,9 @@ public class AdminViewNewAppointments extends AppCompatActivity {
                                 Intent intent = new Intent(AdminViewNewAppointments.this, AdminUpdateAppointment.class );
                                 intent .putExtra("cName", cName );
                                 intent .putExtra("washType", washType );
-                                intent .putExtra("date", date );
+                                intent .putExtra("date", dateI );
                                 intent .putExtra("time", time );
+                                intent.putExtra("Key1", key1);
                                 startActivity(intent);
 
                             }

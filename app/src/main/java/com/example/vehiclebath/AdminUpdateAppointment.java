@@ -25,7 +25,7 @@ public class AdminUpdateAppointment extends AppCompatActivity {
 
     private EditText eACusName, eADate, EAtime, EAtime2;
     private Button updateAppointment;
-    private String newTime, key;
+    private String newTime, key, key1;
 
     private DatabaseReference ref;
 
@@ -49,6 +49,7 @@ public class AdminUpdateAppointment extends AppCompatActivity {
         EAtime2.setText(time);
 
         key = "A"+date.replace("/","")+"_"+time ;
+        key1 = getIntent().getStringExtra("Key1");
         ref = FirebaseDatabase.getInstance().getReference();
 
         updateAppointment = findViewById(R.id.updateAppointment);
@@ -77,7 +78,7 @@ public class AdminUpdateAppointment extends AppCompatActivity {
                     public void onComplete(@NonNull Task<Void> task) {
                         if(task.isSuccessful()){
                             Toast.makeText(AdminUpdateAppointment.this, "Appointment Clash Resolved Successfully", Toast.LENGTH_LONG).show();
-                            ref.child("ClashAppointments").child(key).removeValue();
+                            ref.child("ClashAppointments").child(key1).removeValue();
                         }
                         else{
                             Toast.makeText(AdminUpdateAppointment.this, "Error", Toast.LENGTH_LONG).show();
