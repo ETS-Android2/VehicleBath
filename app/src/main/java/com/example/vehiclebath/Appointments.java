@@ -5,6 +5,7 @@ public class Appointments {
     private String CarWashType;
     private String Date;
     private String Time;
+    private String Key;
 
 
     public Appointments(){
@@ -16,6 +17,22 @@ public class Appointments {
         CarWashType = carWashType;
         Date = date;
         Time = time;
+    }
+
+    public Appointments(String c_Name, String carWashType, String date, String time, String key) {
+        C_Name = c_Name;
+        CarWashType = carWashType;
+        Date = date;
+        Time = time;
+        Key = key;
+    }
+
+    public String getKey() {
+        return Key;
+    }
+
+    public void setKey(String key) {
+        Key = key;
     }
 
     public String getC_Name() {
