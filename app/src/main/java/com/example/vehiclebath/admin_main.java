@@ -31,7 +31,7 @@ public class admin_main extends AppCompatActivity {
 
 //        orgbutton = findViewById(R.id.btnOrganization);
         cusbutton =  findViewById(R.id.btnCustomer);
-        btnCarWashType = findViewById(R.id.btnCarWashType);
+        btnCarWashType = findViewById(R.id.btnCarWash);
         addButton = findViewById(R.id.btnAdd);
         subButton = findViewById(R.id.btnSub);
         repButton = findViewById(R.id.btnReoprtCustomer);
@@ -59,7 +59,7 @@ public class admin_main extends AppCompatActivity {
         btnCarWashType.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent =  new Intent(admin_main.this,CustomerReportedActivity.class);
+                Intent intent =  new Intent(admin_main.this,adminAddCarwashType.class);
                 startActivity(intent);
             }
         });

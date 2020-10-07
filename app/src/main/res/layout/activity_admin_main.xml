@@ -195,7 +195,7 @@
 
 
     <Button
-        android:id="@+id/btnCarWashType"
+        android:id="@+id/btnCarWash"
         android:layout_width="353dp"
         android:layout_height="66dp"
         android:layout_marginTop="6dp"

@@ -85,7 +85,7 @@ public class adminAddCarwashType extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 createType();
-                Intent intent = new Intent(adminAddCarwashType.this, MainActivity.class);
+                Intent intent = new Intent(adminAddCarwashType.this, admin_main.class);
                 startActivity(intent);
             }
         });
