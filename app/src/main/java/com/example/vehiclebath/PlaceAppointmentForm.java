@@ -223,6 +223,8 @@ public class PlaceAppointmentForm extends AppCompatActivity {
                                         appdata.put("Date",date);
                                         appdata.put("Time",time);
                                         appdata.put("CarWashType", carWashTypeVal);
+                                        appdata.put("C_Name", logged);
+                                        appdata.put("Key", key);
 
                                         ref.child("ClashAppointments").child(key).updateChildren(appdata).addOnCompleteListener(new OnCompleteListener<Void>() {
                                             @Override

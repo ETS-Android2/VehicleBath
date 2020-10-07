@@ -59,22 +59,23 @@ public class AdminViewProgressAppointments extends AppCompatActivity {
                         final String date =  model.getDate()+ "  " + model.getTime();
                         holder.dateTime.setText(date);
 
-                        String dateI =  model.getDate().replace("/","");
-                        final String time = model.getTime();
 
-                        final String Aid = "A"+dateI+"_"+time;
+
+//                        final String Aid = "A"+dateI+"_"+time;
 
                         final String washType, cName;
 
                         washType = model.getCarWashType();
                         cName = model.getC_Name();
+                        final String dateI =  model.getDate();
+                        final String time = model.getTime();
 
 
                         holder.pbtnF.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View v) {
 
-                                createFinishedAppointment(cName, washType, date, time );
+                                createFinishedAppointment(cName, washType, dateI, time );
                             }
                         });
                     }
@@ -112,7 +113,7 @@ public class AdminViewProgressAppointments extends AppCompatActivity {
                         @Override
                         public void onComplete(@NonNull Task<Void> task) {
                             if(task.isSuccessful()){
-                                Toast.makeText(AdminViewProgressAppointments.this, "Appointment Placed Successfully", Toast.LENGTH_LONG).show();
+                                Toast.makeText(AdminViewProgressAppointments.this, "Appointment Finished Successfully", Toast.LENGTH_LONG).show();
                                 ref.child("ProgressAppointments").child(key).removeValue();
                             }
                             else{
@@ -125,7 +126,7 @@ public class AdminViewProgressAppointments extends AppCompatActivity {
 
                 }
                 else{
-                    Toast.makeText(AdminViewProgressAppointments.this, "Error", Toast.LENGTH_LONG).show();
+                    Toast.makeText(AdminViewProgressAppointments.this, "Error !Duplicate entry.", Toast.LENGTH_LONG).show();
                 }
             }
 

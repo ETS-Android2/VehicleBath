@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.app.DatePickerDialog;
 import android.app.ProgressDialog;
 import android.app.TimePickerDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -21,11 +22,15 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.HashMap;
+import java.util.PriorityQueue;
+
 public class AdminUpdateAppointment extends AppCompatActivity {
 
     private EditText eACusName, eADate, EAtime, EAtime2;
     private Button updateAppointment;
-    private String newTime, key, key1;
+    private String newTime, key;
+    private String key1, nDate, nTime;
 
     private DatabaseReference ref;
 
@@ -42,6 +47,7 @@ public class AdminUpdateAppointment extends AppCompatActivity {
 
         final String date =getIntent().getStringExtra("date");
         final String time =getIntent().getStringExtra("time");
+        key1 = getIntent().getStringExtra("Key");
 
         eACusName.setText(getIntent().getStringExtra("cName"));
         eADate.setText(getIntent().getStringExtra("washType"));
@@ -49,7 +55,7 @@ public class AdminUpdateAppointment extends AppCompatActivity {
         EAtime2.setText(time);
 
         key = "A"+date.replace("/","")+"_"+time ;
-        key1 = getIntent().getStringExtra("Key1");
+
         ref = FirebaseDatabase.getInstance().getReference();
 
         updateAppointment = findViewById(R.id.updateAppointment);
@@ -61,9 +67,6 @@ public class AdminUpdateAppointment extends AppCompatActivity {
             }
         });
 
-
-
-
     }
 
     private void updateExistAppointment() {
@@ -72,19 +75,35 @@ public class AdminUpdateAppointment extends AppCompatActivity {
         ref.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                ref.child("ClashAppointments").child(key).child("Time").setValue(newTime).
-                        addOnCompleteListener(new OnCompleteListener<Void>() {
-                    @Override
-                    public void onComplete(@NonNull Task<Void> task) {
-                        if(task.isSuccessful()){
-                            Toast.makeText(AdminUpdateAppointment.this, "Appointment Clash Resolved Successfully", Toast.LENGTH_LONG).show();
-                            ref.child("ClashAppointments").child(key1).removeValue();
+                if(!(snapshot.child("ProgressAppointments").child(key).exists())) {
+                    HashMap<String, Object> appdata = new HashMap<>();
+                    appdata.put("Date", EAtime.getText().toString().replace("/","") );
+                    appdata.put("Time", EAtime2.getText().toString());
+                    appdata.put("CarWashType", eADate.getText().toString());
+                    appdata.put("Key", key);
+                    appdata.put("C_Name", eACusName.getText().toString());
+
+                    ref.child("ProgressAppointments").child(key).
+                            updateChildren(appdata).addOnCompleteListener(new OnCompleteListener<Void>() {
+                        @Override
+                        public void onComplete(@NonNull Task<Void> task) {
+                            if(task.isSuccessful()){
+                                Toast.makeText(AdminUpdateAppointment.this, "Success", Toast.LENGTH_LONG).show();
+                                ref.child("ClashAppointments").child(key1).removeValue();
+                                Intent intent = new Intent(AdminUpdateAppointment.this, admin_main.class);
+                                startActivity(intent);
+                            }
+                            else{
+                                Toast.makeText(AdminUpdateAppointment.this, "We already have an Appointment on this time", Toast.LENGTH_LONG).show();
+                            }
+
                         }
-                        else{
-                            Toast.makeText(AdminUpdateAppointment.this, "Error", Toast.LENGTH_LONG).show();
-                        }
-                    }
-                });
+                    });
+
+                }
+                else{
+                    Toast.makeText(AdminUpdateAppointment.this, "ERROR", Toast.LENGTH_LONG).show();
+                }
             }
 
             @Override
@@ -92,6 +111,6 @@ public class AdminUpdateAppointment extends AppCompatActivity {
 
             }
         });
-
     }
+
 }

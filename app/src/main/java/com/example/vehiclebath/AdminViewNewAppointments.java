@@ -35,6 +35,7 @@ public class AdminViewNewAppointments extends AppCompatActivity {
     private DatabaseReference count;
     private int sum = 0;
     private TextView countHeader;
+    private String Key;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -82,7 +83,7 @@ public class AdminViewNewAppointments extends AppCompatActivity {
                     @Override
                     protected void onBindViewHolder(@NonNull AdminAppointmentTableViewHolder holder, int position, @NonNull Appointments model) {
 
-                        final String key1 = "A"+model.getDate()+"_"+model.getTime();
+                        final String Key = model.getKey();
 
 
                         holder.C_Name.setText(model.getC_Name());
@@ -110,7 +111,7 @@ public class AdminViewNewAppointments extends AppCompatActivity {
                                 intent .putExtra("washType", washType );
                                 intent .putExtra("date", dateI );
                                 intent .putExtra("time", time );
-                                intent.putExtra("Key1", key1);
+                                intent.putExtra("Key", Key);
                                 startActivity(intent);
 
                             }
