@@ -111,7 +111,7 @@ public class addSubscripUser extends AppCompatActivity {
         databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                if(snapshot.child("User").child(phoneNumber).exists()){
+                if(snapshot.child("Users").child(phoneNumber).exists()){
                     DatabaseReference dataRef1 = databaseReference.child("Subscription");
                     dataRef1.child(subscriptionPlan).addListenerForSingleValueEvent(new ValueEventListener() {
                         @Override
@@ -170,7 +170,7 @@ public class addSubscripUser extends AppCompatActivity {
     }
 
     private void updateSubcriptionPlan(String subscriptionPlan, String phoneNumber, final String subscriptionPeriod) {
-        final DatabaseReference dataRef2 = databaseReference.child("User").child(phoneNumber);
+        final DatabaseReference dataRef2 = databaseReference.child("Users").child(phoneNumber);
         dataRef2.child("subscriptionPlan").setValue(subscriptionPlan).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {

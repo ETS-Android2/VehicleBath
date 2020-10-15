@@ -12,7 +12,7 @@ import android.widget.Button;
 public class admin_main extends AppCompatActivity {
 
 
-    Button cusbutton,userBlackbutton,addButton,subButton,repButton,adminRatingsBtn,btnAppointments,btnSubUser;
+    Button cusbutton,btnCarWashType,addButton,subButton,repButton,adminRatingsBtn,btnAppointments,btnSubUser;
 
     private Toolbar mToolbar;
 
@@ -31,7 +31,7 @@ public class admin_main extends AppCompatActivity {
 
 //        orgbutton = findViewById(R.id.btnOrganization);
         cusbutton =  findViewById(R.id.btnCustomer);
-        userBlackbutton = findViewById(R.id.btnUserBlack);
+        btnCarWashType = findViewById(R.id.btnCarWash);
         addButton = findViewById(R.id.btnAdd);
         subButton = findViewById(R.id.btnSub);
         repButton = findViewById(R.id.btnReoprtCustomer);
@@ -56,10 +56,10 @@ public class admin_main extends AppCompatActivity {
             }
         });
 
-        userBlackbutton.setOnClickListener(new View.OnClickListener() {
+        btnCarWashType.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent =  new Intent(admin_main.this,CustomerReportedActivity.class);
+                Intent intent =  new Intent(admin_main.this,adminAddCarwashType.class);
                 startActivity(intent);
             }
         });
