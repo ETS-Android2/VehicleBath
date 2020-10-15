@@ -3,31 +3,30 @@ package com.example.vehiclebath.model1;
 public class Advertisements1 {
 
 
-    private String AddDescription;
-    private String ImageURL;
+    private String Description;
+    private String ImageUrl;
 
-    public Advertisements1(){
-
+    public Advertisements1() {
     }
 
-    public Advertisements1(String addDescription, String imageURL) {
-        AddDescription = addDescription;
-        ImageURL = imageURL;
+    public Advertisements1(String description, String imageUrl) {
+        Description = description;
+        ImageUrl = imageUrl;
     }
 
-    public String getAddDescription() {
-        return AddDescription;
+    public String getDescription() {
+        return Description;
     }
 
-    public void setAddDescription(String addDescription) {
-        AddDescription = addDescription;
+    public void setDescription(String description) {
+        Description = description;
     }
 
-    public String getImageURL() {
-        return ImageURL;
+    public String getImageUrl() {
+        return ImageUrl;
     }
 
-    public void setImageURL(String imageURL) {
-        ImageURL = imageURL;
+    public void setImageUrl(String imageUrl) {
+        ImageUrl = imageUrl;
     }
 }

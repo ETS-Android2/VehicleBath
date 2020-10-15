@@ -115,9 +115,9 @@ public class HomeUserActivity extends AppCompatActivity {
 
         FirebaseRecyclerAdapter<Advertisements1, Advertisement_View_Holder1> adapter = new FirebaseRecyclerAdapter   <Advertisements1, Advertisement_View_Holder1>(options) {
             @Override
-            protected void onBindViewHolder(@NonNull Advertisement_View_Holder1 advertisementViewHolder, int i, @NonNull Advertisements1 advertisement) {
-                advertisementViewHolder.useradDesc.setText(advertisement.getAddDescription());
-                Picasso.get().load(advertisement.getImageURL()).into(advertisementViewHolder.userimageViewAd);
+            protected void onBindViewHolder(@NonNull Advertisement_View_Holder1 advertisementViewHolder, int i, @NonNull Advertisements1 advertisements1) {
+                advertisementViewHolder.useradDesc.setText(advertisements1.getDescription());
+                Picasso.get().load(advertisements1.getImageUrl()).into(advertisementViewHolder.userimageViewAd);
             }
 
             @NonNull

@@ -12,7 +12,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".CusShowAllAppointments"></activity>
+        <activity android:name=".CusShowAllAppointments" />
         <activity android:name=".AdminUpdateAppointment" />
         <activity android:name=".UserRating" />
         <activity android:name=".AdminViewProgressAppointments">
@@ -26,10 +26,11 @@
         <activity android:name=".AdminRating" />
         <activity android:name=".AppointmentbtnActivity" />
         <activity android:name=".SettingsActivity1" />
-        <activity android:name=".MainActivityJoe"><intent-filter>
-            <action android:name="android.intent.action.MAIN" />
-            <category android:name="android.intent.category.LAUNCHER" />
-        </intent-filter>
+        <activity android:name=".MainActivityJoe">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
         <activity android:name=".ViewUserLoyalty" />
         <activity android:name=".VerifyUserPwd" />
