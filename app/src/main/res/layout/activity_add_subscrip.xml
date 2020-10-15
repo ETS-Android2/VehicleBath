@@ -13,6 +13,10 @@
         android:layout_height="wrap_content"
         tools:context=".addSubscrip">
 
+        <include
+            android:id="@+id/addSubToolbar"
+            layout="@layout/app_bar_layout" />
+
         <TextView
             android:id="@+id/textView26"
             android:layout_width="131dp"
@@ -45,15 +49,16 @@
             android:id="@+id/textView4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="36dp"
             android:fontFamily="@font/trykker"
             android:text="@string/addSub"
             android:textColor="#143567"
             android:textSize="30sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.492"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toBottomOf="@+id/addSubToolbar" />
 
         <EditText
             android:id="@+id/etSubName"

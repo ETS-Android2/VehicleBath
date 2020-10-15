@@ -15,6 +15,7 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import com.example.vehiclebath.Model.Subscription;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -36,12 +37,18 @@ public class addSubscripUser extends AppCompatActivity {
     private ArrayList<String> arrayList;
     private ArrayAdapter<String> arrayAdapter;
     private ProgressDialog progressDialog;
+    private Toolbar mToolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_subscrip_user);
 
+        mToolbar = (Toolbar) findViewById(R.id.addSubUserToolbar);
+        setSupportActionBar(mToolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+        getSupportActionBar().setTitle("Subscription");
         //getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         databaseReference = FirebaseDatabase.getInstance().getReference();

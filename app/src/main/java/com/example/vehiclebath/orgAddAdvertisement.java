@@ -16,6 +16,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import com.google.android.gms.tasks.Continuation;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -44,12 +45,18 @@ public class orgAddAdvertisement extends AppCompatActivity {
     private UploadTask storageTask;
     private String downloadImageUrl,advertisementName,advertisementDescription,advertisementImageName;
     private ProgressDialog progressDialog;
+    private Toolbar mToolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_org_add_advertisement);
 
+        mToolbar = (Toolbar) findViewById(R.id.addAdvertToolbar);
+        setSupportActionBar(mToolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+        getSupportActionBar().setTitle("Advertisement");
         //getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         storageReference = FirebaseStorage.getInstance().getReference().child("AdvertisementImage");

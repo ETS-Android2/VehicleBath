@@ -13,6 +13,10 @@
         android:layout_height="wrap_content"
         tools:context=".orgAddAdvertisement">
 
+        <include
+            android:id="@+id/addAdvertToolbar"
+            layout="@layout/app_bar_layout" />
+
         <Button
             android:id="@+id/browseImg"
             android:layout_width="82dp"
@@ -58,7 +62,7 @@
             android:id="@+id/textView4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="24dp"
             android:fontFamily="@font/trykker"
             android:text="@string/adminAddAdvert"
             android:textColor="#143567"
@@ -66,7 +70,7 @@
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toBottomOf="@+id/addAdvertToolbar" />
 
         <TextView
             android:id="@+id/textView5"
@@ -142,9 +146,10 @@
             android:id="@+id/divider"
             android:layout_width="match_parent"
             android:layout_height="1dp"
-            android:layout_marginTop="42dp"
+            android:layout_marginTop="28dp"
             android:background="?android:attr/listDivider"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/btnAddAdvertise2" />
 

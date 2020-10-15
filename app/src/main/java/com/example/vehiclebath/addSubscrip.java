@@ -13,6 +13,7 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -30,6 +31,7 @@ public class addSubscrip extends AppCompatActivity {
     private Spinner spinner;
     private Button btnAddSub;
     private ProgressDialog progressDialog;
+    private Toolbar mToolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,8 +40,12 @@ public class addSubscrip extends AppCompatActivity {
 
         Intent intent = getIntent();
 
+        mToolbar = (Toolbar) findViewById(R.id.addSubToolbar);
+        setSupportActionBar(mToolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+        getSupportActionBar().setTitle("Subscription");
         //getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
 
 
         spinner = (Spinner) findViewById(R.id.spinnerSubAvail);
