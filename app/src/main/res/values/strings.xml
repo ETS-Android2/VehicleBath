@@ -161,6 +161,8 @@
 
     <string name="drawer_open">Drawer Open</string>
     <string name="drawer_close">Drawer Close</string>
+    <string name="count">Count : </string>
+    <string name="defaultCount">Count : 0</string>
 
 
 </resources>
