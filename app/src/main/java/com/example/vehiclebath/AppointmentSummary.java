@@ -46,7 +46,7 @@ public class AppointmentSummary extends AppCompatActivity {
             }
 
             private void startSelectCarWash() {
-                Intent intent = new Intent(AppointmentSummary.this, HomeUserActivity.class);
+                Intent intent = new Intent(AppointmentSummary.this, ViewUserLoyalty.class);
                 startActivity(intent);
             }
         });
