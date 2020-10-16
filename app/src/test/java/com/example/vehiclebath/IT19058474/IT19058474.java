@@ -7,14 +7,12 @@ import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
+import static org.junit.Assert.*;
 
 public class IT19058474 {
 
     private static adminViewAllAppointments adminViewAllAppointments;
-    public static int result;
-
-
-
+    public static double result1, result2;
 
     @BeforeClass
     public static void setAdminViewAllAppointment() {
@@ -23,22 +21,22 @@ public class IT19058474 {
 
     @Before
     public void setup(){
-        sum = ;
+
+        result1 =adminViewAllAppointments.findTotIncome(5);
     }
 
     @Test
-    public void calSum() {
-        assert sum == 3;
+    public void calTot() {
+        assertEquals(1500.0,result1,0.1);
     }
 
     @After
     public void clearResultValue() {
-        result = 0;
+        result1 = 0;
     }
     @AfterClass
     public static void clearObject() {
         adminViewAllAppointments = null;
     }
-
 
 }

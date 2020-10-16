@@ -11,8 +11,10 @@
         android:id="@+id/header1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_weight="1"
         android:gravity="center"
         android:text="Count : " />
+
 
     <TableLayout
         android:id="@+id/tableLayout"

@@ -26,6 +26,7 @@ public class adminViewAllAppointments extends AppCompatActivity {
     private DatabaseReference reference;
     private int sum;
     private TextView countHeader;
+    private float totIncome;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,10 +46,11 @@ public class adminViewAllAppointments extends AppCompatActivity {
 
                 if(snapshot.exists()){
                     sum = (int) snapshot.getChildrenCount();
-                    countHeader.setText("Count : " + Integer.toString(sum));
+                    totIncome = findTotIncome(sum);
+                    countHeader.setText(getString(R.string.count) + sum + "     " +"Total Income: " +totIncome) ;
                 }
                 else{
-                    countHeader.setText("Count : 0");
+                    countHeader.setText(R.string.defaultCount);
                 }
             }
 
@@ -57,6 +59,12 @@ public class adminViewAllAppointments extends AppCompatActivity {
 
             }
         });
+    }
+
+    public float findTotIncome(int sum) {
+        float totalIncome;
+        totalIncome= (float)sum * (float)300.00;
+        return totalIncome;
     }
 
     @Override
